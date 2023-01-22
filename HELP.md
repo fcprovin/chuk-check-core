@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'com.fcprovin.chuk-check-core' is invalid and this project uses 'com.fcprovin.chukcheckcore' instead.
+* The original package name 'com.fcprovin.chuk-check-core' is invalid and this project uses 'com.fcprovin.api' instead.
 
 # Getting Started
 

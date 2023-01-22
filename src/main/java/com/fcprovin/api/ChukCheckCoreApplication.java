@@ -1,4 +1,4 @@
-package com.fcprovin.chukcheckcore;
+package com.fcprovin.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
