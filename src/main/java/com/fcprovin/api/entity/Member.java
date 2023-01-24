@@ -1,6 +1,9 @@
 package com.fcprovin.api.entity;
 
+import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -10,9 +13,11 @@ import java.util.List;
 
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
+import static lombok.AccessLevel.PROTECTED;
 
 @Getter
 @Entity
+@NoArgsConstructor(access = PROTECTED)
 public class Member extends BaseTime {
 
     @Id
@@ -34,4 +39,16 @@ public class Member extends BaseTime {
 
     @OneToMany(mappedBy = "member")
     private List<Player> players = new ArrayList<>();
+
+    @Builder
+    public Member(String name, String email, LocalDate birthDate, Sns sns) {
+        this.name = name;
+        this.email = email;
+        this.birthDate = birthDate;
+        this.sns = sns;
+    }
+
+    public void login() {
+        loginDate = LocalDateTime.now();
+    }
 }
