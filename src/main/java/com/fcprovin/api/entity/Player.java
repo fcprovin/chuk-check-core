@@ -1,6 +1,5 @@
 package com.fcprovin.api.entity;
 
-import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,8 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 import static com.fcprovin.api.entity.BaseStatus.WAIT;
-import static com.fcprovin.api.entity.PlayerAuthority.MANAGER;
-import static com.fcprovin.api.entity.PlayerAuthority.MEMBER;
+import static com.fcprovin.api.entity.PlayerAuthority.GENERAL;
 import static javax.persistence.EnumType.STRING;
 import static javax.persistence.FetchType.LAZY;
 import static lombok.AccessLevel.PROTECTED;
@@ -43,27 +41,42 @@ public class Player extends BaseTime {
     @JoinColumn(name = "team_id")
     private Team team;
 
+    public Player(Member member, Team team) {
+        this(member, team, GENERAL);
+    }
+
     @Builder
     public Player(Member member, Team team, PlayerAuthority authority) {
-        this.member = member;
-        this.team = team;
         this.authority = authority;
         this.status = WAIT;
 
+        setMember(member);
+        setTeam(team);
+    }
+
+    private void setMember(Member member) {
+        this.member = member;
         this.member.getPlayers().add(this);
+    }
+
+    private void setTeam(Team team) {
+        this.team = team;
         this.team.getPlayers().add(this);
     }
 
-    public void changeInfo(int uniformNumber, Position position) {
+    public void setUniformNumber(int uniformNumber) {
         this.uniformNumber = uniformNumber;
+    }
+
+    public void setPosition(Position position) {
         this.position = position;
     }
 
-    public void changeStatus(BaseStatus status) {
+    public void setStatus(BaseStatus status) {
         this.status = status;
     }
 
-    public void changeAuthority(PlayerAuthority authority) {
+    public void setAuthority(PlayerAuthority authority) {
         this.authority = authority;
     }
 }

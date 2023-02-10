@@ -33,4 +33,8 @@ public class Sns extends BaseTime {
         this.uuid = uuid;
         this.type = type;
     }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
 }
