@@ -1,6 +1,5 @@
 package com.fcprovin.api.entity;
 
-import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,12 +39,22 @@ public class Member extends BaseTime {
     @OneToMany(mappedBy = "member")
     private List<Player> players = new ArrayList<>();
 
+    public Member(String name) {
+        this.name = name;
+    }
+
     @Builder
     public Member(String name, String email, LocalDate birthDate, Sns sns) {
         this.name = name;
         this.email = email;
         this.birthDate = birthDate;
+
+        setSns(sns);
+    }
+
+    private void setSns(Sns sns) {
         this.sns = sns;
+        this.sns.setMember(this);
     }
 
     public void login() {

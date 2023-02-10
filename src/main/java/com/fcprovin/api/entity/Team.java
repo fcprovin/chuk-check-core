@@ -1,12 +1,10 @@
 package com.fcprovin.api.entity;
 
-import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,14 +38,18 @@ public class Team extends BaseTime {
     @OneToMany(mappedBy = "team")
     private List<Match> matches = new ArrayList<>();
 
+    public Team(String name) {
+        this.name = name;
+    }
+
     @Builder
-    public Team(String name, Region region, Player player) {
+    public Team(String name, Region region) {
         this.name = name;
         this.region = region;
         this.status = WAIT;
     }
 
-    public void changeStatus(BaseStatus status) {
+    public void setStatus(BaseStatus status) {
         this.status = status;
     }
 }

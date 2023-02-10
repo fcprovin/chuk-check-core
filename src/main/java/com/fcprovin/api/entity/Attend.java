@@ -1,14 +1,17 @@
 package com.fcprovin.api.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 import static javax.persistence.EnumType.STRING;
 import static javax.persistence.FetchType.LAZY;
+import static lombok.AccessLevel.PROTECTED;
 
 @Getter
 @Entity
+@NoArgsConstructor(access = PROTECTED)
 public class Attend extends BaseTime {
 
     @Id
@@ -26,4 +29,16 @@ public class Attend extends BaseTime {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "match_id")
     private Match match;
+
+    public Attend(AttendStatus status, Player player, Match match) {
+        this.status = status;
+        this.player = player;
+
+        setMatch(match);
+    }
+
+    private void setMatch(Match match) {
+        this.match = match;
+        this.match.getAttends().add(this);
+    }
 }
