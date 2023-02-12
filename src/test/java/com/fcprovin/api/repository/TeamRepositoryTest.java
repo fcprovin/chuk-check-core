@@ -1,0 +1,64 @@
+package com.fcprovin.api.repository;
+
+import com.fcprovin.api.entity.Region;
+import com.fcprovin.api.entity.Team;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+
+import static com.fcprovin.api.entity.BaseStatus.APPROVE;
+import static org.assertj.core.api.Assertions.assertThat;
+
+@Transactional
+@SpringBootTest
+class TeamRepositoryTest {
+
+    @Autowired
+    TeamRepository teamRepository;
+
+    @Autowired
+    EntityManager em;
+
+    @Test
+    void saveTest() {
+        //given
+        Region region = new Region("경기도", "성남시");
+        em.persist(region);
+
+        Team team = new Team("프로빈", region);
+
+        //when
+        Team saveTeam = teamRepository.save(team);
+        Team findTeam = teamRepository.findById(saveTeam.getId()).orElseThrow();
+
+        //then
+        assertThat(findTeam).isEqualTo(team);
+        assertThat(findTeam.getId()).isEqualTo(team.getId());
+        assertThat(findTeam.getRegion().getCity()).isEqualTo(region.getCity());
+        assertThat(findTeam.getRegion().getCountry()).isEqualTo(region.getCountry());
+    }
+
+    @Test
+    void setStatusTest() {
+        //given
+        Region region = new Region("경기도", "성남시");
+        em.persist(region);
+
+        Team team = new Team("프로빈", region);
+
+        //when
+        teamRepository.save(team);
+        team.setStatus(APPROVE);
+
+        em.flush();
+        em.clear();
+
+        Team findTeam = teamRepository.findById(team.getId()).orElseThrow();
+
+        //then
+        assertThat(findTeam.getStatus()).isEqualTo(APPROVE);
+    }
+}
