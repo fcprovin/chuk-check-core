@@ -41,4 +41,8 @@ public class Vote extends BaseTime {
         this.match = match;
         this.match.getVotes().add(this);
     }
+
+    public void setStatus(VoteStatus status) {
+        this.status = status;
+    }
 }

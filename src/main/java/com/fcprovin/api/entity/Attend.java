@@ -41,4 +41,8 @@ public class Attend extends BaseTime {
         this.match = match;
         this.match.getAttends().add(this);
     }
+
+    public void setStatus(AttendStatus status) {
+        this.status = status;
+    }
 }
