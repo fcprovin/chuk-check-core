@@ -1,20 +1,13 @@
-buildscript {
-	dependencies {
-      classpath("gradle.plugin.com.ewerk.gradle.plugins:querydsl-plugin:1.0.10")
-   }
-}
-
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.8'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
 }
 
 group = 'com.fcprovin'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
-
-apply plugin: "com.ewerk.gradle.plugins.querydsl"
 
 configurations {
 	compileOnly {
@@ -29,9 +22,9 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'com.querydsl:querydsl-jpa'
-	implementation 'com.querydsl:querydsl-apt'
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
 	compileOnly 'org.projectlombok:lombok'
@@ -48,7 +41,6 @@ tasks.named('test') {
 def querydslDir = "$buildDir/generated/querydsl"
 
 querydsl {
-	library = "com.querydsl:querydsl-apt"
     jpa = true
     querydslSourcesDir = querydslDir
 }

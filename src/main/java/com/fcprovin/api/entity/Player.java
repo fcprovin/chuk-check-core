@@ -6,8 +6,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import static com.fcprovin.api.entity.BaseStatus.APPROVE;
 import static com.fcprovin.api.entity.BaseStatus.WAIT;
 import static com.fcprovin.api.entity.PlayerAuthority.GENERAL;
+import static com.fcprovin.api.entity.PlayerAuthority.LEADER;
 import static javax.persistence.EnumType.STRING;
 import static javax.persistence.FetchType.LAZY;
 import static lombok.AccessLevel.PROTECTED;
@@ -48,7 +50,7 @@ public class Player extends BaseTime {
     @Builder
     public Player(Member member, Team team, PlayerAuthority authority) {
         this.authority = authority;
-        this.status = WAIT;
+        this.status = LEADER.equals(authority) ? APPROVE : WAIT;
 
         setMember(member);
         setTeam(team);

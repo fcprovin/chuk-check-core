@@ -6,10 +6,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.Objects.nonNull;
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 import static lombok.AccessLevel.PROTECTED;
@@ -26,11 +26,10 @@ public class Member extends BaseTime {
 
     private String name;
 
+    @Column(unique = true)
     private String email;
 
     private LocalDate birthDate;
-
-    private LocalDateTime loginDate;
 
     @OneToOne(fetch = LAZY, cascade = ALL)
     @JoinColumn(name = "sns_id")
@@ -40,7 +39,11 @@ public class Member extends BaseTime {
     private List<Player> players = new ArrayList<>();
 
     public Member(String name) {
-        this.name = name;
+        this(name, null, null, null);
+    }
+
+    public Member(String name, Sns sns) {
+        this(name, null, null, sns);
     }
 
     @Builder
@@ -49,15 +52,11 @@ public class Member extends BaseTime {
         this.email = email;
         this.birthDate = birthDate;
 
-        setSns(sns);
+        if (nonNull(sns)) setSns(sns);
     }
 
     private void setSns(Sns sns) {
         this.sns = sns;
         this.sns.setMember(this);
-    }
-
-    public void login() {
-        loginDate = LocalDateTime.now();
     }
 }

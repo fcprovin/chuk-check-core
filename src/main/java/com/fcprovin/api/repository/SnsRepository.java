@@ -1,8 +1,12 @@
 package com.fcprovin.api.repository;
 
 import com.fcprovin.api.entity.Sns;
+import com.fcprovin.api.entity.SnsType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SnsRepository extends JpaRepository<Sns, Long> {
-    
+import java.util.Optional;
+
+public interface SnsRepository extends JpaRepository<Sns, Long>, SnsQueryRepository {
+
+    Optional<Sns> findByUuidAndType(String uuid, SnsType type);
 }
