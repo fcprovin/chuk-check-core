@@ -36,4 +36,9 @@ public class Stadium extends BaseTime {
         this.latitude = latitude;
         this.longitude = longitude;
     }
+
+    public Stadium(String name, String address) {
+        this.name = name;
+        this.address = address;
+    }
 }
