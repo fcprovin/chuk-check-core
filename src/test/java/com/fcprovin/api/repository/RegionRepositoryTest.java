@@ -18,7 +18,7 @@ class RegionRepositoryTest {
     @Test
     void saveTest() {
         //given
-        Region region = new Region("경기도", "성남시");
+        Region region = new Region("서울시", "강남구");
 
         //when
         Region saveRegion = regionRepository.save(region);
