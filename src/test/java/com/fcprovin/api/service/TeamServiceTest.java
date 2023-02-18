@@ -144,4 +144,21 @@ class TeamServiceTest {
         }
 //        team.getPlayers().forEach(p -> System.out.println("p.getMember().getName() = " + p.getMember().getName()));
     }
+
+    @Test
+    void readSearchTDD() {
+    	//given
+        Region region = new Region("서울", "잠실");
+        em.persist(region);
+
+        Team team = new Team("team2", region);
+        em.persist(team);
+
+        //when
+        Team findTeam = teamService.readDetail(team.getId());
+
+        //then
+        assertThat(findTeam.getId()).isEqualTo(team.getId());
+        assertThat(findTeam.getName()).isEqualTo(team.getName());
+    }
 }
