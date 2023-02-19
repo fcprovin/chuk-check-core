@@ -1,9 +1,8 @@
 package com.fcprovin.api.controller;
 
-import com.fcprovin.api.dto.request.MatchCreateRequest;
-import com.fcprovin.api.dto.request.MatchUpdateRequest;
+import com.fcprovin.api.dto.request.create.MatchCreateRequest;
+import com.fcprovin.api.dto.request.update.MatchUpdateRequest;
 import com.fcprovin.api.dto.response.BaseResponse;
-import com.fcprovin.api.dto.response.MatchDetailResponse;
 import com.fcprovin.api.dto.response.MatchResponse;
 import com.fcprovin.api.dto.search.MatchSearch;
 import com.fcprovin.api.service.MatchService;
@@ -40,7 +39,7 @@ public class MatchController {
     }
 
     @GetMapping("/{id}")
-    public BaseResponse<MatchDetailResponse> read(@PathVariable Long id) {
-        return new BaseResponse<>(MatchDetailResponse.of(matchService.readDetail(id)));
+    public BaseResponse<MatchResponse> read(@PathVariable Long id) {
+        return new BaseResponse<>(of(matchService.readDetail(id)));
     }
 }

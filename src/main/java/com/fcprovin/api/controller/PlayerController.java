@@ -1,9 +1,8 @@
 package com.fcprovin.api.controller;
 
-import com.fcprovin.api.dto.request.PlayerCreateRequest;
-import com.fcprovin.api.dto.request.PlayerUpdateRequest;
+import com.fcprovin.api.dto.request.create.PlayerCreateRequest;
+import com.fcprovin.api.dto.request.update.PlayerUpdateRequest;
 import com.fcprovin.api.dto.response.BaseResponse;
-import com.fcprovin.api.dto.response.PlayerDetailResponse;
 import com.fcprovin.api.dto.response.PlayerResponse;
 import com.fcprovin.api.dto.search.PlayerSearch;
 import com.fcprovin.api.service.PlayerService;
@@ -40,8 +39,8 @@ public class PlayerController {
     }
 
     @GetMapping("/{id}")
-    public BaseResponse<PlayerDetailResponse> read(@PathVariable Long id) {
-        return new BaseResponse<>(PlayerDetailResponse.of(playerService.readDetail(id)));
+    public BaseResponse<PlayerResponse> read(@PathVariable Long id) {
+        return new BaseResponse<>(of(playerService.readDetail(id)));
     }
 
 }

@@ -1,6 +1,6 @@
 package com.fcprovin.api.controller;
 
-import com.fcprovin.api.dto.request.StadiumRequest;
+import com.fcprovin.api.dto.request.create.StadiumCreateRequest;
 import com.fcprovin.api.dto.response.BaseResponse;
 import com.fcprovin.api.dto.response.StadiumResponse;
 import com.fcprovin.api.service.StadiumService;
@@ -20,7 +20,7 @@ public class StadiumController {
     private final StadiumService stadiumService;
 
     @PostMapping
-    public BaseResponse<StadiumResponse> create(@RequestBody StadiumRequest request) {
+    public BaseResponse<StadiumResponse> create(@RequestBody StadiumCreateRequest request) {
         return new BaseResponse<>(of(stadiumService.create(request)));
     }
 

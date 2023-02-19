@@ -1,8 +1,7 @@
 package com.fcprovin.api.controller;
 
-import com.fcprovin.api.dto.request.SnsRequest;
+import com.fcprovin.api.dto.request.create.SnsCreateRequest;
 import com.fcprovin.api.dto.response.BaseResponse;
-import com.fcprovin.api.dto.response.SnsDetailResponse;
 import com.fcprovin.api.dto.response.SnsResponse;
 import com.fcprovin.api.service.SnsService;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +21,7 @@ public class SnsController {
     private final SnsService snsService;
 
     @PostMapping
-    public BaseResponse<SnsResponse> create(@RequestBody @Valid SnsRequest request) {
+    public BaseResponse<SnsResponse> create(@RequestBody @Valid SnsCreateRequest request) {
         return new BaseResponse<>(of(snsService.create(request)));
     }
 
@@ -34,7 +33,7 @@ public class SnsController {
     }
 
     @GetMapping("/{id}")
-    public BaseResponse<SnsDetailResponse> read(@PathVariable Long id) {
-        return new BaseResponse<>(SnsDetailResponse.of(snsService.read(id)));
+    public BaseResponse<SnsResponse> read(@PathVariable Long id) {
+        return new BaseResponse<>(of(snsService.read(id)));
     }
 }

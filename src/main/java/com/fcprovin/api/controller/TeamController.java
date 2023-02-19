@@ -1,9 +1,8 @@
 package com.fcprovin.api.controller;
 
-import com.fcprovin.api.dto.request.TeamCreateRequest;
-import com.fcprovin.api.dto.request.TeamUpdateRequest;
+import com.fcprovin.api.dto.request.create.TeamCreateRequest;
+import com.fcprovin.api.dto.request.update.TeamUpdateRequest;
 import com.fcprovin.api.dto.response.BaseResponse;
-import com.fcprovin.api.dto.response.TeamDetailResponse;
 import com.fcprovin.api.dto.response.TeamResponse;
 import com.fcprovin.api.dto.search.TeamSearch;
 import com.fcprovin.api.service.TeamService;
@@ -40,7 +39,7 @@ public class TeamController {
     }
 
     @GetMapping("/{id}")
-    public BaseResponse<TeamDetailResponse> read(@PathVariable Long id) {
-        return new BaseResponse<>(TeamDetailResponse.of(teamService.readDetail(id)));
+    public BaseResponse<TeamResponse> read(@PathVariable Long id) {
+        return new BaseResponse<>(of(teamService.readDetail(id)));
     }
 }

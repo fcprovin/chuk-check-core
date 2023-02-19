@@ -1,7 +1,7 @@
 package com.fcprovin.api.controller;
 
-import com.fcprovin.api.dto.request.VoteCreateRequest;
-import com.fcprovin.api.dto.request.VoteUpdateRequest;
+import com.fcprovin.api.dto.request.create.VoteCreateRequest;
+import com.fcprovin.api.dto.request.update.VoteUpdateRequest;
 import com.fcprovin.api.dto.response.BaseResponse;
 import com.fcprovin.api.dto.response.VoteResponse;
 import com.fcprovin.api.dto.search.VoteSearch;

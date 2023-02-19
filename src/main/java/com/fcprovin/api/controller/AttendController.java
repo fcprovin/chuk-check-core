@@ -1,7 +1,7 @@
 package com.fcprovin.api.controller;
 
-import com.fcprovin.api.dto.request.AttendCreateRequest;
-import com.fcprovin.api.dto.request.AttendUpdateRequest;
+import com.fcprovin.api.dto.request.create.AttendCreateRequest;
+import com.fcprovin.api.dto.request.update.AttendUpdateRequest;
 import com.fcprovin.api.dto.response.AttendResponse;
 import com.fcprovin.api.dto.response.BaseResponse;
 import com.fcprovin.api.dto.search.AttendSearch;
