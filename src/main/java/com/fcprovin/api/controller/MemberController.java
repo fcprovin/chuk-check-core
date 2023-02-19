@@ -1,8 +1,7 @@
 package com.fcprovin.api.controller;
 
-import com.fcprovin.api.dto.request.MemberRequest;
+import com.fcprovin.api.dto.request.create.MemberCreateRequest;
 import com.fcprovin.api.dto.response.BaseResponse;
-import com.fcprovin.api.dto.response.MemberDetailResponse;
 import com.fcprovin.api.dto.response.MemberResponse;
 import com.fcprovin.api.dto.search.MemberSearch;
 import com.fcprovin.api.service.MemberService;
@@ -22,7 +21,7 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping
-    public BaseResponse<MemberResponse> create(@RequestBody MemberRequest request) {
+    public BaseResponse<MemberResponse> create(@RequestBody MemberCreateRequest request) {
         return new BaseResponse<>(of(memberService.create(request)));
     }
 
@@ -34,7 +33,7 @@ public class MemberController {
     }
 
     @GetMapping("/{id}")
-    public BaseResponse<MemberDetailResponse> read(@PathVariable Long id) {
-        return new BaseResponse<>(MemberDetailResponse.of(memberService.readDetail(id)));
+    public BaseResponse<MemberResponse> read(@PathVariable Long id) {
+        return new BaseResponse<>(of(memberService.readDetail(id)));
     }
 }

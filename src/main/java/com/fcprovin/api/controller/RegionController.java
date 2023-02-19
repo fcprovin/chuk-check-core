@@ -1,6 +1,6 @@
 package com.fcprovin.api.controller;
 
-import com.fcprovin.api.dto.request.RegionRequest;
+import com.fcprovin.api.dto.request.create.RegionCreateRequest;
 import com.fcprovin.api.dto.response.BaseResponse;
 import com.fcprovin.api.dto.response.RegionResponse;
 import com.fcprovin.api.service.RegionService;
@@ -19,7 +19,7 @@ public class RegionController {
     private final RegionService regionService;
 
     @PostMapping
-    public BaseResponse<RegionResponse> create(@RequestBody RegionRequest request) {
+    public BaseResponse<RegionResponse> create(@RequestBody RegionCreateRequest request) {
         return new BaseResponse<>(RegionResponse.of(regionService.create(request)));
     }
 

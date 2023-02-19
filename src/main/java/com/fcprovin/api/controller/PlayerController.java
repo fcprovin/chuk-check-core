@@ -1,9 +1,8 @@
 package com.fcprovin.api.controller;
 
-import com.fcprovin.api.dto.request.PlayerCreateRequest;
-import com.fcprovin.api.dto.request.PlayerUpdateRequest;
+import com.fcprovin.api.dto.request.create.PlayerCreateRequest;
+import com.fcprovin.api.dto.request.update.PlayerUpdateRequest;
 import com.fcprovin.api.dto.response.BaseResponse;
-import com.fcprovin.api.dto.response.PlayerDetailResponse;
 import com.fcprovin.api.dto.response.PlayerResponse;
 import com.fcprovin.api.dto.search.PlayerSearch;
 import com.fcprovin.api.service.PlayerService;
@@ -27,6 +26,11 @@ public class PlayerController {
         return new BaseResponse<>(of(playerService.create(request)));
     }
 
+    @PutMapping("/{id}")
+    public BaseResponse<PlayerResponse> update(@PathVariable Long id, @RequestBody PlayerUpdateRequest request) {
+        return new BaseResponse<>(of(playerService.update(id, request)));
+    }
+
     @GetMapping
     public BaseResponse<List<PlayerResponse>> readAll(PlayerSearch search) {
         return new BaseResponse<>(playerService.readSearch(search).stream()
@@ -35,13 +39,8 @@ public class PlayerController {
     }
 
     @GetMapping("/{id}")
-    public BaseResponse<PlayerDetailResponse> read(@PathVariable Long id) {
-        return new BaseResponse<>(PlayerDetailResponse.of(playerService.readDetail(id)));
-    }
-
-    @PutMapping("/{id}")
-    public BaseResponse<PlayerResponse> update(@PathVariable Long id, @RequestBody PlayerUpdateRequest request) {
-        return new BaseResponse<>(of(playerService.update(id, request)));
+    public BaseResponse<PlayerResponse> read(@PathVariable Long id) {
+        return new BaseResponse<>(of(playerService.readDetail(id)));
     }
 
 }
