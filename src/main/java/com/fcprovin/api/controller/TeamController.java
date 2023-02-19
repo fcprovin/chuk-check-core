@@ -27,6 +27,11 @@ public class TeamController {
         return new BaseResponse<>(of(teamService.create(teamCreateRequest)));
     }
 
+    @PutMapping("/{id}")
+    public BaseResponse<TeamResponse> update(@PathVariable Long id, @RequestBody TeamUpdateRequest teamUpdateRequest) {
+        return new BaseResponse<>(of(teamService.update(id, teamUpdateRequest)));
+    }
+
     @GetMapping
     public BaseResponse<List<TeamResponse>> readAll(TeamSearch teamSearch) {
         return new BaseResponse<>(teamService.readSearch(teamSearch).stream()
@@ -37,10 +42,5 @@ public class TeamController {
     @GetMapping("/{id}")
     public BaseResponse<TeamDetailResponse> read(@PathVariable Long id) {
         return new BaseResponse<>(TeamDetailResponse.of(teamService.readDetail(id)));
-    }
-
-    @PutMapping("/{id}")
-    public BaseResponse<TeamResponse> update(@PathVariable Long id, @RequestBody TeamUpdateRequest teamUpdateRequest) {
-        return new BaseResponse<>(of(teamService.update(id, teamUpdateRequest)));
     }
 }

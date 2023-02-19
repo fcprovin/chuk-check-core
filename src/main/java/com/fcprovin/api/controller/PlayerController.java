@@ -27,6 +27,11 @@ public class PlayerController {
         return new BaseResponse<>(of(playerService.create(request)));
     }
 
+    @PutMapping("/{id}")
+    public BaseResponse<PlayerResponse> update(@PathVariable Long id, @RequestBody PlayerUpdateRequest request) {
+        return new BaseResponse<>(of(playerService.update(id, request)));
+    }
+
     @GetMapping
     public BaseResponse<List<PlayerResponse>> readAll(PlayerSearch search) {
         return new BaseResponse<>(playerService.readSearch(search).stream()
@@ -37,11 +42,6 @@ public class PlayerController {
     @GetMapping("/{id}")
     public BaseResponse<PlayerDetailResponse> read(@PathVariable Long id) {
         return new BaseResponse<>(PlayerDetailResponse.of(playerService.readDetail(id)));
-    }
-
-    @PutMapping("/{id}")
-    public BaseResponse<PlayerResponse> update(@PathVariable Long id, @RequestBody PlayerUpdateRequest request) {
-        return new BaseResponse<>(of(playerService.update(id, request)));
     }
 
 }
