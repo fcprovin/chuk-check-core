@@ -1,14 +1,14 @@
 package com.fcprovin.api.dto.response;
 
 import com.fcprovin.api.entity.Member;
+import lombok.Builder;
 import lombok.Data;
-import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
-@SuperBuilder
+@Builder
 public class MemberResponse {
 
     private final Long id;
@@ -18,6 +18,8 @@ public class MemberResponse {
     private final LocalDateTime createdDate;
     private final LocalDateTime updatedDate;
 
+    private final SnsResponse sns;
+
     public static MemberResponse of(Member member) {
         return MemberResponse.builder()
                 .id(member.getId())
@@ -26,6 +28,7 @@ public class MemberResponse {
                 .birthDate(member.getBirthDate())
                 .createdDate(member.getCreatedDate())
                 .updatedDate(member.getUpdatedDate())
+                .sns(SnsResponse.of(member.getSns()))
                 .build();
     }
 }

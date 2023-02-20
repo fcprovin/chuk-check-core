@@ -1,13 +1,13 @@
 package com.fcprovin.api.dto.response;
 
 import com.fcprovin.api.entity.*;
+import lombok.Builder;
 import lombok.Data;
-import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
 @Data
-@SuperBuilder
+@Builder
 public class MatchResponse {
 
     private final Long id;
@@ -21,6 +21,9 @@ public class MatchResponse {
     private final LocalDateTime createdDate;
     private final LocalDateTime updatedDate;
 
+    private final TeamResponse team;
+    private final StadiumResponse stadium;
+
     public static MatchResponse of(Match match) {
         return MatchResponse.builder()
                 .id(match.getId())
@@ -33,6 +36,7 @@ public class MatchResponse {
                 .attendDate(match.getAttendDate())
                 .createdDate(match.getCreatedDate())
                 .updatedDate(match.getUpdatedDate())
+                .team(TeamResponse.of(match.getTeam()))
                 .build();
     }
 }
