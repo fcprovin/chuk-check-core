@@ -64,10 +64,10 @@ class MemberRepositoryTest {
     @Test
     void findByEmail() {
         //given
-        Sns sns1 = new Sns("sns1", GOOGLE);
-        em.persist(sns1);
+        Sns sns = new Sns("sns1", GOOGLE);
+        em.persist(sns);
 
-        Member memberA = new Member("memberA", "test@test.com", LocalDate.of(2022, 1, 1) ,sns1);
+        Member memberA = new Member("memberA", "test@test.com", LocalDate.of(2022, 1, 1) ,sns);
 
         //when
         memberRepository.save(memberA);

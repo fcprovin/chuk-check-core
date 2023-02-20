@@ -150,4 +150,30 @@ class PlayerRepositoryTest {
         assertThat(findPlayer.getTeam().getName()).isEqualTo(team.getName());
         assertThat(findPlayer.getMember().getName()).isEqualTo(member.getName());
     }
+
+    @Test
+    void findByMemberIdAndTeamId() {
+    	//given
+    	Sns sns = new Sns("sns2", GOOGLE);
+        Region region = new Region("경기도", "성남시");
+
+        em.persist(sns);
+        em.persist(region);
+
+        Member member = new Member("memberA", "test@test.com", LocalDate.of(1997, 3, 7), sns);
+        Team team = new Team("프로빈", region);
+
+        em.persist(member);
+        em.persist(team);
+
+        Player player = new Player(member, team);
+
+        em.persist(player);
+
+    	//when
+        Player findPlayer = playerRepository.findByMemberIdAndTeamId(member.getId(), team.getId()).get();
+
+        //then
+        assertThat(findPlayer).isEqualTo(player);
+    }
 }
