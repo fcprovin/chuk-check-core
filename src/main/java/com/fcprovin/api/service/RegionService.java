@@ -1,6 +1,6 @@
 package com.fcprovin.api.service;
 
-import com.fcprovin.api.dto.request.RegionRequest;
+import com.fcprovin.api.dto.request.create.RegionCreateRequest;
 import com.fcprovin.api.entity.Region;
 import com.fcprovin.api.repository.RegionRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ public class RegionService {
 
     private final RegionRepository regionRepository;
 
-    public Region create(RegionRequest request) {
+    public Region create(RegionCreateRequest request) {
         validate(request);
         return regionRepository.save(request.toEntity());
     }
@@ -31,7 +31,7 @@ public class RegionService {
         return regionRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Not exist region"));
     }
 
-    private void validate(RegionRequest request) {
+    private void validate(RegionCreateRequest request) {
         if (regionRepository.findByCountryAndCity(request.getCountry(), request.getCity()).isPresent()) {
             throw new IllegalArgumentException("Already region");
         }
