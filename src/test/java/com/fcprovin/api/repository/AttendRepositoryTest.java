@@ -1,30 +1,33 @@
 package com.fcprovin.api.repository;
 
+import com.fcprovin.api.dto.search.AttendSearch;
 import com.fcprovin.api.entity.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
+import java.util.List;
+
+import static com.fcprovin.api.entity.AttendStatus.ATTEND;
+import static com.fcprovin.api.entity.AttendStatus.LATE;
 import static java.time.LocalDateTime.now;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Transactional
 @SpringBootTest
-@Rollback(false)
 class AttendRepositoryTest {
-
-    @Autowired
-    AttendRepository attendRepository;
 
     @Autowired
     EntityManager em;
 
+    @Autowired
+    AttendRepository attendRepository;
+
     @Test
-    void saveTest() {
+    void save() {
     	//given
         Member member = new Member("memberA");
         Team team = new Team("teamA");
@@ -39,7 +42,7 @@ class AttendRepositoryTest {
         em.persist(match);
 
         //when
-        Attend attend = new Attend(AttendStatus.ATTEND, player, match);
+        Attend attend = new Attend(ATTEND, player, match);
         Attend saveAttend = attendRepository.save(attend);
         Attend findAttend = attendRepository.findById(saveAttend.getId()).orElseThrow();
 
@@ -52,7 +55,7 @@ class AttendRepositoryTest {
     }
 
     @Test
-    void statusUpdateTest() {
+    void update() {
         //given
         Member member = new Member("memberA");
         Team team = new Team("teamA");
@@ -66,18 +69,72 @@ class AttendRepositoryTest {
         em.persist(player);
         em.persist(match);
 
+        Attend attend = new Attend(ATTEND, player, match);
+
+        em.persist(attend);
+
         //when
-        Attend attend = new Attend(AttendStatus.ATTEND, player, match);
-
-        attendRepository.save(attend);
-        attend.setStatus(AttendStatus.LATE);
-
-        em.flush();
-        em.clear();
-
-        Attend findAttend = attendRepository.findById(attend.getId()).orElseThrow();
+        attend.setStatus(LATE);
+        Attend findAttend = attendRepository.findById(attend.getId()).get();
 
         //then
-        assertThat(findAttend.getStatus()).isEqualTo(AttendStatus.LATE);
+        assertThat(findAttend.getStatus()).isEqualTo(LATE);
+    }
+
+    @Test
+    void findQueryBySearch() {
+    	//given
+        Member member = new Member("memberA");
+        Team team = new Team("teamA");
+
+        em.persist(member);
+        em.persist(team);
+
+        Player player = new Player(member, team);
+        Match match = new Match("상대", new MatchDate(now(), now()), team);
+
+        em.persist(player);
+        em.persist(match);
+
+        Attend attend = new Attend(ATTEND, player, match);
+
+        em.persist(attend);
+
+        AttendSearch search = AttendSearch.builder()
+                .status(ATTEND)
+                .build();
+        //when
+        List<Attend> result = attendRepository.findQueryBySearch(search);
+
+        //then
+        assertThat(result.size()).isGreaterThan(0);
+        assertThat(result).containsExactly(attend);
+    }
+
+    @Test
+    void findQueryById() {
+    	//given
+    	Member member = new Member("memberA");
+        Team team = new Team("teamA");
+
+        em.persist(member);
+        em.persist(team);
+
+        Player player = new Player(member, team);
+        Match match = new Match("상대", new MatchDate(now(), now()), team);
+
+        em.persist(player);
+        em.persist(match);
+
+        Attend attend = new Attend(ATTEND, player, match);
+
+        em.persist(attend);
+
+    	//when
+        Attend findAttend = attendRepository.findQueryById(attend.getId()).get();
+
+        //then
+        assertThat(findAttend.getPlayer().getId()).isEqualTo(player.getId());
+        assertThat(findAttend.getMatch().getOtherTeamName()).isEqualTo(match.getOtherTeamName());
     }
 }

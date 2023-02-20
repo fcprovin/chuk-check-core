@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Transactional
@@ -13,10 +15,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 class RegionRepositoryTest {
 
     @Autowired
+    EntityManager em;
+
+    @Autowired
     RegionRepository regionRepository;
 
     @Test
-    void saveTest() {
+    void save() {
         //given
         Region region = new Region("서울시", "강남구");
 
@@ -29,5 +34,19 @@ class RegionRepositoryTest {
         assertThat(findRegion.getId()).isEqualTo(region.getId());
         assertThat(findRegion.getCountry()).isEqualTo(region.getCountry());
         assertThat(findRegion.getCity()).isEqualTo(region.getCity());
+    }
+
+    @Test
+    void findByCountryAndCity() {
+        //given
+        Region region = new Region("서울시", "강남구");
+
+        em.persist(region);
+
+        //when
+        Region findRegion = regionRepository.findByCountryAndCity("서울시", "강남구").get();
+
+        //then
+        assertThat(findRegion.getId()).isEqualTo(region.getId());
     }
 }

@@ -29,7 +29,7 @@ class SnsRepositoryTest {
 
         //when
         Sns saveSns = snsRepository.save(sns);
-        Sns findSns = snsRepository.findById(saveSns.getId()).orElseThrow();
+        Sns findSns = snsRepository.findById(saveSns.getId()).get();
 
         //then
         assertThat(findSns.getId()).isEqualTo(sns.getId());
@@ -38,7 +38,22 @@ class SnsRepositoryTest {
     }
 
     @Test
-    void query() {
+    void findByUuidAndType() {
+        //given
+        Sns sns = new Sns("sns10", APPLE);
+        snsRepository.save(sns);
+
+        //when
+        Sns findSns = snsRepository.findByUuidAndType("sns10", APPLE).get();
+
+        //then
+        assertThat(findSns.getId()).isEqualTo(sns.getId());
+        assertThat(findSns.getUuid()).isEqualTo(sns.getUuid());
+        assertThat(findSns.getType()).isEqualTo(sns.getType());
+    }
+
+    @Test
+    void findQueryById() {
         //given
         Sns sns = new Sns("sns10", APPLE);
         em.persist(sns);
@@ -47,7 +62,7 @@ class SnsRepositoryTest {
         em.persist(member);
 
         //when
-        Sns findSns = snsRepository.findQueryById(sns.getId()).orElse(null);
+        Sns findSns = snsRepository.findQueryById(sns.getId()).get();
 
         //then
         assertThat(findSns).isNotNull();
