@@ -20,4 +20,8 @@ public class MatchDate {
         this.startDate = startDate;
         this.endDate = endDate;
     }
+
+    public static MatchDate of(LocalDateTime startDate, LocalDateTime endDate) {
+        return new MatchDate(startDate, endDate);
+    }
 }

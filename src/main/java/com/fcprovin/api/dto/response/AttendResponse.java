@@ -13,6 +13,8 @@ public class AttendResponse {
 
     private final Long id;
     private final AttendStatus status;
+    private final PlayerResponse player;
+    private final MatchResponse match;
     private final LocalDateTime createdDate;
     private final LocalDateTime updatedDate;
 
@@ -20,6 +22,8 @@ public class AttendResponse {
         return AttendResponse.builder()
                 .id(attend.getId())
                 .status(attend.getStatus())
+                .player(PlayerResponse.of(attend.getPlayer()))
+                .match(MatchResponse.of(attend.getMatch()))
                 .createdDate(attend.getCreatedDate())
                 .updatedDate(attend.getUpdatedDate())
                 .build();

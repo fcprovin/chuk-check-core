@@ -1,6 +1,6 @@
 package com.fcprovin.api.service;
 
-import com.fcprovin.api.dto.request.SnsRequest;
+import com.fcprovin.api.dto.request.create.SnsCreateRequest;
 import com.fcprovin.api.entity.Sns;
 import com.fcprovin.api.repository.SnsRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ public class SnsService {
 
     private final SnsRepository snsRepository;
 
-    public Sns create(SnsRequest request) {
+    public Sns create(SnsCreateRequest request) {
         validate(request);
 
         return snsRepository.save(request.toEntity());
@@ -32,7 +32,7 @@ public class SnsService {
         return snsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Not exist sns"));
     }
 
-    private void validate(SnsRequest request) {
+    private void validate(SnsCreateRequest request) {
         if (snsRepository.findByUuidAndType(request.getUuid(), request.getType()).isPresent()) {
             throw new IllegalArgumentException("Already sns");
         }

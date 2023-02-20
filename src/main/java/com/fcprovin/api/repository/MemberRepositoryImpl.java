@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.fcprovin.api.entity.QMember.member;
-import static com.fcprovin.api.entity.QPlayer.player;
 import static com.fcprovin.api.entity.QSns.sns;
 import static java.util.Optional.ofNullable;
 import static org.springframework.util.StringUtils.hasText;
@@ -34,7 +33,6 @@ public class MemberRepositoryImpl implements MemberQueryRepository {
         return ofNullable(queryFactory
                 .selectFrom(member)
                 .join(member.sns, sns).fetchJoin()
-                .leftJoin(member.players, player).fetchJoin()
                 .where(member.id.eq(id))
                 .fetchOne());
     }

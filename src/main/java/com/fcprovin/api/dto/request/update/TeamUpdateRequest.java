@@ -1,4 +1,4 @@
-package com.fcprovin.api.dto.request;
+package com.fcprovin.api.dto.request.update;
 
 import com.fcprovin.api.entity.BaseStatus;
 import lombok.Data;

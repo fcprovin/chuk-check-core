@@ -13,6 +13,8 @@ public class VoteResponse {
 
     private final Long id;
     private final VoteStatus status;
+    private final PlayerResponse player;
+    private final MatchResponse match;
     private final LocalDateTime createdDate;
     private final LocalDateTime updatedDate;
 
@@ -20,6 +22,8 @@ public class VoteResponse {
         return VoteResponse.builder()
                 .id(vote.getId())
                 .status(vote.getStatus())
+                .player(PlayerResponse.of(vote.getPlayer()))
+                .match(MatchResponse.of(vote.getMatch()))
                 .createdDate(vote.getCreatedDate())
                 .updatedDate(vote.getUpdatedDate())
                 .build();

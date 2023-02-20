@@ -17,6 +17,8 @@ public class TeamResponse {
     private final LocalDateTime createdDate;
     private final LocalDateTime updatedDate;
 
+    private final RegionResponse region;
+
     public static TeamResponse of(Team team) {
         return TeamResponse.builder()
                 .id(team.getId())
@@ -24,6 +26,7 @@ public class TeamResponse {
                 .status(team.getStatus())
                 .createdDate(team.getCreatedDate())
                 .updatedDate(team.getUpdatedDate())
+                .region(RegionResponse.of(team.getRegion()))
                 .build();
     }
 }

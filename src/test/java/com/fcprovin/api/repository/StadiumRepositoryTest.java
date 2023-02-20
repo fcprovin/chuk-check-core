@@ -16,7 +16,7 @@ class StadiumRepositoryTest {
     StadiumRepository stadiumRepository;
 
     @Test
-    void saveTest() {
+    void save() {
     	//given
         Stadium stadium = new Stadium("탄천 A", "성남시 탄천", 31.4, 127.5);
 

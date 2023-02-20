@@ -1,13 +1,14 @@
 package com.fcprovin.api.repository;
 
+import com.fcprovin.api.dto.search.VoteSearch;
 import com.fcprovin.api.entity.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 import static com.fcprovin.api.entity.VoteStatus.TRUE;
 import static com.fcprovin.api.entity.VoteStatus.WAIT;
@@ -16,17 +17,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Transactional
 @SpringBootTest
-@Rollback(value = false)
 class VoteRepositoryTest {
-
-    @Autowired
-    VoteRepository voteRepository;
 
     @Autowired
     EntityManager em;
 
+    @Autowired
+    VoteRepository voteRepository;
+
     @Test
-    void saveTest() {
+    void save() {
         //given
         Member member = new Member("memberA");
         Team team = new Team("teamA");
@@ -54,7 +54,7 @@ class VoteRepositoryTest {
     }
 
     @Test
-    void statusUpdateTest() {
+    void update() {
         //given
         Member member = new Member("memberA");
         Team team = new Team("teamA");
@@ -68,18 +68,68 @@ class VoteRepositoryTest {
         em.persist(player);
         em.persist(match);
 
-        //when
         Vote vote = new Vote(WAIT, player, match);
-        voteRepository.save(vote);
+        em.persist(vote);
 
+        //when
         vote.setStatus(TRUE);
-
-        em.flush();
-        em.clear();
-
         Vote findVote = voteRepository.findById(vote.getId()).orElseThrow();
 
         //then
         assertThat(findVote.getStatus()).isEqualTo(TRUE);
+    }
+
+    @Test
+    void findQueryBySearch() {
+    	//given
+    	Member member = new Member("memberA");
+        Team team = new Team("teamA");
+
+        em.persist(member);
+        em.persist(team);
+
+        Player player = new Player(member, team);
+        Match match = new Match("상대", new MatchDate(now(), now()), team);
+
+        em.persist(player);
+        em.persist(match);
+
+        Vote vote = new Vote(WAIT, player, match);
+        em.persist(vote);
+
+        VoteSearch search = VoteSearch.builder().status(WAIT).build();
+
+        //when
+        List<Vote> result = voteRepository.findQueryBySearch(search);
+
+        //then
+        assertThat(result.size()).isGreaterThan(0);
+        assertThat(result).containsExactly(vote);
+    }
+
+    @Test
+    void findQueryById() {
+    	//given
+    	Member member = new Member("memberA");
+        Team team = new Team("teamA");
+
+        em.persist(member);
+        em.persist(team);
+
+        Player player = new Player(member, team);
+        Match match = new Match("상대", new MatchDate(now(), now()), team);
+
+        em.persist(player);
+        em.persist(match);
+
+        Vote vote = new Vote(WAIT, player, match);
+        em.persist(vote);
+
+    	//when
+        Vote findVote = voteRepository.findQueryById(vote.getId()).get();
+
+        //then
+        assertThat(findVote.getPlayer().getId()).isEqualTo(player.getId());
+        assertThat(findVote.getMatch().getOtherTeamName()).isEqualTo(match.getOtherTeamName());
     }
 }

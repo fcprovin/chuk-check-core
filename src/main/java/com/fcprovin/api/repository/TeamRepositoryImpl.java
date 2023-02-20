@@ -10,8 +10,6 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 import java.util.Optional;
 
-import static com.fcprovin.api.entity.QMatch.match;
-import static com.fcprovin.api.entity.QPlayer.player;
 import static com.fcprovin.api.entity.QRegion.region;
 import static com.fcprovin.api.entity.QTeam.team;
 import static java.util.Objects.nonNull;
@@ -39,9 +37,6 @@ public class TeamRepositoryImpl implements TeamQueryRepository {
         return Optional.ofNullable(queryFactory
                 .selectFrom(team)
                 .join(team.region, region).fetchJoin()
-                .leftJoin(team.players, player).fetchJoin()
-                .leftJoin(team.matches, match).fetchJoin()
-                .join(team.region, region)
                 .where(team.id.eq(id))
                 .fetchOne());
     }

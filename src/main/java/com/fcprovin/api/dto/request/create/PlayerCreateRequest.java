@@ -1,16 +1,16 @@
-package com.fcprovin.api.dto.request;
+package com.fcprovin.api.dto.request.create;
 
 import com.fcprovin.api.entity.Member;
 import com.fcprovin.api.entity.Player;
 import com.fcprovin.api.entity.PlayerAuthority;
 import com.fcprovin.api.entity.Team;
+import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
 
 @Data
-@RequiredArgsConstructor
+@Builder
 public class PlayerCreateRequest {
 
     @NotEmpty

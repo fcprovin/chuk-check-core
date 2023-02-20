@@ -1,8 +1,8 @@
-package com.fcprovin.api.dto.request;
+package com.fcprovin.api.dto.request.create;
 
 import com.fcprovin.api.entity.Member;
 import com.fcprovin.api.entity.Sns;
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -11,8 +11,8 @@ import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 @Data
-@AllArgsConstructor
-public class MemberRequest {
+@Builder
+public class MemberCreateRequest {
 
     @NotEmpty
     private final Long snsId;
@@ -28,10 +28,10 @@ public class MemberRequest {
 
     public Member toEntity(Sns sns) {
         return Member.builder()
+                .sns(sns)
                 .name(name)
                 .email(email)
                 .birthDate(birthDate)
-                .sns(sns)
                 .build();
     }
 }

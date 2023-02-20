@@ -1,4 +1,4 @@
-package com.fcprovin.api.dto.request;
+package com.fcprovin.api.dto.request.create;
 
 import com.fcprovin.api.entity.Sns;
 import com.fcprovin.api.entity.SnsType;
@@ -9,7 +9,7 @@ import javax.validation.constraints.NotEmpty;
 
 @Data
 @AllArgsConstructor
-public class SnsRequest {
+public class SnsCreateRequest {
 
     @NotEmpty
     private final String uuid;
@@ -18,6 +18,9 @@ public class SnsRequest {
     private final SnsType type;
 
     public Sns toEntity() {
-        return Sns.builder().uuid(uuid).type(type).build();
+        return Sns.builder()
+                .uuid(uuid)
+                .type(type)
+                .build();
     }
 }

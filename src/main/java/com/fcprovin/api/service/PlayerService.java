@@ -1,7 +1,7 @@
 package com.fcprovin.api.service;
 
-import com.fcprovin.api.dto.request.PlayerCreateRequest;
-import com.fcprovin.api.dto.request.PlayerUpdateRequest;
+import com.fcprovin.api.dto.request.create.PlayerCreateRequest;
+import com.fcprovin.api.dto.request.update.PlayerUpdateRequest;
 import com.fcprovin.api.dto.search.PlayerSearch;
 import com.fcprovin.api.entity.Member;
 import com.fcprovin.api.entity.Player;
@@ -25,10 +25,20 @@ public class PlayerService {
     private final TeamService teamService;
 
     public Player create(PlayerCreateRequest request) {
-        Member member = findMember(request);
-        Team team = findTeam(request);
+        validate(request);
 
-        return playerRepository.save(request.toEntity(member, team));
+        return playerRepository.save(request.toEntity(findMember(request), findTeam(request)));
+    }
+
+    public Player update(Long id, PlayerUpdateRequest request) {
+        Player findPlayer = read(id);
+
+        uniformNumber(request, findPlayer);
+        position(request, findPlayer);
+        status(request, findPlayer);
+        authority(request, findPlayer);
+
+        return findPlayer;
     }
 
     @Transactional(readOnly = true)
@@ -43,23 +53,12 @@ public class PlayerService {
 
     @Transactional(readOnly = true)
     public Player read(Long id) {
-        return playerRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Not exist Player"));
+        return playerRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Not exist player"));
     }
 
     @Transactional(readOnly = true)
     public Player readDetail(Long id) {
-        return playerRepository.findQueryById(id).orElseThrow(() -> new IllegalArgumentException("Not exist Player"));
-    }
-
-    public Player update(Long id, PlayerUpdateRequest request) {
-        Player findPlayer = read(id);
-
-        uniformNumber(request, findPlayer);
-        position(request, findPlayer);
-        status(request, findPlayer);
-        authority(request, findPlayer);
-
-        return findPlayer;
+        return playerRepository.findQueryById(id).orElseThrow(() -> new IllegalArgumentException("Not exist player"));
     }
 
     private void uniformNumber(PlayerUpdateRequest request, Player player) {
@@ -92,5 +91,11 @@ public class PlayerService {
 
     private Team findTeam(PlayerCreateRequest request) {
         return teamService.read(request.getTeamId());
+    }
+
+    private void validate(PlayerCreateRequest request) {
+        if (playerRepository.findByMemberIdAndTeamId(request.getMemberId(), request.getTeamId()).isPresent()) {
+            throw new IllegalArgumentException("Already player");
+        }
     }
 }

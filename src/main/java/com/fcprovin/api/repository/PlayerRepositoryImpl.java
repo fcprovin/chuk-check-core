@@ -27,6 +27,8 @@ public class PlayerRepositoryImpl implements PlayerQueryRepository {
     public List<Player> findQueryBySearch(PlayerSearch search) {
         return queryFactory
                 .selectFrom(player)
+                .join(player.member, member).fetchJoin()
+                .join(player.team, team).fetchJoin()
                 .where(
                         memberIdEqual(search.getMemberId()),
                         teamIdEqual(search.getTeamId()),

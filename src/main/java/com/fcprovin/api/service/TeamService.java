@@ -1,7 +1,7 @@
 package com.fcprovin.api.service;
 
-import com.fcprovin.api.dto.request.TeamCreateRequest;
-import com.fcprovin.api.dto.request.TeamUpdateRequest;
+import com.fcprovin.api.dto.request.create.TeamCreateRequest;
+import com.fcprovin.api.dto.request.update.TeamUpdateRequest;
 import com.fcprovin.api.dto.search.TeamSearch;
 import com.fcprovin.api.entity.Region;
 import com.fcprovin.api.entity.Team;
@@ -28,6 +28,14 @@ public class TeamService {
         return teamRepository.save(request.toEntity(findRegion(request)));
     }
 
+    public Team update(Long id, TeamUpdateRequest request) {
+        Team findTeam = read(id);
+
+        if (nonNull(request.getStatus())) findTeam.setStatus(request.getStatus());
+
+        return findTeam;
+    }
+
     @Transactional(readOnly = true)
     public List<Team> read() {
         return teamRepository.findAll();
@@ -46,14 +54,6 @@ public class TeamService {
     @Transactional(readOnly = true)
     public Team read(Long id) {
         return teamRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Not exist team"));
-    }
-
-    public Team update(Long id, TeamUpdateRequest request) {
-        Team findTeam = read(id);
-
-        if (nonNull(request.getStatus())) findTeam.setStatus(request.getStatus());
-
-        return findTeam;
     }
 
     private Region findRegion(TeamCreateRequest request) {

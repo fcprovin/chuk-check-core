@@ -1,6 +1,6 @@
 package com.fcprovin.api.service;
 
-import com.fcprovin.api.dto.request.StadiumRequest;
+import com.fcprovin.api.dto.request.create.StadiumCreateRequest;
 import com.fcprovin.api.entity.Stadium;
 import com.fcprovin.api.repository.StadiumRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ public class StadiumService {
 
     private final StadiumRepository stadiumRepository;
 
-    public Stadium create(StadiumRequest request) {
+    public Stadium create(StadiumCreateRequest request) {
         return stadiumRepository.save(request.toEntity());
     }
 

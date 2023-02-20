@@ -1,6 +1,6 @@
 package com.fcprovin.api.service;
 
-import com.fcprovin.api.dto.request.MemberRequest;
+import com.fcprovin.api.dto.request.create.MemberCreateRequest;
 import com.fcprovin.api.dto.search.MemberSearch;
 import com.fcprovin.api.entity.Member;
 import com.fcprovin.api.entity.Sns;
@@ -19,7 +19,7 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final SnsService snsService;
 
-    public Member create(MemberRequest request) {
+    public Member create(MemberCreateRequest request) {
         validateName(request);
         validateEmail(request);
 
@@ -46,17 +46,17 @@ public class MemberService {
         return memberRepository.findQueryById(id).orElseThrow(() -> new IllegalArgumentException("Not exist user"));
     }
 
-    private Sns findSns(MemberRequest memberRequest) {
-        return snsService.read(memberRequest.getSnsId());
+    private Sns findSns(MemberCreateRequest memberCreateRequest) {
+        return snsService.read(memberCreateRequest.getSnsId());
     }
 
-    private void validateName(MemberRequest request) {
+    private void validateName(MemberCreateRequest request) {
         if (memberRepository.findByName(request.getName()).isPresent()) {
             throw new IllegalArgumentException("Already user name");
         }
     }
 
-    private void validateEmail(MemberRequest request) {
+    private void validateEmail(MemberCreateRequest request) {
         if (memberRepository.findByEmail(request.getEmail()).isPresent()) {
             throw new IllegalArgumentException("Already user email");
         }

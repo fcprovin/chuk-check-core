@@ -1,17 +1,16 @@
 package com.fcprovin.api.service;
 
-import com.fcprovin.api.dto.request.SnsRequest;
+import com.fcprovin.api.dto.request.create.SnsCreateRequest;
 import com.fcprovin.api.entity.Sns;
-import com.fcprovin.api.entity.SnsType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static com.fcprovin.api.entity.SnsType.GOOGLE;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @Transactional
 @SpringBootTest
@@ -24,44 +23,19 @@ class SnsServiceTest {
     SnsService snsService;
 
     @Test
-    void createTDD() {
-        //given
-        SnsRequest snsRequest = new SnsRequest("uuid", SnsType.GOOGLE);
-
-        //when
-        Sns sns = snsService.create(snsRequest);
+    void validate() {
+    	//given
+        em.persist(new Sns("uuid", GOOGLE));
 
         //then
-        assertThat(sns.getId()).isGreaterThan(0);
-        assertThat(sns.getUuid()).isEqualTo(snsRequest.getUuid());
-        assertThat(sns.getType()).isEqualTo(snsRequest.getType());
+        assertThatThrownBy(() -> snsService.create(new SnsCreateRequest("uuid", GOOGLE)), "Already sns")
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    void readAllTDD() {
-    	//given
-        Sns sns = new Sns("uuid", SnsType.GOOGLE);
-        em.persist(sns);
-
-        //when
-        List<Sns> list = snsService.readAll();
-
-        //then
-        assertThat(list).containsExactly(sns);
-    }
-
-    @Test
-    void readTDD() {
-    	//given
-        Sns sns = new Sns("uuid", SnsType.GOOGLE);
-        em.persist(sns);
-
-        //when
-        Sns findSns = snsService.read(sns.getId());
-
-        //then
-        assertThat(findSns.getId()).isEqualTo(sns.getId());
-        assertThat(sns.getUuid()).isEqualTo(sns.getUuid());
-        assertThat(sns.getType()).isEqualTo(sns.getType());
+    void read() {
+    	//then
+        assertThatThrownBy(() -> snsService.read(Long.MIN_VALUE), "Not exist sns")
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

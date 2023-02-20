@@ -2,13 +2,13 @@ package com.fcprovin.api.dto.response;
 
 import com.fcprovin.api.entity.Sns;
 import com.fcprovin.api.entity.SnsType;
+import lombok.Builder;
 import lombok.Data;
-import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
 @Data
-@SuperBuilder
+@Builder
 public class SnsResponse {
 
     private final Long id;
@@ -17,6 +17,8 @@ public class SnsResponse {
     private final LocalDateTime createdDate;
     private final LocalDateTime updatedDate;
 
+    private final MemberResponse member;
+
     public static SnsResponse of(Sns sns) {
         return SnsResponse.builder()
                 .id(sns.getId())
@@ -24,6 +26,7 @@ public class SnsResponse {
                 .type(sns.getType())
                 .createdDate(sns.getCreatedDate())
                 .updatedDate(sns.getUpdatedDate())
+                .member(MemberResponse.of(sns.getMember()))
                 .build();
     }
 }

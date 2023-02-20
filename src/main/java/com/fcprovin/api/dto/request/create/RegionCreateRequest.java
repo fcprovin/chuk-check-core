@@ -1,14 +1,14 @@
-package com.fcprovin.api.dto.request;
+package com.fcprovin.api.dto.request.create;
 
 import com.fcprovin.api.entity.Region;
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 
 @Data
-@AllArgsConstructor
-public class RegionRequest {
+@Builder
+public class RegionCreateRequest {
 
     @NotEmpty
     private final String country;

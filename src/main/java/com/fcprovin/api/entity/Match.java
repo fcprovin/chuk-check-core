@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.fcprovin.api.entity.MatchStatus.CREATE;
+import static javax.persistence.EnumType.STRING;
 import static javax.persistence.FetchType.LAZY;
 import static lombok.AccessLevel.PROTECTED;
 
@@ -28,6 +29,7 @@ public class Match extends BaseTime {
 
     private String notice;
 
+    @Enumerated(STRING)
     private MatchStatus status;
 
     @Embedded

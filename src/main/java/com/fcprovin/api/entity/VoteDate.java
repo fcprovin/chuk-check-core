@@ -24,4 +24,8 @@ public class VoteDate {
         this.startDate = startDate;
         this.endDate = endDate;
     }
+
+    public static VoteDate of(LocalDateTime startDate, LocalDateTime endDate) {
+        return new VoteDate(startDate, endDate);
+    }
 }
