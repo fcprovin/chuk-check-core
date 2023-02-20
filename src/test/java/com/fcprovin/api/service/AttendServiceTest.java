@@ -11,18 +11,18 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @Transactional
 @SpringBootTest
-class StadiumServiceTest {
+class AttendServiceTest {
 
     @Autowired
     EntityManager em;
 
     @Autowired
-    StadiumService stadiumService;
+    AttendService attendService;
 
     @Test
     void read() {
     	//then
-        assertThatThrownBy(() -> stadiumService.read(Long.MIN_VALUE), "Not exist stadium")
+        assertThatThrownBy(() -> attendService.read(Long.MIN_VALUE), "Not exist attend")
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
