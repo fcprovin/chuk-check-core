@@ -1,5 +1,6 @@
 package com.fcprovin.api.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -30,6 +31,7 @@ public class Attend extends BaseTime {
     @JoinColumn(name = "match_id")
     private Match match;
 
+    @Builder
     public Attend(AttendStatus status, Player player, Match match) {
         this.status = status;
         this.player = player;

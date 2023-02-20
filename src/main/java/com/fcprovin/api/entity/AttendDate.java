@@ -20,4 +20,8 @@ public class AttendDate {
     public AttendDate(LocalDateTime deadlineDate) {
         this.deadlineDate = deadlineDate;
     }
+
+    public static AttendDate of(LocalDateTime endDate) {
+        return new AttendDate(endDate);
+    }
 }
