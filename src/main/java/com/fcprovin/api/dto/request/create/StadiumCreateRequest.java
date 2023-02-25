@@ -2,23 +2,34 @@ package com.fcprovin.api.dto.request.create;
 
 import com.fcprovin.api.entity.Stadium;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
 
-@Data
-@Builder
+import static lombok.AccessLevel.PROTECTED;
+
+@Getter
+@NoArgsConstructor(access = PROTECTED)
 public class StadiumCreateRequest {
 
     @NotEmpty
-    private final String name;
+    private String name;
 
     @NotEmpty
-    private final String address;
+    private String address;
 
     private double latitude;
 
     private double longitude;
+
+    @Builder
+    public StadiumCreateRequest(String name, String address, double latitude, double longitude) {
+        this.name = name;
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
 
     public Stadium toEntity() {
         return Stadium.builder()

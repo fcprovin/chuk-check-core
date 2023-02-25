@@ -1,5 +1,6 @@
 package com.fcprovin.api.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fcprovin.api.entity.BaseStatus;
 import com.fcprovin.api.entity.Player;
 import com.fcprovin.api.entity.PlayerAuthority;
@@ -9,12 +10,15 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
+
 @Data
 @Builder
+@JsonInclude(NON_NULL)
 public class PlayerResponse {
 
     private final Long id;
-    private final int uniformNumber;
+    private final Integer uniformNumber;
     private final Position position;
     private final BaseStatus status;
     private final PlayerAuthority authority;

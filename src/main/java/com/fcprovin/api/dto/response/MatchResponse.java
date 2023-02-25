@@ -1,18 +1,22 @@
 package com.fcprovin.api.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fcprovin.api.entity.*;
 import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
+
 @Data
 @Builder
+@JsonInclude(NON_NULL)
 public class MatchResponse {
 
     private final Long id;
     private final String otherTeamName;
-    private final boolean isHome;
+    private final Boolean home;
     private final String notice;
     private final MatchStatus status;
     private final MatchDate matchDate;
@@ -28,7 +32,7 @@ public class MatchResponse {
         return MatchResponse.builder()
                 .id(match.getId())
                 .otherTeamName(match.getOtherTeamName())
-                .isHome(match.isHome())
+                .home(match.isHome())
                 .notice(match.getNotice())
                 .status(match.getStatus())
                 .matchDate(match.getMatchDate())
@@ -37,6 +41,7 @@ public class MatchResponse {
                 .createdDate(match.getCreatedDate())
                 .updatedDate(match.getUpdatedDate())
                 .team(TeamResponse.of(match.getTeam()))
+                .stadium(StadiumResponse.of(match.getStadium()))
                 .build();
     }
 }

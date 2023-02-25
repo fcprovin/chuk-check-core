@@ -2,19 +2,28 @@ package com.fcprovin.api.dto.request.create;
 
 import com.fcprovin.api.entity.Region;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
 
-@Data
-@Builder
+import static lombok.AccessLevel.PROTECTED;
+
+@Getter
+@NoArgsConstructor(access = PROTECTED)
 public class RegionCreateRequest {
 
     @NotEmpty
-    private final String country;
+    private String country;
 
     @NotEmpty
-    private final String city;
+    private String city;
+
+    @Builder
+    public RegionCreateRequest(String country, String city) {
+        this.country = country;
+        this.city = city;
+    }
 
     public Region toEntity() {
         return Region.builder()
