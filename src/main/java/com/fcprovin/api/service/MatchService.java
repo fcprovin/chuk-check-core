@@ -23,22 +23,23 @@ public class MatchService {
     private final StadiumService stadiumService;
 
     public Match create(MatchCreateRequest request) {
-        return matchRepository.save(request.toEntity(findTeam(request), findStadium(request)));
+        return matchRepository.save(request.toEntity(findTeam(request.getTeamId()), findStadium(request.getStadiumId())));
     }
 
-    private Team findTeam(MatchCreateRequest request) {
-        return teamService.read(request.getTeamId());
+    private Team findTeam(Long id) {
+        return teamService.read(id);
     }
 
-    private Stadium findStadium(MatchCreateRequest request) {
-        return stadiumService.read(request.getStadiumId());
+    private Stadium findStadium(Long id) {
+        return stadiumService.read(id);
     }
 
     public Match update(Long id, MatchUpdateRequest request) {
         Match match = read(id);
 
+        stadium(request, match);
         otherTeamName(request, match);
-        isHome(request, match);
+        home(request, match);
         notice(request, match);
         status(request, match);
         matchDate(request, match);
@@ -63,12 +64,16 @@ public class MatchService {
         return matchRepository.findQueryById(id).orElseThrow(() -> new IllegalArgumentException("Not exist match"));
     }
 
+    private void stadium(MatchUpdateRequest request, Match match) {
+        if (nonNull(request.getStadiumId())) match.setStadium(findStadium(request.getStadiumId()));
+    }
+
     private void otherTeamName(MatchUpdateRequest request, Match match) {
         if (nonNull(request.getOtherTeamName())) match.setOtherTeamName(request.getOtherTeamName());
     }
 
-    private void isHome(MatchUpdateRequest request, Match match) {
-        if (nonNull(request.getIsHome())) match.setHome(request.getIsHome());
+    private void home(MatchUpdateRequest request, Match match) {
+        if (nonNull(request.getHome())) match.setHome(request.getHome());
     }
 
     private void notice(MatchUpdateRequest request, Match match) {
@@ -92,8 +97,8 @@ public class MatchService {
     }
 
     private void attendDeadLineDate(MatchUpdateRequest request, Match match) {
-        if (nonNull(request.getAttendDeadLineDate())) {
-            match.setAttendDate(AttendDate.of(request.getAttendDeadLineDate()));
+        if (nonNull(request.getAttendDeadlineDate())) {
+            match.setAttendDate(AttendDate.of(request.getAttendDeadlineDate()));
         }
     }
 }
