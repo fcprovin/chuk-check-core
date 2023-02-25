@@ -26,8 +26,8 @@ public class MatchController {
         return new BaseResponse<>(of(matchService.create(request)));
     }
 
-    @PutMapping("{id}")
-    public BaseResponse<MatchResponse> update(@PathVariable Long id, MatchUpdateRequest request) {
+    @PutMapping("/{id}")
+    public BaseResponse<MatchResponse> update(@PathVariable(name = "id") Long id, MatchUpdateRequest request) {
         return new BaseResponse<>(of(matchService.update(id, request)));
     }
 
@@ -39,7 +39,7 @@ public class MatchController {
     }
 
     @GetMapping("/{id}")
-    public BaseResponse<MatchResponse> read(@PathVariable Long id) {
+    public BaseResponse<MatchResponse> read(@PathVariable(name = "id") Long id) {
         return new BaseResponse<>(of(matchService.readDetail(id)));
     }
 }

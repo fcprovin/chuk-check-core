@@ -33,7 +33,7 @@ public class MemberController {
     }
 
     @GetMapping("/{id}")
-    public BaseResponse<MemberResponse> read(@PathVariable Long id) {
+    public BaseResponse<MemberResponse> read(@PathVariable(name = "id") Long id) {
         return new BaseResponse<>(of(memberService.readDetail(id)));
     }
 }

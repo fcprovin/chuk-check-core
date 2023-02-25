@@ -33,7 +33,7 @@ public class SnsController {
     }
 
     @GetMapping("/{id}")
-    public BaseResponse<SnsResponse> read(@PathVariable Long id) {
+    public BaseResponse<SnsResponse> read(@PathVariable(name = "id") Long id) {
         return new BaseResponse<>(of(snsService.read(id)));
     }
 }

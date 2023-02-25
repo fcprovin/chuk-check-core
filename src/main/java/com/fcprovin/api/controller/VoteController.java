@@ -27,7 +27,7 @@ public class VoteController {
     }
 
     @PutMapping("/{id}")
-    public BaseResponse<VoteResponse> update(@PathVariable Long id, @RequestBody VoteUpdateRequest request) {
+    public BaseResponse<VoteResponse> update(@PathVariable(name = "id") Long id, @RequestBody VoteUpdateRequest request) {
         return new BaseResponse<>(of(voteService.update(id, request)));
     }
 
@@ -39,7 +39,7 @@ public class VoteController {
     }
 
     @GetMapping("/{id}")
-    public BaseResponse<VoteResponse> read(@PathVariable Long id) {
+    public BaseResponse<VoteResponse> read(@PathVariable(name = "id") Long id) {
         return new BaseResponse<>(of(voteService.read(id)));
     }
 }
