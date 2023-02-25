@@ -5,12 +5,15 @@ import com.fcprovin.api.entity.AttendStatus;
 import com.fcprovin.api.entity.Match;
 import com.fcprovin.api.entity.Player;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
 
-@Data
-@Builder
+import static lombok.AccessLevel.PROTECTED;
+
+@Getter
+@NoArgsConstructor(access = PROTECTED)
 public class AttendCreateRequest {
 
     @NotEmpty
@@ -21,6 +24,13 @@ public class AttendCreateRequest {
 
     @NotEmpty
     private AttendStatus status;
+
+    @Builder
+    public AttendCreateRequest(Long playerId, Long matchId, AttendStatus status) {
+        this.playerId = playerId;
+        this.matchId = matchId;
+        this.status = status;
+    }
 
     public Attend toEntity(Player player, Match match) {
         return Attend.builder()

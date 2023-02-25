@@ -1,5 +1,6 @@
 package com.fcprovin.api.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fcprovin.api.entity.Member;
 import lombok.Builder;
 import lombok.Data;
@@ -7,8 +8,11 @@ import lombok.Data;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
+
 @Data
 @Builder
+@JsonInclude(NON_NULL)
 public class MemberResponse {
 
     private final Long id;

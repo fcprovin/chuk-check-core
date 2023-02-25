@@ -5,12 +5,15 @@ import com.fcprovin.api.entity.Player;
 import com.fcprovin.api.entity.Vote;
 import com.fcprovin.api.entity.VoteStatus;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
 
-@Data
-@Builder
+import static lombok.AccessLevel.PROTECTED;
+
+@Getter
+@NoArgsConstructor(access = PROTECTED)
 public class VoteCreateRequest {
 
     @NotEmpty
@@ -21,6 +24,13 @@ public class VoteCreateRequest {
 
     @NotEmpty
     private VoteStatus status;
+
+    @Builder
+    public VoteCreateRequest(Long playerId, Long matchId, VoteStatus status) {
+        this.playerId = playerId;
+        this.matchId = matchId;
+        this.status = status;
+    }
 
     public Vote toEntity(Player player, Match match) {
         return Vote.builder()

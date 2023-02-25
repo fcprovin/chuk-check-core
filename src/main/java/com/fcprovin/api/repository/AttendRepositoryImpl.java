@@ -12,6 +12,7 @@ import java.util.Optional;
 
 import static com.fcprovin.api.entity.QAttend.attend;
 import static com.fcprovin.api.entity.QMatch.match;
+import static com.fcprovin.api.entity.QMember.member;
 import static com.fcprovin.api.entity.QPlayer.player;
 import static java.util.Objects.nonNull;
 import static java.util.Optional.ofNullable;
@@ -26,6 +27,7 @@ public class AttendRepositoryImpl implements AttendQueryRepository {
         return queryFactory
                 .selectFrom(attend)
                 .join(attend.player, player).fetchJoin()
+                .join(attend.player.member, member).fetchJoin()
                 .join(attend.match, match).fetchJoin()
                 .where(
                         playerIdEqual(search.getPlayerId()),
@@ -39,6 +41,7 @@ public class AttendRepositoryImpl implements AttendQueryRepository {
         return ofNullable(queryFactory
                 .selectFrom(attend)
                 .join(attend.player, player).fetchJoin()
+                .join(attend.player.member, member).fetchJoin()
                 .join(attend.match, match).fetchJoin()
                 .where(attend.id.eq(id))
                 .fetchOne());

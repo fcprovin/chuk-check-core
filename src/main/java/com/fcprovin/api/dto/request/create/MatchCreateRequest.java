@@ -2,50 +2,76 @@ package com.fcprovin.api.dto.request.create;
 
 import com.fcprovin.api.entity.*;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 
-@Data
-@Builder
+import static lombok.AccessLevel.PROTECTED;
+
+@Getter
+@NoArgsConstructor(access = PROTECTED)
 public class MatchCreateRequest {
 
     @NotEmpty
-    private final Long teamId;
+    private Long teamId;
 
     @NotEmpty
-    private final Long stadiumId;
+    private Long stadiumId;
 
-    private final String otherTeamName;
+    private String otherTeamName;
 
     @NotEmpty
-    private final boolean isHome;
+    private Boolean home;
 
-    private final String notice;
-
-    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
-    private final LocalDateTime startDate;
+    private String notice;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
-    private final LocalDateTime endDate;
+    private LocalDateTime startDate;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
-    private final LocalDateTime voteStartDate;
+    private LocalDateTime endDate;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
-    private final LocalDateTime voteEndDate;
+    private LocalDateTime voteStartDate;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
-    private final LocalDateTime attendDeadlineDate;
+    private LocalDateTime voteEndDate;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm")
+    private LocalDateTime attendDeadlineDate;
+
+    @Builder
+    public MatchCreateRequest(Long teamId,
+                              Long stadiumId,
+                              String otherTeamName,
+                              Boolean home,
+                              String notice,
+                              LocalDateTime startDate,
+                              LocalDateTime endDate,
+                              LocalDateTime voteStartDate,
+                              LocalDateTime voteEndDate,
+                              LocalDateTime attendDeadlineDate) {
+        this.teamId = teamId;
+        this.stadiumId = stadiumId;
+        this.otherTeamName = otherTeamName;
+        this.home = home;
+        this.notice = notice;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.voteStartDate = voteStartDate;
+        this.voteEndDate = voteEndDate;
+        this.attendDeadlineDate = attendDeadlineDate;
+    }
 
     public Match toEntity(Team team, Stadium stadium) {
         return Match.builder()
                 .team(team)
                 .stadium(stadium)
                 .otherTeamName(otherTeamName)
-                .isHome(isHome)
+                .home(home)
                 .notice(notice)
                 .matchDate(MatchDate.of(startDate, endDate))
                 .voteDate(VoteDate.of(voteStartDate, voteEndDate))

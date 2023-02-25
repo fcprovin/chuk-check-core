@@ -1,5 +1,6 @@
 package com.fcprovin.api.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fcprovin.api.entity.BaseStatus;
 import com.fcprovin.api.entity.Team;
 import lombok.Data;
@@ -7,8 +8,12 @@ import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
+
 @Data
 @SuperBuilder
+@JsonInclude(NON_NULL)
+
 public class TeamResponse {
 
     private final Long id;

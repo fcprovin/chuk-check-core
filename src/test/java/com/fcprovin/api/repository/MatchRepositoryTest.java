@@ -52,9 +52,11 @@ class MatchRepositoryTest {
         assertThat(findMatch.getOtherTeamName()).isEqualTo(match.getOtherTeamName());
         assertThat(findMatch.isHome()).isTrue();
         assertThat(findMatch.getNotice()).isEqualTo(match.getNotice());
-        assertThat(findMatch.getMatchDate()).isEqualTo(match.getMatchDate());
-        assertThat(findMatch.getVoteDate()).isEqualTo(match.getVoteDate());
-        assertThat(findMatch.getAttendDate()).isEqualTo(match.getAttendDate());
+        assertThat(findMatch.getMatchDate().getStartDate()).isEqualTo(match.getMatchDate().getStartDate());
+        assertThat(findMatch.getMatchDate().getEndDate()).isEqualTo(match.getMatchDate().getEndDate());
+        assertThat(findMatch.getVoteDate().getStartDate()).isEqualTo(match.getVoteDate().getStartDate());
+        assertThat(findMatch.getVoteDate().getEndDate()).isEqualTo(match.getVoteDate().getEndDate());
+        assertThat(findMatch.getAttendDate().getDeadlineDate()).isEqualTo(match.getAttendDate().getDeadlineDate());
         assertThat(findMatch.getTeam()).isEqualTo(match.getTeam());
         assertThat(findMatch.getStadium()).isEqualTo(match.getStadium());
     }

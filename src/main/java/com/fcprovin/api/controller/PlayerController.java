@@ -27,7 +27,7 @@ public class PlayerController {
     }
 
     @PutMapping("/{id}")
-    public BaseResponse<PlayerResponse> update(@PathVariable Long id, @RequestBody PlayerUpdateRequest request) {
+    public BaseResponse<PlayerResponse> update(@PathVariable(name = "id") Long id, @RequestBody PlayerUpdateRequest request) {
         return new BaseResponse<>(of(playerService.update(id, request)));
     }
 
@@ -39,7 +39,7 @@ public class PlayerController {
     }
 
     @GetMapping("/{id}")
-    public BaseResponse<PlayerResponse> read(@PathVariable Long id) {
+    public BaseResponse<PlayerResponse> read(@PathVariable(name = "id") Long id) {
         return new BaseResponse<>(of(playerService.readDetail(id)));
     }
 

@@ -1,5 +1,6 @@
 package com.fcprovin.api.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fcprovin.api.entity.Sns;
 import com.fcprovin.api.entity.SnsType;
 import lombok.Builder;
@@ -7,8 +8,11 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
+
 @Data
 @Builder
+@JsonInclude(NON_NULL)
 public class SnsResponse {
 
     private final Long id;

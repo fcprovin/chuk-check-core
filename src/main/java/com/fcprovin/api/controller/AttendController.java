@@ -27,7 +27,7 @@ public class AttendController {
     }
 
     @PutMapping("/{id}")
-    public BaseResponse<AttendResponse> update(@PathVariable Long id, @RequestBody AttendUpdateRequest request) {
+    public BaseResponse<AttendResponse> update(@PathVariable(name = "id") Long id, @RequestBody AttendUpdateRequest request) {
         return new BaseResponse<>(of(attendService.update(id, request)));
     }
 
@@ -39,7 +39,7 @@ public class AttendController {
     }
 
     @GetMapping("/{id}")
-    public BaseResponse<AttendResponse> read(@PathVariable Long id) {
+    public BaseResponse<AttendResponse> read(@PathVariable(name = "id") Long id) {
         return new BaseResponse<>(of(attendService.read(id)));
     }
 }

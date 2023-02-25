@@ -1,6 +1,7 @@
 package com.fcprovin.api.entity;
 
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 
 import static lombok.AccessLevel.PROTECTED;
 
+@Getter
 @Embeddable
 @NoArgsConstructor(access = PROTECTED)
 public class AttendDate {

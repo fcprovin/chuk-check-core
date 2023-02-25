@@ -32,7 +32,7 @@ public class StadiumController {
     }
 
     @GetMapping("/{id}")
-    public BaseResponse<StadiumResponse> read(@PathVariable Long id) {
+    public BaseResponse<StadiumResponse> read(@PathVariable(name = "id") Long id) {
         return new BaseResponse<>(of(stadiumService.read(id)));
     }
 }

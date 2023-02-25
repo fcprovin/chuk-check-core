@@ -27,7 +27,7 @@ public class TeamController {
     }
 
     @PutMapping("/{id}")
-    public BaseResponse<TeamResponse> update(@PathVariable Long id, @RequestBody TeamUpdateRequest teamUpdateRequest) {
+    public BaseResponse<TeamResponse> update(@PathVariable(name = "id") Long id, @RequestBody TeamUpdateRequest teamUpdateRequest) {
         return new BaseResponse<>(of(teamService.update(id, teamUpdateRequest)));
     }
 
@@ -39,7 +39,7 @@ public class TeamController {
     }
 
     @GetMapping("/{id}")
-    public BaseResponse<TeamResponse> read(@PathVariable Long id) {
+    public BaseResponse<TeamResponse> read(@PathVariable(name = "id") Long id) {
         return new BaseResponse<>(of(teamService.readDetail(id)));
     }
 }

@@ -25,7 +25,7 @@ public class Match extends BaseTime {
 
     private String otherTeamName;
 
-    private boolean isHome;
+    private boolean home;
 
     private String notice;
 
@@ -50,10 +50,10 @@ public class Match extends BaseTime {
     private Stadium stadium;
 
     @OneToMany(mappedBy = "match")
-    private List<Vote> votes = new ArrayList<>();
+    private final List<Vote> votes = new ArrayList<>();
 
     @OneToMany(mappedBy = "match")
-    private List<Attend> attends = new ArrayList<>();
+    private final List<Attend> attends = new ArrayList<>();
 
     public Match(String otherTeamName, MatchDate matchDate, Team team) {
         this.otherTeamName = otherTeamName;
@@ -64,7 +64,7 @@ public class Match extends BaseTime {
 
     @Builder
     public Match(String otherTeamName,
-                 boolean isHome,
+                 boolean home,
                  String notice,
                  MatchDate matchDate,
                  VoteDate voteDate,
@@ -72,7 +72,7 @@ public class Match extends BaseTime {
                  Team team,
                  Stadium stadium) {
         this.otherTeamName = otherTeamName;
-        this.isHome = isHome;
+        this.home = home;
         this.notice = notice;
         this.matchDate = matchDate;
         this.voteDate = voteDate;
@@ -93,7 +93,7 @@ public class Match extends BaseTime {
     }
 
     public void setHome(boolean home) {
-        isHome = home;
+        this.home = home;
     }
 
     public void setNotice(String notice) {
