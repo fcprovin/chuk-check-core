@@ -28,7 +28,10 @@ class SnsServiceTest {
         em.persist(new Sns("uuid", GOOGLE));
 
         //then
-        assertThatThrownBy(() -> snsService.create(new SnsCreateRequest("uuid", GOOGLE)), "Already sns")
+        assertThatThrownBy(() -> snsService.create(SnsCreateRequest.builder()
+                .uuid("uuid")
+                .type(GOOGLE)
+                .build()), "Already sns")
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
