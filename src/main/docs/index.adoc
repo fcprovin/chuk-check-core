@@ -1,0 +1,158 @@
+= REST Docs
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+
+[[SNS-API]]
+== SNS API
+
+[[SNS-CREATE]]
+=== SNS 생성
+operation::sns-create[snippets='http-request,request-fields,http-response,response-fields']
+
+[[SNS-READ-ALL]]
+=== SNS 전체 조회
+operation::sns-readAll[snippets='http-request,http-response,response-fields']
+
+[[SNS-READ]]
+=== SNS 조회
+operation::sns-read[snippets='http-request,path-parameters,http-response,response-fields']
+
+[[MEMBER-API]]
+== MEMBER API
+
+[[MEMBER-CREATE]]
+=== 회원 생성
+operation::member-create[snippets='http-request,request-fields,http-response,response-fields']
+
+[[MEMBER-READ-ALL]]
+=== 회원 전체 조회
+operation::member-readAll[snippets='http-request,request-parameters,http-response,response-fields']
+
+[[MEMBER-READ]]
+=== 회원 조회
+operation::member-read[snippets='http-request,path-parameters,http-response,response-fields']
+
+[[REGION-API]]
+== REGION API
+
+[[REGION-CREATE]]
+=== 지역 생성
+operation::region-create[snippets='http-request,request-fields,http-response,response-fields']
+
+[[REGION-READ-ALL]]
+=== 지역 전체 조회
+operation::region-readAll[snippets='http-request,http-response,response-fields']
+
+[[TEAM-API]]
+== TEAM API
+
+[[TEAM-CREATE]]
+=== 팀 생성
+operation::team-create[snippets='http-request,request-fields,http-response,response-fields']
+
+[[TEAM-UPDATE]]
+=== 팀 수정
+operation::team-update[snippets='http-request,request-fields,http-response,response-fields']
+
+[[TEAM-READ-ALL]]
+=== 팀 전체 조회
+operation::team-readAll[snippets='http-request,request-parameters,http-response,response-fields']
+
+[[TEAM-READ]]
+=== 팀 조회
+operation::team-read[snippets='http-request,path-parameters,http-response,response-fields']
+
+[[PLAYER-API]]
+== PLAYER API
+
+[[PLAYER-CREATE]]
+=== 플레이어 생성
+operation::player-create[snippets='http-request,request-fields,http-response,response-fields']
+
+[[PLAYER-UPDATE]]
+=== 플레이어 수정
+operation::player-update[snippets='http-request,request-fields,http-response,response-fields']
+
+[[PLAYER-READ-ALL]]
+=== 플레이어 전체 조회
+operation::player-readAll[snippets='http-request,request-parameters,http-response,response-fields']
+
+[[PLAYER-READ]]
+=== 플레이어 조회
+operation::player-read[snippets='http-request,path-parameters,http-response,response-fields']
+
+[[STADIUM-API]]
+== STADIUM API
+
+[[STADIUM-CREATE]]
+=== 구장 생성
+operation::stadium-create[snippets='http-request,request-fields,http-response,response-fields']
+
+[[STADIUM-READ-ALL]]
+=== 구장 전체 조회
+operation::stadium-readAll[snippets='http-request,http-response,response-fields']
+
+[[STADIUM-READ]]
+=== 구장 조회
+operation::stadium-read[snippets='http-request,path-parameters,http-response,response-fields']
+
+[[MATCH-API]]
+== MATCH API
+
+[[MATCH-CREATE]]
+=== 매치 생성
+operation::match-create[snippets='http-request,request-fields,http-response,response-fields']
+
+[[MATCH-UPDATE]]
+=== 매치 수정
+operation::match-update[snippets='http-request,request-fields,http-response,response-fields']
+
+[[MATCH-READ-ALL]]
+=== 매치 전체 조회
+operation::match-readAll[snippets='http-request,request-parameters,http-response,response-fields']
+
+[[MATCH-READ]]
+=== 매치 조회
+operation::match-read[snippets='http-request,path-parameters,http-response,response-fields']
+
+[[VOTE-API]]
+== VOTE API
+
+[[VOTE-CREATE]]
+=== 투표 생성
+operation::vote-create[snippets='http-request,request-fields,http-response,response-fields']
+
+[[VOTE-UPDATE]]
+=== 투표 수정
+operation::vote-update[snippets='http-request,request-fields,http-response,response-fields']
+
+[[VOTE-READ-ALL]]
+=== 투표 전체 조회
+operation::vote-readAll[snippets='http-request,request-parameters,http-response,response-fields']
+
+[[VOTE-READ]]
+=== 투표 조회
+operation::vote-read[snippets='http-request,path-parameters,http-response,response-fields']
+
+[[ATTEND-API]]
+== ATTEND API
+
+[[ATTEND-CREATE]]
+=== 출석 생성
+operation::attend-create[snippets='http-request,request-fields,http-response,response-fields']
+
+[[ATTEND-UPDATE]]
+=== 출석 수정
+operation::attend-update[snippets='http-request,request-fields,http-response,response-fields']
+
+[[ATTEND-READ-ALL]]
+=== 출석 전체 조회
+operation::attend-readAll[snippets='http-request,request-parameters,http-response,response-fields']
+
+[[ATTEND-READ]]
+=== 출석 조회
+operation::attend-read[snippets='http-request,path-parameters,http-response,response-fields']
