@@ -27,7 +27,7 @@ public class AttendRepositoryImpl implements AttendQueryRepository {
         return queryFactory
                 .selectFrom(attend)
                 .join(attend.player, player).fetchJoin()
-                .join(attend.player.member, member).fetchJoin()
+                .join(player.member, member).fetchJoin()
                 .join(attend.match, match).fetchJoin()
                 .where(
                         playerIdEqual(search.getPlayerId()),
@@ -41,7 +41,7 @@ public class AttendRepositoryImpl implements AttendQueryRepository {
         return ofNullable(queryFactory
                 .selectFrom(attend)
                 .join(attend.player, player).fetchJoin()
-                .join(attend.player.member, member).fetchJoin()
+                .join(player.member, member).fetchJoin()
                 .join(attend.match, match).fetchJoin()
                 .where(attend.id.eq(id))
                 .fetchOne());

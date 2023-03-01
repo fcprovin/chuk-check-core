@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 import java.util.Optional;
 
-import static com.fcprovin.api.entity.QAttend.attend;
 import static com.fcprovin.api.entity.QMatch.match;
 import static com.fcprovin.api.entity.QMember.member;
 import static com.fcprovin.api.entity.QPlayer.player;
@@ -28,7 +27,7 @@ public class VoteRepositoryImpl implements VoteQueryRepository {
         return queryFactory
                 .selectFrom(vote)
                 .join(vote.player, player).fetchJoin()
-                .join(attend.player.member, member).fetchJoin()
+                .join(player.member, member).fetchJoin()
                 .join(vote.match, match).fetchJoin()
                 .where(
                         statusEqual(search.getStatus()),
@@ -42,7 +41,7 @@ public class VoteRepositoryImpl implements VoteQueryRepository {
         return ofNullable(queryFactory
                 .selectFrom(vote)
                 .join(vote.player, player).fetchJoin()
-                .join(attend.player.member, member).fetchJoin()
+                .join(player.member, member).fetchJoin()
                 .join(vote.match, match).fetchJoin()
                 .where(vote.id.eq(id))
                 .fetchOne());
