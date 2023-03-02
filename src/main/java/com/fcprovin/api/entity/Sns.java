@@ -25,16 +25,9 @@ public class Sns extends BaseTime {
     @Enumerated(STRING)
     private SnsType type;
 
-    @OneToOne(mappedBy = "sns")
-    private Member member;
-
     @Builder
     public Sns(String uuid, SnsType type) {
         this.uuid = uuid;
         this.type = type;
-    }
-
-    public void setMember(Member member) {
-        this.member = member;
     }
 }

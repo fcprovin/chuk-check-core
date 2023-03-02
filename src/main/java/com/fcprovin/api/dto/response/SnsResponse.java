@@ -21,8 +21,6 @@ public class SnsResponse {
     private final LocalDateTime createdDate;
     private final LocalDateTime updatedDate;
 
-    private final MemberResponse member;
-
     public static SnsResponse of(Sns sns) {
         return SnsResponse.builder()
                 .id(sns.getId())
