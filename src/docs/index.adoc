@@ -6,6 +6,52 @@
 :toclevels: 2
 :sectlinks:
 
+[[introduction]]
+== 소개
+
+FC PROVIN CHUK-CHECK API
+
+[[common]]
+== 공통 사항
+
+API에 관계없이 아래 사항을 지켜주셔야 합니다.
+
+=== Domain
+
+|===
+| 환경 | domain
+
+| 개발서버
+| `dev-api.fcprovin.com`
+
+| 운영서버
+| `api.fcprovin.com`
+|===
+
+=== Header
+
+|===
+| name | 설명
+
+| `Authorization`
+| API를 사용하기 위한 인증 키
+|===
+
+=== 공통 Response Body
+
+|===
+| field | 설명
+
+| `code`
+| 응답 코드
+
+| `message`
+| 예외사항 내용 등 응답 메세지
+
+| `data`
+| 실제 반환될 데이터
+|===
+
 [[SNS-API]]
 == SNS API
 

@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.Optional;
 
-import static com.fcprovin.api.entity.QMember.member;
 import static com.fcprovin.api.entity.QSns.sns;
 import static java.util.Optional.ofNullable;
 
@@ -19,7 +18,6 @@ public class SnsRepositoryImpl implements SnsQueryRepository {
     public Optional<Sns> findQueryById(Long id) {
         return ofNullable(queryFactory
                 .selectFrom(sns)
-                .join(sns.member, member).fetchJoin()
                 .where(sns.id.eq(id))
                 .fetchOne());
     }
