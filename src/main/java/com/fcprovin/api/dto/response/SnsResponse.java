@@ -30,7 +30,6 @@ public class SnsResponse {
                 .type(sns.getType())
                 .createdDate(sns.getCreatedDate())
                 .updatedDate(sns.getUpdatedDate())
-                .member(MemberResponse.of(sns.getMember()))
                 .build();
     }
 }
