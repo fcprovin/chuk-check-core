@@ -444,6 +444,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
+<li><a href="#introduction">소개</a></li>
+<li><a href="#common">공통 사항</a>
+<ul class="sectlevel2">
+<li><a href="#_domain">Domain</a></li>
+<li><a href="#_header">Header</a></li>
+<li><a href="#_공통_response_body">공통 Response Body</a></li>
+</ul>
+</li>
 <li><a href="#SNS-API">SNS API</a>
 <ul class="sectlevel2">
 <li><a href="#SNS-CREATE">SNS 생성</a></li>
@@ -516,6 +524,97 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
+<h2 id="introduction"><a class="link" href="#introduction">소개</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>FC PROVIN CHUK-CHECK API</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="common"><a class="link" href="#common">공통 사항</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>API에 관계없이 아래 사항을 지켜주셔야 합니다.</p>
+</div>
+<div class="sect2">
+<h3 id="_domain"><a class="link" href="#_domain">Domain</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">환경</th>
+<th class="tableblock halign-left valign-top">domain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">개발서버</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dev-api.fcprovin.com</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">운영서버</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>api.fcprovin.com</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_header"><a class="link" href="#_header">Header</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">name</th>
+<th class="tableblock halign-left valign-top">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Authorization</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API를 사용하기 위한 인증 키</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_공통_response_body"><a class="link" href="#_공통_response_body">공통 Response Body</a></h3>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">field</th>
+<th class="tableblock halign-left valign-top">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>code</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">응답 코드</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>message</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">예외사항 내용 등 응답 메세지</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">실제 반환될 데이터</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="SNS-API"><a class="link" href="#SNS-API">SNS API</a></h2>
 <div class="sectionbody">
 <div class="sect2">
@@ -571,7 +670,7 @@ Host: api.fcprovin.com
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 252
+Content-Length: 251
 
 {
   "code" : 200,
@@ -580,8 +679,8 @@ Content-Length: 252
     "id" : 1,
     "uuid" : "4d2d0eff-b7a7-4be5-adb3-b02427598362",
     "type" : "GOOGLE",
-    "createdDate" : "2023-02-24T21:16:48.739585",
-    "updatedDate" : "2023-02-24T21:16:48.739642"
+    "createdDate" : "2023-03-02T22:03:12.81079",
+    "updatedDate" : "2023-03-02T22:03:12.810815"
   }
 }</code></pre>
 </div>
@@ -659,7 +758,7 @@ Host: api.fcprovin.com</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 255
+Content-Length: 256
 
 {
   "code" : 200,
@@ -668,8 +767,8 @@ Content-Length: 255
     "id" : 1,
     "uuid" : "4d2d0eff-b7a7-4be5-adb3-b02427598362",
     "type" : "GOOGLE",
-    "createdDate" : "2023-02-24T21:16:48.87359",
-    "updatedDate" : "2023-02-24T21:16:48.873607"
+    "createdDate" : "2023-03-02T22:03:13.291483",
+    "updatedDate" : "2023-03-02T22:03:13.291503"
   } ]
 }</code></pre>
 </div>
@@ -769,7 +868,7 @@ Host: api.fcprovin.com</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 490
+Content-Length: 251
 
 {
   "code" : 200,
@@ -778,16 +877,8 @@ Content-Length: 490
     "id" : 1,
     "uuid" : "4d2d0eff-b7a7-4be5-adb3-b02427598362",
     "type" : "GOOGLE",
-    "createdDate" : "2023-02-24T21:16:48.84805",
-    "updatedDate" : "2023-02-24T21:16:48.848068",
-    "member" : {
-      "id" : 1,
-      "name" : "홍길동",
-      "email" : "hong@gmail.com",
-      "birthDate" : "1997-03-07",
-      "createdDate" : "2023-02-24T21:16:48.848095",
-      "updatedDate" : "2023-02-24T21:16:48.848099"
-    }
+    "createdDate" : "2023-03-02T22:03:13.21775",
+    "updatedDate" : "2023-03-02T22:03:13.217781"
   }
 }</code></pre>
 </div>
@@ -843,41 +934,6 @@ Content-Length: 490
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.updatedDate</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">수정일자</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.member</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">회원</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.member.id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">회원 ID</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.member.name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">회원 이름</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.member.email</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">회원 이메일</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.member.birthDate</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">회원 생년월일</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.member.createdDate</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">회원 생성일자</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.member.updatedDate</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">회원 수정일자</p></td>
 </tr>
 </tbody>
 </table>
@@ -953,7 +1009,7 @@ Host: api.fcprovin.com
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 266
+Content-Length: 265
 
 {
   "code" : 200,
@@ -963,8 +1019,8 @@ Content-Length: 266
     "name" : "홍길동",
     "email" : "hong@gmail.com",
     "birthDate" : "1997-03-07",
-    "createdDate" : "2023-02-24T21:16:46.446198",
-    "updatedDate" : "2023-02-24T21:16:46.446227"
+    "createdDate" : "2023-03-02T22:03:26.43199",
+    "updatedDate" : "2023-03-02T22:03:26.432016"
   }
 }</code></pre>
 </div>
@@ -1082,14 +1138,14 @@ Content-Length: 490
     "name" : "홍길동",
     "email" : "hong@gmail.com",
     "birthDate" : "1997-03-07",
-    "createdDate" : "2023-02-24T21:16:46.556725",
-    "updatedDate" : "2023-02-24T21:16:46.556742",
+    "createdDate" : "2023-03-02T22:03:26.533754",
+    "updatedDate" : "2023-03-02T22:03:26.533802",
     "sns" : {
       "id" : 1,
       "uuid" : "4d2d0eff-b7a7-4be5-adb3-b02427598362",
       "type" : "GOOGLE",
-      "createdDate" : "2023-02-24T21:16:46.556747",
-      "updatedDate" : "2023-02-24T21:16:46.556749"
+      "createdDate" : "2023-03-02T22:03:26.533806",
+      "updatedDate" : "2023-03-02T22:03:26.533818"
     }
   } ]
 }</code></pre>
@@ -1235,14 +1291,14 @@ Content-Length: 486
     "name" : "홍길동",
     "email" : "hong@gmail.com",
     "birthDate" : "1997-03-07",
-    "createdDate" : "2023-02-24T21:16:46.530284",
-    "updatedDate" : "2023-02-24T21:16:46.530324",
+    "createdDate" : "2023-03-02T22:03:26.501585",
+    "updatedDate" : "2023-03-02T22:03:26.501608",
     "sns" : {
       "id" : 1,
       "uuid" : "4d2d0eff-b7a7-4be5-adb3-b02427598362",
       "type" : "GOOGLE",
-      "createdDate" : "2023-02-24T21:16:46.531212",
-      "updatedDate" : "2023-02-24T21:16:46.531236"
+      "createdDate" : "2023-03-02T22:03:26.501622",
+      "updatedDate" : "2023-03-02T22:03:26.501624"
     }
   }
 }</code></pre>
@@ -1406,8 +1462,8 @@ Content-Length: 231
     "id" : 1,
     "country" : "경기도",
     "city" : "성남시",
-    "createdDate" : "2023-02-24T21:16:48.104095",
-    "updatedDate" : "2023-02-24T21:16:48.104116"
+    "createdDate" : "2023-03-02T22:03:20.215606",
+    "updatedDate" : "2023-03-02T22:03:20.215662"
   }
 }</code></pre>
 </div>
@@ -1494,8 +1550,8 @@ Content-Length: 235
     "id" : 1,
     "country" : "경기도",
     "city" : "성남시",
-    "createdDate" : "2023-02-24T21:16:48.147487",
-    "updatedDate" : "2023-02-24T21:16:48.147505"
+    "createdDate" : "2023-03-02T22:03:20.282549",
+    "updatedDate" : "2023-03-02T22:03:20.282568"
   } ]
 }</code></pre>
 </div>
@@ -1614,7 +1670,7 @@ Host: api.fcprovin.com
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 225
+Content-Length: 224
 
 {
   "code" : 200,
@@ -1623,8 +1679,8 @@ Content-Length: 225
     "id" : 1,
     "name" : "프로빈",
     "status" : "WAIT",
-    "createdDate" : "2023-02-24T21:16:49.932293",
-    "updatedDate" : "2023-02-24T21:16:49.932312"
+    "createdDate" : "2023-03-02T22:03:22.251952",
+    "updatedDate" : "2023-03-02T22:03:22.25206"
   }
 }</code></pre>
 </div>
@@ -1741,8 +1797,8 @@ Content-Length: 228
     "id" : 1,
     "name" : "프로빈",
     "status" : "APPROVE",
-    "createdDate" : "2023-02-24T21:16:49.965656",
-    "updatedDate" : "2023-02-24T21:16:49.965675"
+    "createdDate" : "2023-03-02T22:03:22.322435",
+    "updatedDate" : "2023-03-02T22:03:22.322463"
   }
 }</code></pre>
 </div>
@@ -1849,7 +1905,7 @@ Host: api.fcprovin.com</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 430
+Content-Length: 431
 
 {
   "code" : 200,
@@ -1858,14 +1914,14 @@ Content-Length: 430
     "id" : 1,
     "name" : "프로빈",
     "status" : "WAIT",
-    "createdDate" : "2023-02-24T21:16:50.005642",
-    "updatedDate" : "2023-02-24T21:16:50.00566",
+    "createdDate" : "2023-03-02T22:03:22.403718",
+    "updatedDate" : "2023-03-02T22:03:22.403741",
     "region" : {
       "id" : 1,
       "country" : "경기도",
       "city" : "성남시",
-      "createdDate" : "2023-02-24T21:16:50.005664",
-      "updatedDate" : "2023-02-24T21:16:50.005666"
+      "createdDate" : "2023-03-02T22:03:22.403746",
+      "updatedDate" : "2023-03-02T22:03:22.403748"
     }
   } ]
 }</code></pre>
@@ -1996,7 +2052,7 @@ Host: api.fcprovin.com</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 427
+Content-Length: 426
 
 {
   "code" : 200,
@@ -2005,14 +2061,14 @@ Content-Length: 427
     "id" : 1,
     "name" : "프로빈",
     "status" : "WAIT",
-    "createdDate" : "2023-02-24T21:16:49.988332",
-    "updatedDate" : "2023-02-24T21:16:49.988357",
+    "createdDate" : "2023-03-02T22:03:22.359856",
+    "updatedDate" : "2023-03-02T22:03:22.359892",
     "region" : {
       "id" : 1,
       "country" : "경기도",
       "city" : "성남시",
-      "createdDate" : "2023-02-24T21:16:49.988371",
-      "updatedDate" : "2023-02-24T21:16:49.988375"
+      "createdDate" : "2023-03-02T22:03:22.35991",
+      "updatedDate" : "2023-03-02T22:03:22.359914"
     }
   }
 }</code></pre>
@@ -2177,8 +2233,8 @@ Content-Length: 228
     "id" : 1,
     "status" : "WAIT",
     "authority" : "GENERAL",
-    "createdDate" : "2023-02-24T21:16:47.359719",
-    "updatedDate" : "2023-02-24T21:16:47.359778"
+    "createdDate" : "2023-03-02T22:03:25.016189",
+    "updatedDate" : "2023-03-02T22:03:25.016215"
   }
 }</code></pre>
 </div>
@@ -2315,8 +2371,8 @@ Content-Length: 279
     "position" : "MF",
     "status" : "APPROVE",
     "authority" : "MANAGER",
-    "createdDate" : "2023-02-24T21:16:47.414554",
-    "updatedDate" : "2023-02-24T21:16:47.414574"
+    "createdDate" : "2023-03-02T22:03:25.080508",
+    "updatedDate" : "2023-03-02T22:03:25.080542"
   }
 }</code></pre>
 </div>
@@ -2441,7 +2497,7 @@ Host: api.fcprovin.com</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 715
+Content-Length: 714
 
 {
   "code" : 200,
@@ -2452,22 +2508,22 @@ Content-Length: 715
     "position" : "MF",
     "status" : "APPROVE",
     "authority" : "MANAGER",
-    "createdDate" : "2023-02-24T21:16:47.470094",
-    "updatedDate" : "2023-02-24T21:16:47.470113",
+    "createdDate" : "2023-03-02T22:03:25.177471",
+    "updatedDate" : "2023-03-02T22:03:25.17749",
     "member" : {
       "id" : 1,
       "name" : "홍길동",
       "email" : "hong@gmail.com",
       "birthDate" : "1997-03-07",
-      "createdDate" : "2023-02-24T21:16:47.470125",
-      "updatedDate" : "2023-02-24T21:16:47.470127"
+      "createdDate" : "2023-03-02T22:03:25.17751",
+      "updatedDate" : "2023-03-02T22:03:25.177512"
     },
     "team" : {
       "id" : 1,
       "name" : "프로빈",
       "status" : "WAIT",
-      "createdDate" : "2023-02-24T21:16:47.470118",
-      "updatedDate" : "2023-02-24T21:16:47.47012"
+      "createdDate" : "2023-03-02T22:03:25.177501",
+      "updatedDate" : "2023-03-02T22:03:25.177505"
     }
   } ]
 }</code></pre>
@@ -2654,22 +2710,22 @@ Content-Length: 712
     "position" : "MF",
     "status" : "APPROVE",
     "authority" : "MANAGER",
-    "createdDate" : "2023-02-24T21:16:47.442235",
-    "updatedDate" : "2023-02-24T21:16:47.442257",
+    "createdDate" : "2023-03-02T22:03:25.140636",
+    "updatedDate" : "2023-03-02T22:03:25.140688",
     "member" : {
       "id" : 1,
       "name" : "홍길동",
       "email" : "hong@gmail.com",
       "birthDate" : "1997-03-07",
-      "createdDate" : "2023-02-24T21:16:47.442296",
-      "updatedDate" : "2023-02-24T21:16:47.442299"
+      "createdDate" : "2023-03-02T22:03:25.141628",
+      "updatedDate" : "2023-03-02T22:03:25.141644"
     },
     "team" : {
       "id" : 1,
       "name" : "프로빈",
       "status" : "WAIT",
-      "createdDate" : "2023-02-24T21:16:47.442272",
-      "updatedDate" : "2023-02-24T21:16:47.442275"
+      "createdDate" : "2023-03-02T22:03:25.140705",
+      "updatedDate" : "2023-03-02T22:03:25.140708"
     }
   }
 }</code></pre>
@@ -2887,8 +2943,8 @@ Content-Length: 320
     "address" : "경기 성남시 중원구 여수동 7-17",
     "latitude" : 37.4257533,
     "longitude" : 127.119444,
-    "createdDate" : "2023-02-24T21:16:49.406119",
-    "updatedDate" : "2023-02-24T21:16:49.406173"
+    "createdDate" : "2023-03-02T22:03:23.252885",
+    "updatedDate" : "2023-03-02T22:03:23.252943"
   }
 }</code></pre>
 </div>
@@ -2987,8 +3043,8 @@ Content-Length: 324
     "address" : "경기 성남시 중원구 여수동 7-17",
     "latitude" : 37.4257533,
     "longitude" : 127.119444,
-    "createdDate" : "2023-02-24T21:16:49.464693",
-    "updatedDate" : "2023-02-24T21:16:49.464713"
+    "createdDate" : "2023-03-02T22:03:23.317371",
+    "updatedDate" : "2023-03-02T22:03:23.317442"
   } ]
 }</code></pre>
 </div>
@@ -3109,8 +3165,8 @@ Content-Length: 320
     "address" : "경기 성남시 중원구 여수동 7-17",
     "latitude" : 37.4257533,
     "longitude" : 127.119444,
-    "createdDate" : "2023-02-24T21:16:49.448715",
-    "updatedDate" : "2023-02-24T21:16:49.448735"
+    "createdDate" : "2023-03-02T22:03:23.296992",
+    "updatedDate" : "2023-03-02T22:03:23.297023"
   }
 }</code></pre>
 </div>
@@ -3287,7 +3343,7 @@ Host: api.fcprovin.com
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 593
+Content-Length: 591
 
 {
   "code" : 200,
@@ -3309,8 +3365,8 @@ Content-Length: 593
     "attendDate" : {
       "deadlineDate" : "2023-02-25T11:30:00"
     },
-    "createdDate" : "2023-02-24T21:16:44.810689",
-    "updatedDate" : "2023-02-24T21:16:44.810729"
+    "createdDate" : "2023-03-02T22:03:24.10905",
+    "updatedDate" : "2023-03-02T22:03:24.10915"
   }
 }</code></pre>
 </div>
@@ -3544,8 +3600,8 @@ Content-Length: 597
     "attendDate" : {
       "deadlineDate" : "2023-02-25T09:30:00"
     },
-    "createdDate" : "2023-02-24T21:16:45.17822",
-    "updatedDate" : "2023-02-24T21:16:45.178302"
+    "createdDate" : "2023-03-02T22:03:24.180793",
+    "updatedDate" : "2023-03-02T22:03:24.18081"
   }
 }</code></pre>
 </div>
@@ -3710,7 +3766,7 @@ Host: api.fcprovin.com</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 1091
+Content-Length: 1092
 
 {
   "code" : 200,
@@ -3732,14 +3788,14 @@ Content-Length: 1091
     "attendDate" : {
       "deadlineDate" : "2023-02-25T09:30:00"
     },
-    "createdDate" : "2023-02-24T21:16:45.419348",
-    "updatedDate" : "2023-02-24T21:16:45.419363",
+    "createdDate" : "2023-03-02T22:03:24.281499",
+    "updatedDate" : "2023-03-02T22:03:24.281525",
     "team" : {
       "id" : 1,
       "name" : "프로빈",
       "status" : "WAIT",
-      "createdDate" : "2023-02-24T21:16:45.419367",
-      "updatedDate" : "2023-02-24T21:16:45.41937"
+      "createdDate" : "2023-03-02T22:03:24.281531",
+      "updatedDate" : "2023-03-02T22:03:24.281533"
     },
     "stadium" : {
       "id" : 1,
@@ -3747,8 +3803,8 @@ Content-Length: 1091
       "address" : "경기 성남시 중원구 여수동 7-17",
       "latitude" : 37.4257533,
       "longitude" : 127.119444,
-      "createdDate" : "2023-02-24T21:16:45.419374",
-      "updatedDate" : "2023-02-24T21:16:45.419376"
+      "createdDate" : "2023-03-02T22:03:24.281537",
+      "updatedDate" : "2023-03-02T22:03:24.281539"
     }
   } ]
 }</code></pre>
@@ -3969,7 +4025,7 @@ Host: api.fcprovin.com</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 1087
+Content-Length: 1088
 
 {
   "code" : 200,
@@ -3991,14 +4047,14 @@ Content-Length: 1087
     "attendDate" : {
       "deadlineDate" : "2023-02-25T09:30:00"
     },
-    "createdDate" : "2023-02-24T21:16:45.349178",
-    "updatedDate" : "2023-02-24T21:16:45.349192",
+    "createdDate" : "2023-03-02T22:03:24.234056",
+    "updatedDate" : "2023-03-02T22:03:24.234075",
     "team" : {
       "id" : 1,
       "name" : "프로빈",
       "status" : "WAIT",
-      "createdDate" : "2023-02-24T21:16:45.35105",
-      "updatedDate" : "2023-02-24T21:16:45.351098"
+      "createdDate" : "2023-03-02T22:03:24.234095",
+      "updatedDate" : "2023-03-02T22:03:24.234098"
     },
     "stadium" : {
       "id" : 1,
@@ -4006,8 +4062,8 @@ Content-Length: 1087
       "address" : "경기 성남시 중원구 여수동 7-17",
       "latitude" : 37.4257533,
       "longitude" : 127.119444,
-      "createdDate" : "2023-02-24T21:16:45.351593",
-      "updatedDate" : "2023-02-24T21:16:45.351606"
+      "createdDate" : "2023-03-02T22:03:24.234111",
+      "updatedDate" : "2023-03-02T22:03:24.234114"
     }
   }
 }</code></pre>
@@ -4261,8 +4317,8 @@ Content-Length: 199
   "result" : {
     "id" : 1,
     "status" : "TRUE",
-    "createdDate" : "2023-02-24T21:40:33.208506",
-    "updatedDate" : "2023-02-24T21:40:33.208727"
+    "createdDate" : "2023-03-02T22:03:25.840632",
+    "updatedDate" : "2023-03-02T22:03:25.840677"
   }
 }</code></pre>
 </div>
@@ -4365,7 +4421,7 @@ Host: api.fcprovin.com
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 199
+Content-Length: 200
 
 {
   "code" : 200,
@@ -4373,8 +4429,8 @@ Content-Length: 199
   "result" : {
     "id" : 1,
     "status" : "FALSE",
-    "createdDate" : "2023-02-24T21:40:33.50344",
-    "updatedDate" : "2023-02-24T21:40:33.503459"
+    "createdDate" : "2023-03-02T22:03:25.879247",
+    "updatedDate" : "2023-03-02T22:03:25.879265"
   }
 }</code></pre>
 </div>
@@ -4468,7 +4524,7 @@ Host: api.fcprovin.com</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 1307
+Content-Length: 1306
 
 {
   "code" : 200,
@@ -4476,23 +4532,23 @@ Content-Length: 1307
   "result" : [ {
     "id" : 1,
     "status" : "FALSE",
-    "createdDate" : "2023-02-24T21:40:33.728792",
-    "updatedDate" : "2023-02-24T21:40:33.728815",
+    "createdDate" : "2023-03-02T22:03:25.949811",
+    "updatedDate" : "2023-03-02T22:03:25.949873",
     "player" : {
       "id" : 1,
       "uniformNumber" : 6,
       "position" : "MF",
       "status" : "APPROVE",
       "authority" : "MANAGER",
-      "createdDate" : "2023-02-24T21:40:33.728824",
-      "updatedDate" : "2023-02-24T21:40:33.728827",
+      "createdDate" : "2023-03-02T22:03:25.949878",
+      "updatedDate" : "2023-03-02T22:03:25.94988",
       "member" : {
         "id" : 1,
         "name" : "홍길동",
         "email" : "hong@gmail.com",
         "birthDate" : "1997-03-07",
-        "createdDate" : "2023-02-24T21:40:33.728835",
-        "updatedDate" : "2023-02-24T21:40:33.728838"
+        "createdDate" : "2023-03-02T22:03:25.949884",
+        "updatedDate" : "2023-03-02T22:03:25.949886"
       }
     },
     "match" : {
@@ -4512,8 +4568,8 @@ Content-Length: 1307
       "attendDate" : {
         "deadlineDate" : "2023-02-25T09:30:00"
       },
-      "createdDate" : "2023-02-24T21:40:33.728851",
-      "updatedDate" : "2023-02-24T21:40:33.728854"
+      "createdDate" : "2023-03-02T22:03:25.949895",
+      "updatedDate" : "2023-03-02T22:03:25.949897"
     }
   } ]
 }</code></pre>
@@ -4772,23 +4828,23 @@ Content-Length: 1303
   "result" : {
     "id" : 1,
     "status" : "FALSE",
-    "createdDate" : "2023-02-24T21:40:33.574653",
-    "updatedDate" : "2023-02-24T21:40:33.574674",
+    "createdDate" : "2023-03-02T22:03:25.903221",
+    "updatedDate" : "2023-03-02T22:03:25.903239",
     "player" : {
       "id" : 1,
       "uniformNumber" : 6,
       "position" : "MF",
       "status" : "APPROVE",
       "authority" : "MANAGER",
-      "createdDate" : "2023-02-24T21:40:33.576409",
-      "updatedDate" : "2023-02-24T21:40:33.576428",
+      "createdDate" : "2023-03-02T22:03:25.903259",
+      "updatedDate" : "2023-03-02T22:03:25.903262",
       "member" : {
         "id" : 1,
         "name" : "홍길동",
         "email" : "hong@gmail.com",
         "birthDate" : "1997-03-07",
-        "createdDate" : "2023-02-24T21:40:33.577182",
-        "updatedDate" : "2023-02-24T21:40:33.577188"
+        "createdDate" : "2023-03-02T22:03:25.903279",
+        "updatedDate" : "2023-03-02T22:03:25.903291"
       }
     },
     "match" : {
@@ -4808,8 +4864,8 @@ Content-Length: 1303
       "attendDate" : {
         "deadlineDate" : "2023-02-25T09:30:00"
       },
-      "createdDate" : "2023-02-24T21:40:33.583342",
-      "updatedDate" : "2023-02-24T21:40:33.583358"
+      "createdDate" : "2023-03-02T22:03:25.903326",
+      "updatedDate" : "2023-03-02T22:03:25.903328"
     }
   }
 }</code></pre>
@@ -5093,8 +5149,8 @@ Content-Length: 201
   "result" : {
     "id" : 1,
     "status" : "ATTEND",
-    "createdDate" : "2023-02-24T21:33:22.026576",
-    "updatedDate" : "2023-02-24T21:33:22.026609"
+    "createdDate" : "2023-03-02T22:03:27.031027",
+    "updatedDate" : "2023-03-02T22:03:27.031078"
   }
 }</code></pre>
 </div>
@@ -5205,8 +5261,8 @@ Content-Length: 199
   "result" : {
     "id" : 1,
     "status" : "LATE",
-    "createdDate" : "2023-02-24T21:33:22.349604",
-    "updatedDate" : "2023-02-24T21:33:22.349651"
+    "createdDate" : "2023-03-02T22:03:27.068953",
+    "updatedDate" : "2023-03-02T22:03:27.068982"
   }
 }</code></pre>
 </div>
@@ -5300,7 +5356,7 @@ Host: api.fcprovin.com</code></pre>
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code class="language-http hljs" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json
-Content-Length: 1306
+Content-Length: 1308
 
 {
   "code" : 200,
@@ -5308,23 +5364,23 @@ Content-Length: 1306
   "result" : [ {
     "id" : 1,
     "status" : "ATTEND",
-    "createdDate" : "2023-02-24T21:33:22.544726",
-    "updatedDate" : "2023-02-24T21:33:22.544748",
+    "createdDate" : "2023-03-02T22:03:27.118526",
+    "updatedDate" : "2023-03-02T22:03:27.118574",
     "player" : {
       "id" : 1,
       "uniformNumber" : 6,
       "position" : "MF",
       "status" : "APPROVE",
       "authority" : "MANAGER",
-      "createdDate" : "2023-02-24T21:33:22.544756",
-      "updatedDate" : "2023-02-24T21:33:22.544759",
+      "createdDate" : "2023-03-02T22:03:27.118581",
+      "updatedDate" : "2023-03-02T22:03:27.118583",
       "member" : {
         "id" : 1,
         "name" : "홍길동",
         "email" : "hong@gmail.com",
         "birthDate" : "1997-03-07",
-        "createdDate" : "2023-02-24T21:33:22.544785",
-        "updatedDate" : "2023-02-24T21:33:22.544788"
+        "createdDate" : "2023-03-02T22:03:27.118586",
+        "updatedDate" : "2023-03-02T22:03:27.118588"
       }
     },
     "match" : {
@@ -5344,8 +5400,8 @@ Content-Length: 1306
       "attendDate" : {
         "deadlineDate" : "2023-02-25T09:30:00"
       },
-      "createdDate" : "2023-02-24T21:33:22.5448",
-      "updatedDate" : "2023-02-24T21:33:22.544802"
+      "createdDate" : "2023-03-02T22:03:27.118597",
+      "updatedDate" : "2023-03-02T22:03:27.118598"
     }
   } ]
 }</code></pre>
@@ -5604,23 +5660,23 @@ Content-Length: 1304
   "result" : {
     "id" : 1,
     "status" : "ATTEND",
-    "createdDate" : "2023-02-24T21:33:22.415607",
-    "updatedDate" : "2023-02-24T21:33:22.415626",
+    "createdDate" : "2023-03-02T22:03:27.094534",
+    "updatedDate" : "2023-03-02T22:03:27.094576",
     "player" : {
       "id" : 1,
       "uniformNumber" : 6,
       "position" : "MF",
       "status" : "APPROVE",
       "authority" : "MANAGER",
-      "createdDate" : "2023-02-24T21:33:22.417214",
-      "updatedDate" : "2023-02-24T21:33:22.417224",
+      "createdDate" : "2023-03-02T22:03:27.094599",
+      "updatedDate" : "2023-03-02T22:03:27.094601",
       "member" : {
         "id" : 1,
         "name" : "홍길동",
         "email" : "hong@gmail.com",
         "birthDate" : "1997-03-07",
-        "createdDate" : "2023-02-24T21:33:22.418194",
-        "updatedDate" : "2023-02-24T21:33:22.418202"
+        "createdDate" : "2023-03-02T22:03:27.094619",
+        "updatedDate" : "2023-03-02T22:03:27.094622"
       }
     },
     "match" : {
@@ -5640,8 +5696,8 @@ Content-Length: 1304
       "attendDate" : {
         "deadlineDate" : "2023-02-25T09:30:00"
       },
-      "createdDate" : "2023-02-24T21:33:22.419938",
-      "updatedDate" : "2023-02-24T21:33:22.419947"
+      "createdDate" : "2023-03-02T22:03:27.094658",
+      "updatedDate" : "2023-03-02T22:03:27.094661"
     }
   }
 }</code></pre>
@@ -5858,7 +5914,7 @@ Content-Length: 1304
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-02-24 22:01:07 +0900
+Last updated 2023-02-28 19:40:05 +0900
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

@@ -3,7 +3,6 @@ package com.fcprovin.api.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fcprovin.api.dto.request.create.SnsCreateRequest;
 import com.fcprovin.api.dto.response.BaseResponse;
-import com.fcprovin.api.dto.response.MemberResponse;
 import com.fcprovin.api.dto.response.SnsResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import static com.fcprovin.api.docs.ApiDocumentUtils.getDocumentRequest;
@@ -27,7 +25,8 @@ import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
-import static org.springframework.restdocs.payload.JsonFieldType.*;
+import static org.springframework.restdocs.payload.JsonFieldType.NUMBER;
+import static org.springframework.restdocs.payload.JsonFieldType.STRING;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
@@ -133,14 +132,6 @@ class SnsControllerTest {
                         .type(GOOGLE)
                         .createdDate(now())
                         .updatedDate(now())
-                        .member(MemberResponse.builder()
-                                .id(1L)
-                                .name("홍길동")
-                                .email("hong@gmail.com")
-                                .birthDate(LocalDate.of(1997, 3, 7))
-                                .createdDate(now())
-                                .updatedDate(now())
-                                .build())
                         .build()));
 
         //when
@@ -161,14 +152,7 @@ class SnsControllerTest {
                                 fieldWithPath("result.uuid").type(STRING).description("SNS 고유 아이디"),
                                 fieldWithPath("result.type").type(STRING).description("SNS 플랫폼"),
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),
-                                fieldWithPath("result.updatedDate").type(STRING).description("수정일자"),
-                                fieldWithPath("result.member").type(OBJECT).description("회원"),
-                                fieldWithPath("result.member.id").type(NUMBER).description("회원 ID"),
-                                fieldWithPath("result.member.name").type(STRING).description("회원 이름"),
-                                fieldWithPath("result.member.email").type(STRING).description("회원 이메일"),
-                                fieldWithPath("result.member.birthDate").type(STRING).description("회원 생년월일"),
-                                fieldWithPath("result.member.createdDate").type(STRING).description("회원 생성일자"),
-                                fieldWithPath("result.member.updatedDate").type(STRING).description("회원 수정일자")
+                                fieldWithPath("result.updatedDate").type(STRING).description("수정일자")
                         )
                 ));
     }

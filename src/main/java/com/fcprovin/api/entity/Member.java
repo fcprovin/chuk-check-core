@@ -9,7 +9,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Objects.nonNull;
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 import static lombok.AccessLevel.PROTECTED;
@@ -36,7 +35,7 @@ public class Member extends BaseTime {
     private Sns sns;
 
     @OneToMany(mappedBy = "member")
-    private List<Player> players = new ArrayList<>();
+    private final List<Player> players = new ArrayList<>();
 
     public Member(String name) {
         this(name, null, null, null);
@@ -51,12 +50,6 @@ public class Member extends BaseTime {
         this.name = name;
         this.email = email;
         this.birthDate = birthDate;
-
-        if (nonNull(sns)) setSns(sns);
-    }
-
-    private void setSns(Sns sns) {
         this.sns = sns;
-        this.sns.setMember(this);
     }
 }
