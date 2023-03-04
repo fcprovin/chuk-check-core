@@ -17,6 +17,7 @@ import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDoc
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -40,6 +41,7 @@ import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuild
 import static org.springframework.restdocs.payload.JsonFieldType.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(MatchController.class)
@@ -57,6 +59,7 @@ class MatchControllerTest {
     MatchController matchController;
 
     @Test
+    @WithMockUser
     void create() throws Exception {
         //given
         given(matchController
@@ -75,7 +78,7 @@ class MatchControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(post("/api/v1/match")
+        ResultActions result = mockMvc.perform(post("/api/v1/match").with(csrf())
                 .content(mapper.writeValueAsString(MatchCreateRequest.builder()
                         .teamId(1L)
                         .stadiumId(1L)
@@ -130,6 +133,7 @@ class MatchControllerTest {
     }
 
     @Test
+    @WithMockUser
     void update() throws Exception {
         //given
         given(matchController
@@ -148,7 +152,7 @@ class MatchControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(put("/api/v1/match/{id}", 1L)
+        ResultActions result = mockMvc.perform(put("/api/v1/match/{id}", 1L).with(csrf())
                 .content(mapper.writeValueAsString(MatchUpdateRequest.builder()
                         .stadiumId(1L)
                         .otherTeamName("징기스칸")
@@ -203,6 +207,7 @@ class MatchControllerTest {
     }
 
     @Test
+    @WithMockUser
     void readAll() throws Exception {
         //given
         given(matchController
@@ -293,6 +298,7 @@ class MatchControllerTest {
     }
 
     @Test
+    @WithMockUser
     void read() throws Exception {
         //given
         given(matchController

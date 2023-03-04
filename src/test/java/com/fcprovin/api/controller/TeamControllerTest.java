@@ -13,6 +13,7 @@ import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDoc
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -32,6 +33,7 @@ import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuild
 import static org.springframework.restdocs.payload.JsonFieldType.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(TeamController.class)
@@ -49,6 +51,7 @@ class TeamControllerTest {
     TeamController teamController;
 
     @Test
+    @WithMockUser
     void create() throws Exception {
         //given
         given(teamController
@@ -62,7 +65,7 @@ class TeamControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(post("/api/v1/team")
+        ResultActions result = mockMvc.perform(post("/api/v1/team").with(csrf())
                 .content(mapper.writeValueAsString(TeamCreateRequest.builder()
                         .regionId(1L)
                         .name("프로빈")
@@ -91,6 +94,7 @@ class TeamControllerTest {
     }
 
     @Test
+    @WithMockUser
     void update() throws Exception {
         //given
         given(teamController
@@ -104,7 +108,7 @@ class TeamControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(put("/api/v1/team/{id}", 1L)
+        ResultActions result = mockMvc.perform(put("/api/v1/team/{id}", 1L).with(csrf())
                 .content(mapper.writeValueAsString(TeamUpdateRequest.builder()
                         .status(APPROVE)
                         .build())
@@ -131,6 +135,7 @@ class TeamControllerTest {
     }
 
     @Test
+    @WithMockUser
     void readAll() throws Exception {
         //given
         given(teamController
@@ -185,6 +190,7 @@ class TeamControllerTest {
     }
 
     @Test
+    @WithMockUser
     void read() throws Exception {
         //given
         given(teamController

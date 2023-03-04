@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDoc
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -30,6 +31,7 @@ import static org.springframework.restdocs.payload.JsonFieldType.STRING;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(StadiumController.class)
@@ -47,6 +49,7 @@ class StadiumControllerTest {
     StadiumController stadiumController;
 
     @Test
+    @WithMockUser
     void create() throws Exception {
         //given
         given(stadiumController
@@ -62,7 +65,7 @@ class StadiumControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(post("/api/v1/stadium")
+        ResultActions result = mockMvc.perform(post("/api/v1/stadium").with(csrf())
                 .content(mapper.writeValueAsString(StadiumCreateRequest.builder()
                         .name("탄천B")
                         .address("경기 성남시 중원구 여수동 7-17")
@@ -97,6 +100,7 @@ class StadiumControllerTest {
     }
 
     @Test
+    @WithMockUser
     void readAll() throws Exception {
         //given
         given(stadiumController
@@ -134,6 +138,7 @@ class StadiumControllerTest {
     }
 
     @Test
+    @WithMockUser
     void read() throws Exception {
         //given
         given(stadiumController

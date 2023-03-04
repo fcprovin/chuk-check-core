@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDoc
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -27,6 +28,7 @@ import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuild
 import static org.springframework.restdocs.payload.JsonFieldType.NUMBER;
 import static org.springframework.restdocs.payload.JsonFieldType.STRING;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(RegionController.class)
@@ -44,6 +46,7 @@ class RegionControllerTest {
     RegionController regionController;
 
     @Test
+    @WithMockUser
     void create() throws Exception {
         //given
         given(regionController
@@ -57,7 +60,7 @@ class RegionControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(post("/api/v1/region")
+        ResultActions result = mockMvc.perform(post("/api/v1/region").with(csrf())
                 .content(mapper.writeValueAsString(RegionCreateRequest.builder()
                         .country("경기도")
                         .city("성남시")
@@ -86,6 +89,7 @@ class RegionControllerTest {
     }
 
     @Test
+    @WithMockUser
     void readAll() throws Exception {
         //given
         given(regionController

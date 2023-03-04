@@ -12,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDoc
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -31,6 +32,7 @@ import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuild
 import static org.springframework.restdocs.payload.JsonFieldType.*;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.*;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(MemberController.class)
@@ -48,6 +50,7 @@ class MemberControllerTest {
     MemberController memberController;
 
     @Test
+    @WithMockUser
     void create() throws Exception {
         //given
         given(memberController
@@ -62,7 +65,7 @@ class MemberControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(post("/api/v1/member")
+        ResultActions result = mockMvc.perform(post("/api/v1/member").with(csrf())
                 .content(mapper.writeValueAsString(MemberCreateRequest.builder()
                         .snsId(1L)
                         .name("홍길동")
@@ -96,6 +99,7 @@ class MemberControllerTest {
     }
 
     @Test
+    @WithMockUser
     void readAll() throws Exception {
         //given
         given(memberController
@@ -150,6 +154,7 @@ class MemberControllerTest {
     }
 
     @Test
+    @WithMockUser
     void read() throws Exception {
         //given
         given(memberController
