@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDoc
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -30,6 +31,7 @@ import static org.springframework.restdocs.payload.JsonFieldType.STRING;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(SnsController.class)
@@ -47,6 +49,7 @@ class SnsControllerTest {
     SnsController snsController;
 
     @Test
+    @WithMockUser
     void create() throws Exception {
         //given
         given(snsController
@@ -60,7 +63,7 @@ class SnsControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(post("/api/v1/sns")
+        ResultActions result = mockMvc.perform(post("/api/v1/sns").with(csrf())
                 .content(mapper.writeValueAsString(SnsCreateRequest.builder()
                         .uuid("4d2d0eff-b7a7-4be5-adb3-b02427598362")
                         .type(GOOGLE)
@@ -89,6 +92,7 @@ class SnsControllerTest {
     }
 
     @Test
+    @WithMockUser
     void readAll() throws Exception {
         //given
         given(snsController
@@ -122,6 +126,7 @@ class SnsControllerTest {
     }
 
     @Test
+    @WithMockUser
     void read() throws Exception {
         //given
         given(snsController
