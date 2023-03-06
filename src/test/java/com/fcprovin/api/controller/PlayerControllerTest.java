@@ -86,14 +86,14 @@ class PlayerControllerTest {
                         requestFields(
                                 fieldWithPath("teamId").type(NUMBER).description("팀 ID").optional(),
                                 fieldWithPath("memberId").type(NUMBER).description("회원 ID").optional(),
-                                fieldWithPath("authority").type(STRING).description("플레이어 직책").optional()
+                                fieldWithPath("authority").type(STRING).description("플레이어 직책 - 'playerAuthority' 공통 Code 참조").optional()
                         ),
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
                                 fieldWithPath("result.id").type(NUMBER).description("플레이어 ID"),
-                                fieldWithPath("result.status").type(STRING).description("플레이어 상태"),
-                                fieldWithPath("result.authority").type(STRING).description("플레이어 직책"),
+                                fieldWithPath("result.status").type(STRING).description("플레이어 상태 - 'baseStatus' 공통 Code 참조"),
+                                fieldWithPath("result.authority").type(STRING).description("플레이어 직책 - 'playerAuthority' 공통 Code 참조"),
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.updatedDate").type(STRING).description("수정일자")
                         )
@@ -133,18 +133,18 @@ class PlayerControllerTest {
                         getDocumentResponse(),
                         requestFields(
                                 fieldWithPath("uniformNumber").type(NUMBER).description("플레이어 등번호").optional(),
-                                fieldWithPath("position").type(STRING).description("플레이어 포지션").optional(),
-                                fieldWithPath("status").type(STRING).description("플레이어 상태").optional(),
-                                fieldWithPath("authority").type(STRING).description("플레이어 직책").optional()
+                                fieldWithPath("position").type(STRING).description("플레이어 포지션 - 'position' 공통 Code 참조").optional(),
+                                fieldWithPath("status").type(STRING).description("플레이어 상태 - 'baseStatus' 공통 Code 참조").optional(),
+                                fieldWithPath("authority").type(STRING).description("플레이어 직책 - 'playerAuthority' 공통 Code 참조").optional()
                         ),
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
                                 fieldWithPath("result.id").type(NUMBER).description("플레이어 ID"),
                                 fieldWithPath("result.uniformNumber").type(NUMBER).description("플레이어 등번호"),
-                                fieldWithPath("result.position").type(STRING).description("플레이어 포지션"),
-                                fieldWithPath("result.status").type(STRING).description("플레이어 상태"),
-                                fieldWithPath("result.authority").type(STRING).description("플레이어 직책"),
+                                fieldWithPath("result.position").type(STRING).description("플레이어 포지션 - 'position' 공통 Code 참조"),
+                                fieldWithPath("result.status").type(STRING).description("플레이어 상태 - 'baseStatus' 공통 Code 참조"),
+                                fieldWithPath("result.authority").type(STRING).description("플레이어 직책 - 'playerAuthority' 공통 Code 참조"),
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.updatedDate").type(STRING).description("수정일자")
                         )
@@ -198,24 +198,24 @@ class PlayerControllerTest {
                         requestParameters(
                                 parameterWithName("memberId").description("회원 ID"),
                                 parameterWithName("teamId").description("팀 ID"),
-                                parameterWithName("position").description("플레이어 포지션"),
-                                parameterWithName("status").description("플레이어 상태"),
-                                parameterWithName("authority").description("플레이어 직책")
+                                parameterWithName("position").description("플레이어 포지션 - 'position' 공통 Code 참조"),
+                                parameterWithName("status").description("플레이어 상태 - 'baseStatus' 공통 Code 참조"),
+                                parameterWithName("authority").description("플레이어 직책 - 'playerAuthority' 공통 Code 참조")
                         ),
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
                                 fieldWithPath("result.[].id").type(NUMBER).description("플레이어 ID"),
                                 fieldWithPath("result.[].uniformNumber").type(NUMBER).description("플레이어 등번호"),
-                                fieldWithPath("result.[].position").type(STRING).description("플레이어 포지션"),
-                                fieldWithPath("result.[].status").type(STRING).description("플레이어 상태"),
-                                fieldWithPath("result.[].authority").type(STRING).description("플레이어 직책"),
+                                fieldWithPath("result.[].position").type(STRING).description("플레이어 포지션 - 'position' 공통 Code 참조"),
+                                fieldWithPath("result.[].status").type(STRING).description("플레이어 상태 - 'baseStatus' 공통 Code 참조"),
+                                fieldWithPath("result.[].authority").type(STRING).description("플레이어 직책 - 'playerAuthority' 공통 Code 참조"),
                                 fieldWithPath("result.[].createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.[].updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.[].team").type(OBJECT).description("팀"),
                                 fieldWithPath("result.[].team.id").type(NUMBER).description("팀 ID"),
                                 fieldWithPath("result.[].team.name").type(STRING).description("팀 이름"),
-                                fieldWithPath("result.[].team.status").type(STRING).description("팀 상태"),
+                                fieldWithPath("result.[].team.status").type(STRING).description("팀 상태 - 'baseStatus' 공통 Code 참조"),
                                 fieldWithPath("result.[].team.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.[].team.updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.[].member").type(OBJECT).description("회원"),
@@ -276,15 +276,15 @@ class PlayerControllerTest {
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
                                 fieldWithPath("result.id").type(NUMBER).description("플레이어 ID"),
                                 fieldWithPath("result.uniformNumber").type(NUMBER).description("플레이어 등번호"),
-                                fieldWithPath("result.position").type(STRING).description("플레이어 포지션"),
-                                fieldWithPath("result.status").type(STRING).description("플레이어 상태"),
-                                fieldWithPath("result.authority").type(STRING).description("플레이어 직책"),
+                                fieldWithPath("result.position").type(STRING).description("플레이어 포지션 - 'position' 공통 Code 참조"),
+                                fieldWithPath("result.status").type(STRING).description("플레이어 상태 - 'baseStatus' 공통 Code 참조"),
+                                fieldWithPath("result.authority").type(STRING).description("플레이어 직책 - 'playerAuthority' 공통 Code 참조"),
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.team").type(OBJECT).description("팀"),
                                 fieldWithPath("result.team.id").type(NUMBER).description("팀 ID"),
                                 fieldWithPath("result.team.name").type(STRING).description("팀 이름"),
-                                fieldWithPath("result.team.status").type(STRING).description("팀 상태"),
+                                fieldWithPath("result.team.status").type(STRING).description("팀 상태 - 'baseStatus' 공통 Code 참조"),
                                 fieldWithPath("result.team.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.team.updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.member").type(OBJECT).description("회원"),

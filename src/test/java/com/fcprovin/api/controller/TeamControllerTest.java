@@ -86,7 +86,7 @@ class TeamControllerTest {
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
                                 fieldWithPath("result.id").type(NUMBER).description("팀 ID"),
                                 fieldWithPath("result.name").type(STRING).description("팀 이름"),
-                                fieldWithPath("result.status").type(STRING).description("팀 상태"),
+                                fieldWithPath("result.status").type(STRING).description("팀 상태 - 'baseStatus' 공통 Code 참조"),
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.updatedDate").type(STRING).description("수정일자")
                         )
@@ -120,14 +120,14 @@ class TeamControllerTest {
                         getDocumentRequest(),
                         getDocumentResponse(),
                         requestFields(
-                                fieldWithPath("status").type(STRING).description("팀 상태").optional()
+                                fieldWithPath("status").type(STRING).description("팀 상태 - 'baseStatus' 공통 Code 참조").optional()
                         ),
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
                                 fieldWithPath("result.id").type(NUMBER).description("팀 ID"),
                                 fieldWithPath("result.name").type(STRING).description("팀 이름"),
-                                fieldWithPath("result.status").type(STRING).description("팀 상태"),
+                                fieldWithPath("result.status").type(STRING).description("팀 상태 - 'baseStatus' 공통 Code 참조"),
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.updatedDate").type(STRING).description("수정일자")
                         )
@@ -169,14 +169,14 @@ class TeamControllerTest {
                         requestParameters(
                                 parameterWithName("regionId").description("지역 ID"),
                                 parameterWithName("name").description("팀 이름"),
-                                parameterWithName("status").description("팀 상태")
+                                parameterWithName("status").description("팀 상태 - 'baseStatus' 공통 Code 참조")
                         ),
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
                                 fieldWithPath("result.[].id").type(NUMBER).description("팀 ID"),
                                 fieldWithPath("result.[].name").type(STRING).description("팀 이름"),
-                                fieldWithPath("result.[].status").type(STRING).description("팀 상태"),
+                                fieldWithPath("result.[].status").type(STRING).description("팀 상태 - 'baseStatus' 공통 Code 참조"),
                                 fieldWithPath("result.[].createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.[].updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.[].region").type(OBJECT).description("지역"),
@@ -226,7 +226,7 @@ class TeamControllerTest {
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
                                 fieldWithPath("result.id").type(NUMBER).description("팀 ID"),
                                 fieldWithPath("result.name").type(STRING).description("팀 이름"),
-                                fieldWithPath("result.status").type(STRING).description("팀 상태"),
+                                fieldWithPath("result.status").type(STRING).description("팀 상태 - 'baseStatus' 공통 Code 참조"),
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.region").type(OBJECT).description("지역"),

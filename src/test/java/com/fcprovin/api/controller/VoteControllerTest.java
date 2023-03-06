@@ -87,13 +87,13 @@ class VoteControllerTest {
                         requestFields(
                                 fieldWithPath("playerId").type(NUMBER).description("플레이어 ID").optional(),
                                 fieldWithPath("matchId").type(NUMBER).description("매치 ID").optional(),
-                                fieldWithPath("status").type(STRING).description("투표 상태").optional()
+                                fieldWithPath("status").type(STRING).description("투표 상태 - 'voteStatus' 공통 Code 참조").optional()
                         ),
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
                                 fieldWithPath("result.id").type(NUMBER).description("투표 ID"),
-                                fieldWithPath("result.status").type(STRING).description("투표 상태"),
+                                fieldWithPath("result.status").type(STRING).description("투표 상태 - 'voteStatus' 공통 Code 참조"),
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.updatedDate").type(STRING).description("수정일자")
                         )
@@ -124,13 +124,13 @@ class VoteControllerTest {
                         getDocumentRequest(),
                         getDocumentResponse(),
                         requestFields(
-                                fieldWithPath("status").type(STRING).description("출석 상태").optional()
+                                fieldWithPath("status").type(STRING).description("투표 상태 - 'voteStatus' 공통 Code 참조").optional()
                         ),
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.id").type(NUMBER).description("출석 ID"),
-                                fieldWithPath("result.status").type(STRING).description("출석 상태"),
+                                fieldWithPath("result.id").type(NUMBER).description("투표 ID"),
+                                fieldWithPath("result.status").type(STRING).description("투표 상태 - 'voteStatus' 공통 Code 참조"),
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.updatedDate").type(STRING).description("수정일자")
                         )
@@ -188,21 +188,21 @@ class VoteControllerTest {
                         getDocumentRequest(),
                         getDocumentResponse(),
                         requestParameters(
-                                parameterWithName("status").description("투표 상태")
+                                parameterWithName("status").description("투표 상태 - 'voteStatus' 공통 Code 참조")
                         ),
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
                                 fieldWithPath("result.[].id").type(NUMBER).description("투표 ID"),
-                                fieldWithPath("result.[].status").type(STRING).description("투표 상태"),
+                                fieldWithPath("result.[].status").type(STRING).description("투표 상태 - 'voteStatus' 공통 Code 참조"),
                                 fieldWithPath("result.[].createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.[].updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.[].player").type(OBJECT).description("플레이어"),
                                 fieldWithPath("result.[].player.id").type(NUMBER).description("플레이어 ID"),
                                 fieldWithPath("result.[].player.uniformNumber").type(NUMBER).description("플레이어 등번호"),
-                                fieldWithPath("result.[].player.position").type(STRING).description("플레이어 포지션"),
-                                fieldWithPath("result.[].player.status").type(STRING).description("플레이어 상태"),
-                                fieldWithPath("result.[].player.authority").type(STRING).description("플레이어 직책"),
+                                fieldWithPath("result.[].player.position").type(STRING).description("플레이어 포지션 - 'position' 공통 Code 참조"),
+                                fieldWithPath("result.[].player.status").type(STRING).description("플레이어 상태 - 'baseStatus' 공통 Code 참조"),
+                                fieldWithPath("result.[].player.authority").type(STRING).description("플레이어 직책 - 'playerAuthority' 공통 Code 참조"),
                                 fieldWithPath("result.[].player.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.[].player.updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.[].player.member").type(OBJECT).description("회원"),
@@ -217,7 +217,7 @@ class VoteControllerTest {
                                 fieldWithPath("result.[].match.otherTeamName").type(STRING).description("매치 상대팀 명"),
                                 fieldWithPath("result.[].match.home").type(BOOLEAN).description("매치 홈구장 여부"),
                                 fieldWithPath("result.[].match.notice").type(STRING).description("매치 공지"),
-                                fieldWithPath("result.[].match.status").type(STRING).description("매치 상태"),
+                                fieldWithPath("result.[].match.status").type(STRING).description("매치 상태 - 'matchStatus' 공통 Code 참조"),
                                 fieldWithPath("result.[].match.matchDate").type(OBJECT).description("매치 일자"),
                                 fieldWithPath("result.[].match.matchDate.startDate").type(STRING).description("매치 시작 일자"),
                                 fieldWithPath("result.[].match.matchDate.endDate").type(STRING).description("매치 종료 일자"),
@@ -289,15 +289,15 @@ class VoteControllerTest {
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
                                 fieldWithPath("result.id").type(NUMBER).description("투표 ID"),
-                                fieldWithPath("result.status").type(STRING).description("투표 상태"),
+                                fieldWithPath("result.status").type(STRING).description("투표 상태 - 'voteStatus' 공통 Code 참조"),
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.player").type(OBJECT).description("플레이어"),
                                 fieldWithPath("result.player.id").type(NUMBER).description("플레이어 ID"),
                                 fieldWithPath("result.player.uniformNumber").type(NUMBER).description("플레이어 등번호"),
-                                fieldWithPath("result.player.position").type(STRING).description("플레이어 포지션"),
-                                fieldWithPath("result.player.status").type(STRING).description("플레이어 상태"),
-                                fieldWithPath("result.player.authority").type(STRING).description("플레이어 직책"),
+                                fieldWithPath("result.player.position").type(STRING).description("플레이어 포지션 - 'position' 공통 Code 참조"),
+                                fieldWithPath("result.player.status").type(STRING).description("플레이어 상태 - 'baseStatus' 공통 Code 참조"),
+                                fieldWithPath("result.player.authority").type(STRING).description("플레이어 직책 - 'playerAuthority' 공통 Code 참조"),
                                 fieldWithPath("result.player.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.player.updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.player.member").type(OBJECT).description("회원"),
@@ -312,7 +312,7 @@ class VoteControllerTest {
                                 fieldWithPath("result.match.otherTeamName").type(STRING).description("매치 상대팀 명"),
                                 fieldWithPath("result.match.home").type(BOOLEAN).description("매치 홈구장 여부"),
                                 fieldWithPath("result.match.notice").type(STRING).description("매치 공지"),
-                                fieldWithPath("result.match.status").type(STRING).description("매치 상태"),
+                                fieldWithPath("result.match.status").type(STRING).description("매치 상태 - 'matchStatus' 공통 Code 참조"),
                                 fieldWithPath("result.match.matchDate").type(OBJECT).description("매치 일자"),
                                 fieldWithPath("result.match.matchDate.startDate").type(STRING).description("매치 시작 일자"),
                                 fieldWithPath("result.match.matchDate.endDate").type(STRING).description("매치 종료 일자"),

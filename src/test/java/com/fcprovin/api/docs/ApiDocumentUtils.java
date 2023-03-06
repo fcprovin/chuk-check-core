@@ -12,10 +12,24 @@ public interface ApiDocumentUtils {
                         .scheme("https")
                         .host("api.fcprovin.com")
                         .removePort(),
+                removeHeaders(
+                        "Content-Length"
+                ),
                 prettyPrint());
     }
 
     static OperationResponsePreprocessor getDocumentResponse() {
-        return preprocessResponse(prettyPrint());
+        return preprocessResponse(
+                removeHeaders(
+                        "X-Content-Type-Options",
+                        "X-XSS-Protection",
+                        "Cache-Control",
+                        "Pragma",
+                        "Expires",
+                        "Strict-Transport-Security",
+                        "X-Frame-Options",
+                        "Content-Length"
+                ),
+                prettyPrint());
     }
 }
