@@ -77,14 +77,14 @@ class SnsControllerTest {
                         getDocumentResponse(),
                         requestFields(
                                 fieldWithPath("uuid").type(STRING).description("SNS 고유 아이디").optional(),
-                                fieldWithPath("type").type(STRING).description("SNS 플랫폼").optional()
+                                fieldWithPath("type").type(STRING).description("SNS 플랫폼 - 'snsType' 공통 Code 참조").optional()
                         ),
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
                                 fieldWithPath("result.id").type(NUMBER).description("ID"),
                                 fieldWithPath("result.uuid").type(STRING).description("SNS 고유 아이디"),
-                                fieldWithPath("result.type").type(STRING).description("SNS 플랫폼"),
+                                fieldWithPath("result.type").type(STRING).description("SNS 플랫폼 - 'snsType' 공통 Code 참조"),
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.updatedDate").type(STRING).description("수정일자")
                         )
@@ -118,7 +118,7 @@ class SnsControllerTest {
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
                                 fieldWithPath("result.[].id").type(NUMBER).description("ID"),
                                 fieldWithPath("result.[].uuid").type(STRING).description("SNS 고유 아이디"),
-                                fieldWithPath("result.[].type").type(STRING).description("SNS 플랫폼"),
+                                fieldWithPath("result.[].type").type(STRING).description("SNS 플랫폼 - 'snsType' 공통 Code 참조"),
                                 fieldWithPath("result.[].createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.[].updatedDate").type(STRING).description("수정일자")
                         )
@@ -155,7 +155,7 @@ class SnsControllerTest {
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
                                 fieldWithPath("result.id").type(NUMBER).description("ID"),
                                 fieldWithPath("result.uuid").type(STRING).description("SNS 고유 아이디"),
-                                fieldWithPath("result.type").type(STRING).description("SNS 플랫폼"),
+                                fieldWithPath("result.type").type(STRING).description("SNS 플랫폼 - 'snsType' 공통 Code 참조"),
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.updatedDate").type(STRING).description("수정일자")
                         )

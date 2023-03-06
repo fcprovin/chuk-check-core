@@ -146,7 +146,7 @@ class MemberControllerTest {
                                 fieldWithPath("result.[].sns").type(OBJECT).description("SNS"),
                                 fieldWithPath("result.[].sns.id").type(NUMBER).description("SNS ID"),
                                 fieldWithPath("result.[].sns.uuid").type(STRING).description("SNS 고유 아이디"),
-                                fieldWithPath("result.[].sns.type").type(STRING).description("SNS 플랫폼"),
+                                fieldWithPath("result.[].sns.type").type(STRING).description("SNS 플랫폼 - 'snsType' 공통 Code 참조"),
                                 fieldWithPath("result.[].sns.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.[].sns.updatedDate").type(STRING).description("수정일자")
                         )
@@ -198,7 +198,7 @@ class MemberControllerTest {
                                 fieldWithPath("result.sns").type(OBJECT).description("SNS"),
                                 fieldWithPath("result.sns.id").type(NUMBER).description("SNS ID"),
                                 fieldWithPath("result.sns.uuid").type(STRING).description("SNS 고유 아이디"),
-                                fieldWithPath("result.sns.type").type(STRING).description("SNS 플랫폼"),
+                                fieldWithPath("result.sns.type").type(STRING).description("SNS 플랫폼 - 'snsType' 공통 Code 참조"),
                                 fieldWithPath("result.sns.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.sns.updatedDate").type(STRING).description("수정일자")
                         )
