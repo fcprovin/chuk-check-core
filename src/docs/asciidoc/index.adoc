@@ -48,9 +48,18 @@ API에 관계없이 아래 사항을 지켜주셔야 합니다.
 | `message`
 | 예외사항 내용 등 응답 메세지
 
-| `data`
+| `result`
 | 실제 반환될 데이터
 |===
+
+=== 공통 Code
+include::{snippets}/common-code/custom-response-fields-attendStatus.adoc[]
+include::{snippets}/common-code/custom-response-fields-baseStatus.adoc[]
+include::{snippets}/common-code/custom-response-fields-matchStatus.adoc[]
+include::{snippets}/common-code/custom-response-fields-playerAuthority.adoc[]
+include::{snippets}/common-code/custom-response-fields-position.adoc[]
+include::{snippets}/common-code/custom-response-fields-snsType.adoc[]
+include::{snippets}/common-code/custom-response-fields-voteStatus.adoc[]
 
 [[SNS-API]]
 == SNS API
