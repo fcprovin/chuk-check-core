@@ -117,4 +117,22 @@ class MemberRepositoryTest {
         assertThat(findMember.getSns().getType()).isEqualTo(sns1.getType());
         assertThat(findMember.getSns().getUuid()).isEqualTo(sns1.getUuid());
     }
+
+    @Test
+    void findQueryByIdAndSnsUuid() {
+    	//given
+        Sns sns1 = new Sns("sns1", GOOGLE);
+        em.persist(sns1);
+
+        Member member = new Member("park", sns1);
+        em.persist(member);
+
+        //when
+        Member findMember = memberRepository.findQueryByIdAndSnsUuid(member.getId(), sns1.getUuid()).get();
+
+        //then
+        assertThat(findMember.getName()).isEqualTo(member.getName());
+        assertThat(findMember.getSns().getType()).isEqualTo(sns1.getType());
+        assertThat(findMember.getSns().getUuid()).isEqualTo(sns1.getUuid());
+    }
 }

@@ -10,4 +10,5 @@ public interface MemberQueryRepository {
 
     List<Member> findQueryBySearch(MemberSearch search);
     Optional<Member> findQueryById(Long id);
+    Optional<Member> findQueryByIdAndSnsUuid(Long id, String uuid);
 }

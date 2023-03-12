@@ -37,6 +37,15 @@ public class MemberRepositoryImpl implements MemberQueryRepository {
                 .fetchOne());
     }
 
+    @Override
+    public Optional<Member> findQueryByIdAndSnsUuid(Long id, String uuid) {
+        return ofNullable(queryFactory
+                .selectFrom(member)
+                .join(member.sns, sns).fetchJoin()
+                .where(member.id.eq(id), member.sns.uuid.eq(uuid))
+                .fetchOne());
+    }
+
     private BooleanExpression nameEqual(String name) {
         return hasText(name) ? member.name.eq(name) : null;
     }
