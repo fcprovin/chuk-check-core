@@ -78,7 +78,7 @@ class MatchControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(post("/api/v1/match").with(csrf())
+        ResultActions result = mockMvc.perform(post("/api/v1/match").with(csrf().asHeader())
                 .content(mapper.writeValueAsString(MatchCreateRequest.builder()
                         .teamId(1L)
                         .stadiumId(1L)
@@ -152,7 +152,7 @@ class MatchControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(put("/api/v1/match/{id}", 1L).with(csrf())
+        ResultActions result = mockMvc.perform(put("/api/v1/match/{id}", 1L).with(csrf().asHeader())
                 .content(mapper.writeValueAsString(MatchUpdateRequest.builder()
                         .stadiumId(1L)
                         .otherTeamName("징기스칸")

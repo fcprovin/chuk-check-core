@@ -1,5 +1,6 @@
 package com.fcprovin.api.docs;
 
+import com.fcprovin.api.dto.jwt.JwtRole;
 import com.fcprovin.api.entity.*;
 
 import java.util.Map;
@@ -16,6 +17,7 @@ public class EnumDocs {
     private final Map<String, String> position = getDocs(Position.values());
     private final Map<String, String> snsType = getDocs(SnsType.values());
     private final Map<String, String> voteStatus = getDocs(VoteStatus.values());
+    private final Map<String, String> jwtRole = getDocs(JwtRole.values());
 
     public Map<String, String> getAttendStatus() {
         return attendStatus;
@@ -43,6 +45,10 @@ public class EnumDocs {
 
     public Map<String, String> getVoteStatus() {
         return voteStatus;
+    }
+
+    public Map<String, String> getJwtRole() {
+        return jwtRole;
     }
 
     private Map<String, String> getDocs(EnumType[] enumTypes) {

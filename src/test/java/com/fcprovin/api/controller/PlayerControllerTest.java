@@ -70,7 +70,7 @@ class PlayerControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(post("/api/v1/player").with(csrf())
+        ResultActions result = mockMvc.perform(post("/api/v1/player").with(csrf().asHeader())
                 .content(mapper.writeValueAsString(PlayerCreateRequest.builder()
                         .teamId(1L)
                         .memberId(1L)
@@ -117,7 +117,7 @@ class PlayerControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(put("/api/v1/player/{id}", 1L).with(csrf())
+        ResultActions result = mockMvc.perform(put("/api/v1/player/{id}", 1L).with(csrf().asHeader())
                 .content(mapper.writeValueAsString(PlayerUpdateRequest.builder()
                         .uniformNumber(6)
                         .position(MF)

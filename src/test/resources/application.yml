@@ -3,5 +3,8 @@ spring:
     show-sql: true
 
 jwt:
+  expire:
+    access: 1
+    refresh: 12
   security:
     key: test

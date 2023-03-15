@@ -65,7 +65,7 @@ class TeamControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(post("/api/v1/team").with(csrf())
+        ResultActions result = mockMvc.perform(post("/api/v1/team").with(csrf().asHeader())
                 .content(mapper.writeValueAsString(TeamCreateRequest.builder()
                         .regionId(1L)
                         .name("프로빈")
@@ -108,7 +108,7 @@ class TeamControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(put("/api/v1/team/{id}", 1L).with(csrf())
+        ResultActions result = mockMvc.perform(put("/api/v1/team/{id}", 1L).with(csrf().asHeader())
                 .content(mapper.writeValueAsString(TeamUpdateRequest.builder()
                         .status(APPROVE)
                         .build())

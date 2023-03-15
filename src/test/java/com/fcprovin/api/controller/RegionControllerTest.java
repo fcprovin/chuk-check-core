@@ -60,7 +60,7 @@ class RegionControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(post("/api/v1/region").with(csrf())
+        ResultActions result = mockMvc.perform(post("/api/v1/region").with(csrf().asHeader())
                 .content(mapper.writeValueAsString(RegionCreateRequest.builder()
                         .country("경기도")
                         .city("성남시")

@@ -65,7 +65,7 @@ class MemberControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(post("/api/v1/member").with(csrf())
+        ResultActions result = mockMvc.perform(post("/api/v1/member").with(csrf().asHeader())
                 .content(mapper.writeValueAsString(MemberCreateRequest.builder()
                         .snsId(1L)
                         .name("홍길동")

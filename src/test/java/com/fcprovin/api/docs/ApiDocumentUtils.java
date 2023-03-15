@@ -13,7 +13,8 @@ public interface ApiDocumentUtils {
                         .host("api.fcprovin.com")
                         .removePort(),
                 removeHeaders(
-                        "Content-Length"
+                        "Content-Length",
+                        "X-CSRF-TOKEN"
                 ),
                 prettyPrint());
     }

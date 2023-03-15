@@ -65,7 +65,7 @@ class StadiumControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(post("/api/v1/stadium").with(csrf())
+        ResultActions result = mockMvc.perform(post("/api/v1/stadium").with(csrf().asHeader())
                 .content(mapper.writeValueAsString(StadiumCreateRequest.builder()
                         .name("탄천B")
                         .address("경기 성남시 중원구 여수동 7-17")

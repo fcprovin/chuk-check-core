@@ -63,7 +63,7 @@ class SnsControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(post("/api/v1/sns").with(csrf())
+        ResultActions result = mockMvc.perform(post("/api/v1/sns").with(csrf().asHeader())
                 .content(mapper.writeValueAsString(SnsCreateRequest.builder()
                         .uuid("4d2d0eff-b7a7-4be5-adb3-b02427598362")
                         .type(GOOGLE)

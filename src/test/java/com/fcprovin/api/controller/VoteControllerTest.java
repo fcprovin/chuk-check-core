@@ -71,7 +71,7 @@ class VoteControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(post("/api/v1/vote").with(csrf())
+        ResultActions result = mockMvc.perform(post("/api/v1/vote").with(csrf().asHeader())
                 .content(mapper.writeValueAsString(VoteCreateRequest.builder()
                         .playerId(1L)
                         .matchId(1L)
@@ -114,7 +114,7 @@ class VoteControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(put("/api/v1/vote/{id}", 1L).with(csrf())
+        ResultActions result = mockMvc.perform(put("/api/v1/vote/{id}", 1L).with(csrf().asHeader())
                 .content(mapper.writeValueAsString(new VoteUpdateRequest(FALSE)))
                 .contentType(APPLICATION_JSON));
 
