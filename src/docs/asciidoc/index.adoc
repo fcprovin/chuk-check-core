@@ -53,6 +53,7 @@ API에 관계없이 아래 사항을 지켜주셔야 합니다.
 |===
 
 === 공통 Code
+include::{snippets}/common-code/custom-response-fields-jwtRole.adoc[]
 include::{snippets}/common-code/custom-response-fields-attendStatus.adoc[]
 include::{snippets}/common-code/custom-response-fields-baseStatus.adoc[]
 include::{snippets}/common-code/custom-response-fields-matchStatus.adoc[]
@@ -60,6 +61,17 @@ include::{snippets}/common-code/custom-response-fields-playerAuthority.adoc[]
 include::{snippets}/common-code/custom-response-fields-position.adoc[]
 include::{snippets}/common-code/custom-response-fields-snsType.adoc[]
 include::{snippets}/common-code/custom-response-fields-voteStatus.adoc[]
+
+[[AUTH-API]]
+== 인증 API
+
+[[ACCESS-TOKEN]]
+=== Access Token
+operation::auth-access-token[snippets='http-request,request-fields,http-response,response-fields']
+
+[[REFRESH-TOKEN]]
+=== Refresh Token
+operation::auth-refresh-token[snippets='http-request,http-response,response-fields']
 
 [[SNS-API]]
 == SNS API
