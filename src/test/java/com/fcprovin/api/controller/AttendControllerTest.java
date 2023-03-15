@@ -72,7 +72,7 @@ class AttendControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(post("/api/v1/attend").with(csrf())
+        ResultActions result = mockMvc.perform(post("/api/v1/attend").with(csrf().asHeader())
                 .content(mapper.writeValueAsString(AttendCreateRequest.builder()
                         .playerId(1L)
                         .matchId(1L)
@@ -115,7 +115,7 @@ class AttendControllerTest {
                         .build()));
 
         //when
-        ResultActions result = mockMvc.perform(put("/api/v1/attend/{id}", 1L).with(csrf())
+        ResultActions result = mockMvc.perform(put("/api/v1/attend/{id}", 1L).with(csrf().asHeader())
                 .content(mapper.writeValueAsString(new AttendUpdateRequest(LATE)))
                 .contentType(APPLICATION_JSON));
 

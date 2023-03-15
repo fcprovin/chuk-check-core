@@ -52,6 +52,11 @@ class CommonControllerTest {
         result.andExpect(status().isOk())
                 .andDo(document("common-code",
                         customResponseFields("custom-response",
+                                beneathPath("result.jwtRole").withSubsectionId("jwtRole"),
+                                attributes(key("title").value("jwtRole")),
+                                enumConvertFieldDescriptor((enumDocs.getJwtRole()))
+                        ),
+                        customResponseFields("custom-response",
                                 beneathPath("result.attendStatus").withSubsectionId("attendStatus"),
                                 attributes(key("title").value("attendStatus")),
                                 enumConvertFieldDescriptor((enumDocs.getAttendStatus()))
