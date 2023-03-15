@@ -38,6 +38,5 @@ public class PlayerCreateRequest {
                 .team(team)
                 .authority(authority)
                 .build();
-
     }
 }
