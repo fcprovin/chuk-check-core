@@ -1,5 +1,7 @@
 package com.fcprovin.api.config;
 
+import com.fcprovin.api.config.handler.AccessDeniedExceptionHandler;
+import com.fcprovin.api.config.handler.AuthenticationExceptionHandler;
 import com.fcprovin.api.config.jwt.JwtAuthenticationFilter;
 import com.fcprovin.api.config.jwt.JwtProvider;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +35,10 @@ public class SecurityConfig {
                 .authorizeRequests()
                     .antMatchers(POST, "/api/**/auth/access-token", "/api/**/sns", "/api/**/member").permitAll()
                     .anyRequest().hasAnyRole(ROLE_USER.getName(), ROLE_ADMIN.getName())
+                    .and()
+                .exceptionHandling()
+                    .authenticationEntryPoint(new AuthenticationExceptionHandler())
+                    .accessDeniedHandler(new AccessDeniedExceptionHandler())
                     .and()
                 .addFilterBefore(new JwtAuthenticationFilter(provider), UsernamePasswordAuthenticationFilter.class)
                 .build();
