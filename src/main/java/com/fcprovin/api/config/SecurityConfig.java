@@ -14,6 +14,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import static com.fcprovin.api.dto.jwt.JwtRole.ROLE_ADMIN;
 import static com.fcprovin.api.dto.jwt.JwtRole.ROLE_USER;
+import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
@@ -23,6 +24,8 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 public class SecurityConfig {
 
     private final JwtProvider provider;
+    private final AuthenticationExceptionHandler authenticationExceptionHandler;
+    private final AccessDeniedExceptionHandler accessDeniedExceptionHandler;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -33,12 +36,13 @@ public class SecurityConfig {
                 .httpBasic().disable()
                 .sessionManagement().sessionCreationPolicy(STATELESS).and()
                 .authorizeRequests()
+                    .antMatchers(GET, "/", "/docs/**", "/exception/**").permitAll()
                     .antMatchers(POST, "/api/**/auth/access-token", "/api/**/sns", "/api/**/member").permitAll()
                     .anyRequest().hasAnyRole(ROLE_USER.getName(), ROLE_ADMIN.getName())
                     .and()
                 .exceptionHandling()
-                    .authenticationEntryPoint(new AuthenticationExceptionHandler())
-                    .accessDeniedHandler(new AccessDeniedExceptionHandler())
+                    .authenticationEntryPoint(authenticationExceptionHandler)
+                    .accessDeniedHandler(accessDeniedExceptionHandler)
                     .and()
                 .addFilterBefore(new JwtAuthenticationFilter(provider), UsernamePasswordAuthenticationFilter.class)
                 .build();
