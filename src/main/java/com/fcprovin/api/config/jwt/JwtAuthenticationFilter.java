@@ -19,7 +19,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     private final JwtProvider provider;
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(ServletRequest request, ServletResponse response,
+                         FilterChain chain) throws IOException, ServletException {
         String token = provider.resolveToken((HttpServletRequest) request);
 
         if (nonNull(token)) {

@@ -23,7 +23,9 @@ public class MatchService {
     private final StadiumService stadiumService;
 
     public Match create(MatchCreateRequest request) {
-        return matchRepository.save(request.toEntity(findTeam(request.getTeamId()), findStadium(request.getStadiumId())));
+        return matchRepository.save(request.toEntity(
+                findTeam(request.getTeamId()),
+                findStadium(request.getStadiumId())));
     }
 
     private Team findTeam(Long id) {
