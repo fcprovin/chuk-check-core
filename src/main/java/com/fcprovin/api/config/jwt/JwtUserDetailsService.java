@@ -10,8 +10,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.function.Supplier;
-
 import static com.fcprovin.api.dto.jwt.JwtRole.ROLE_ADMIN;
 import static com.fcprovin.api.dto.jwt.JwtRole.ROLE_USER;
 
@@ -42,9 +40,5 @@ public class JwtUserDetailsService implements UserDetailsService {
                 .subject(Long.valueOf(names[0]))
                 .scope(JwtRole.valueOf(names[1]))
                 .build();
-    }
-
-    private Supplier<UsernameNotFoundException> notExistUser() {
-        return () -> new UsernameNotFoundException("Not exist user");
     }
 }
