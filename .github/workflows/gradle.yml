@@ -13,8 +13,11 @@ on:
   pull_request:
     branches: [ "main" ]
 
-permissions:
-  contents: read
+env:
+  AWS_REGION: ap-northeast-2
+  AWS_S3_BUCKET: provin-dev-s3-storage
+  AWS_CODE_DEPLOY_APPLICATION: chuk-check-core
+  AWS_CODE_DEPLOY_GROUP: cicd-test-CD-group
 
 jobs:
   build:
@@ -33,19 +36,12 @@ jobs:
       with:
         arguments: build
 
-    - name: Make Directory for deliver
-      run: mkdir -p deploy
-
-    - name: Copy Jar
-      run: cp ./build/libs/*.jar ./deploy/
-
-    - name: Make zip file
-      run: zip -r -qq -j ./chuk-check-core.zip ./deploy
-
-    - name: Deliver to AWS S3
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      run: aws s3 cp \
-          --region ap-northeast-2 \
-          ./chuk-check-core.zip s3://provin-dev-s3-storage/
+    - name: AWS credential 설정
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-region: ${{ env.AWS_REGION }}
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        
+    - name: S3에 업로드
+      run: aws deploy push --application-name ${{ env.AWS_CODE_DEPLOY_APPLICATION }} --ignore-hidden-files --s3-location s3://$AWS_S3_BUCKET/cicdtest/$GITHUB_SHA.zip --source .
