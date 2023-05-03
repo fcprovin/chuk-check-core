@@ -16,8 +16,8 @@ on:
 env:
   AWS_REGION: ap-northeast-2
   AWS_S3_BUCKET: provin-dev-s3-storage
-  AWS_CODE_DEPLOY_APPLICATION: chuk-check-core
-  AWS_CODE_DEPLOY_GROUP: cicd-test-CD-group
+  AWS_CODE_DEPLOY_APPLICATION: dev-core-code-deploy
+  AWS_CODE_DEPLOY_GROUP: dev-core-code-deploy-group
 
 jobs:
   build:
