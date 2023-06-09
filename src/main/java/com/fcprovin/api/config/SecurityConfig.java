@@ -12,8 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static com.fcprovin.api.dto.jwt.JwtRole.ROLE_ADMIN;
-import static com.fcprovin.api.dto.jwt.JwtRole.ROLE_USER;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
@@ -38,7 +36,7 @@ public class SecurityConfig {
                 .authorizeRequests()
                     .antMatchers(GET, "/", "/docs/**", "/exception/**").permitAll()
                     .antMatchers(POST, "/api/**/auth/access-token", "/api/**/sns", "/api/**/member").permitAll()
-                    .anyRequest().hasAnyRole(ROLE_USER.getName(), ROLE_ADMIN.getName())
+                    .anyRequest().hasAnyRole("USER", "ADMIN")
                     .and()
                 .exceptionHandling()
                     .authenticationEntryPoint(authenticationExceptionHandler)
