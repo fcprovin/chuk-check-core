@@ -22,12 +22,13 @@ public class MatchController {
     private final MatchService matchService;
 
     @PostMapping
-    public BaseResponse<MatchResponse> create(MatchCreateRequest request) {
+    public BaseResponse<MatchResponse> create(@RequestBody MatchCreateRequest request) {
         return new BaseResponse<>(of(matchService.create(request)));
     }
 
     @PutMapping("/{id}")
-    public BaseResponse<MatchResponse> update(@PathVariable(name = "id") Long id, MatchUpdateRequest request) {
+    public BaseResponse<MatchResponse> update(@PathVariable(name = "id") Long id,
+                                              @RequestBody MatchUpdateRequest request) {
         return new BaseResponse<>(of(matchService.update(id, request)));
     }
 
