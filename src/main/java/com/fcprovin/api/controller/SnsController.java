@@ -3,6 +3,7 @@ package com.fcprovin.api.controller;
 import com.fcprovin.api.dto.request.create.SnsCreateRequest;
 import com.fcprovin.api.dto.response.BaseResponse;
 import com.fcprovin.api.dto.response.SnsResponse;
+import com.fcprovin.api.dto.search.SnsSearch;
 import com.fcprovin.api.service.SnsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-import static com.fcprovin.api.dto.response.SnsResponse.*;
+import static com.fcprovin.api.dto.response.SnsResponse.of;
 import static java.util.stream.Collectors.toList;
 
 @RestController
@@ -26,8 +27,8 @@ public class SnsController {
     }
 
     @GetMapping
-    public BaseResponse<List<SnsResponse>> readAll() {
-        return new BaseResponse<>(snsService.readAll().stream()
+    public BaseResponse<List<SnsResponse>> readAll(SnsSearch search) {
+        return new BaseResponse<>(snsService.readSearch(search).stream()
                 .map(SnsResponse::of)
                 .collect(toList()));
     }

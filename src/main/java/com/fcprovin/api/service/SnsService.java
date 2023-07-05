@@ -1,6 +1,7 @@
 package com.fcprovin.api.service;
 
 import com.fcprovin.api.dto.request.create.SnsCreateRequest;
+import com.fcprovin.api.dto.search.SnsSearch;
 import com.fcprovin.api.entity.Sns;
 import com.fcprovin.api.repository.SnsRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,11 @@ public class SnsService {
     @Transactional(readOnly = true)
     public List<Sns> readAll() {
         return snsRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
+    public List<Sns> readSearch(SnsSearch search) {
+        return snsRepository.findQueryBySearch(search);
     }
 
     @Transactional(readOnly = true)
