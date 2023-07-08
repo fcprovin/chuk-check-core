@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fcprovin.api.dto.request.create.SnsCreateRequest;
 import com.fcprovin.api.dto.response.BaseResponse;
 import com.fcprovin.api.dto.response.SnsResponse;
+import com.fcprovin.api.dto.search.SnsSearch;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
@@ -29,8 +30,7 @@ import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuild
 import static org.springframework.restdocs.payload.JsonFieldType.NUMBER;
 import static org.springframework.restdocs.payload.JsonFieldType.STRING;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
-import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
-import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
+import static org.springframework.restdocs.request.RequestDocumentation.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -96,7 +96,7 @@ class SnsControllerTest {
     void readAll() throws Exception {
         //given
         given(snsController
-                .readAll())
+                .readAll(any(SnsSearch.class)))
                 .willReturn(new BaseResponse<>(List.of(SnsResponse.builder()
                         .id(1L)
                         .uuid("4d2d0eff-b7a7-4be5-adb3-b02427598362")
@@ -106,13 +106,19 @@ class SnsControllerTest {
                         .build())));
 
         //when
-        ResultActions result = mockMvc.perform(get("/api/v1/sns"));
+        ResultActions result = mockMvc.perform(get("/api/v1/sns")
+                .queryParam("uuid", "4d2d0eff-b7a7-4be5-adb3-b02427598362")
+                .queryParam("type", "GOOGLE"));
 
         //then
         result.andExpect(status().isOk())
                 .andDo(document("sns-readAll",
                         getDocumentRequest(),
                         getDocumentResponse(),
+                        requestParameters(
+                                parameterWithName("uuid").description("SNS 고유 아이디").optional(),
+                                parameterWithName("type").description("SNS 플랫폼 - 'snsType' 공통 Code 참조").optional()
+                        ),
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
