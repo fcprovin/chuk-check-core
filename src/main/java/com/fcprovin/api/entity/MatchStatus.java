@@ -10,6 +10,7 @@ public enum MatchStatus implements EnumType {
     CREATE("생성"),
     VOTE("투표"),
     ATTEND("출석"),
+    MATCH("진행"),
     FINISH("완료");
 
     private final String description;
