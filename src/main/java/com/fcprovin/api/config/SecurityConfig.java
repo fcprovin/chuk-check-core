@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .httpBasic().disable()
                 .sessionManagement().sessionCreationPolicy(STATELESS).and()
                 .authorizeRequests()
-                    .antMatchers(GET, "/", "/docs/**", "/exception/**").permitAll()
+                    .antMatchers(GET, "/", "/docs/**", "/exception/**", "/api/**/sns").permitAll()
                     .antMatchers(POST, "/api/**/auth/access-token", "/api/**/sns", "/api/**/member").permitAll()
                     .anyRequest().hasAnyRole("USER", "ADMIN")
                     .and()
