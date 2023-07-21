@@ -9,8 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
+import static com.fcprovin.api.entity.MatchStatus.ATTEND;
 import static com.fcprovin.api.entity.MatchStatus.VOTE;
 import static java.time.LocalDateTime.now;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -147,5 +150,109 @@ class MatchRepositoryTest {
         //then
         assertThat(findMatch.getTeam().getName()).isEqualTo(team.getName());
         assertThat(findMatch.getStadium().getName()).isEqualTo(stadium.getName());
+    }
+
+    @Test
+    void findQueryVoteStartByStatus() {
+        //given
+        MatchDate matchDate = new MatchDate(now(), now());
+        VoteDate voteDate = new VoteDate(LocalDateTime.of(LocalDate.of(2022, 7, 1), LocalTime.now()), now());
+        AttendDate attendDate = new AttendDate(now());
+
+        Region region = new Region("경기도", "성남시");
+        Team team = new Team("프로빈", region);
+        Stadium stadium = new Stadium("황송", "성남시 중원구", 32.12, 128.12);
+
+        em.persist(region);
+        em.persist(team);
+        em.persist(stadium);
+
+        Match match = new Match("블랑", true, "공지", matchDate, voteDate, attendDate, team, stadium);
+        em.persist(match);
+
+        //when
+        List<Match> matches = matchRepository.findQueryVoteStartByStatus(MatchStatus.CREATE);
+
+        //then
+        assertThat(matches).containsExactly(match);
+    }
+
+    @Test
+    void findQueryVoteEndByStatus() {
+        //given
+        MatchDate matchDate = new MatchDate(now(), now());
+        VoteDate voteDate = new VoteDate(LocalDateTime.of(LocalDate.of(2022, 6, 20), LocalTime.now()),
+                LocalDateTime.of(LocalDate.of(2022, 7, 1), LocalTime.now()));
+        AttendDate attendDate = new AttendDate(now());
+
+        Region region = new Region("경기도", "성남시");
+        Team team = new Team("프로빈", region);
+        Stadium stadium = new Stadium("황송", "성남시 중원구", 32.12, 128.12);
+
+        em.persist(region);
+        em.persist(team);
+        em.persist(stadium);
+
+        Match match = new Match("블랑", true, "공지", matchDate, voteDate, attendDate, team, stadium);
+        match.setStatus(VOTE);
+        em.persist(match);
+
+        //when
+        List<Match> matches = matchRepository.findQueryVoteEndByStatus(VOTE);
+
+        //then
+        assertThat(matches).containsExactly(match);
+    }
+
+    @Test
+    void findQueryMatchStartByStatus() {
+    	//given
+        MatchDate matchDate = new MatchDate(LocalDateTime.of(LocalDate.of(2022, 7, 1), LocalTime.now()), now());
+        VoteDate voteDate = new VoteDate(now(), now());
+        AttendDate attendDate = new AttendDate(now());
+
+        Region region = new Region("경기도", "성남시");
+        Team team = new Team("프로빈", region);
+        Stadium stadium = new Stadium("황송", "성남시 중원구", 32.12, 128.12);
+
+        em.persist(region);
+        em.persist(team);
+        em.persist(stadium);
+
+        Match match = new Match("블랑", true, "공지", matchDate, voteDate, attendDate, team, stadium);
+        match.setStatus(ATTEND);
+        em.persist(match);
+
+    	//when
+        List<Match> matches = matchRepository.findQueryMatchStartByStatus(MatchStatus.ATTEND);
+
+        //then
+        assertThat(matches).containsExactly(match);
+    }
+
+    @Test
+    void findQueryMatchEndByStatus() {
+    	//given
+        MatchDate matchDate = new MatchDate(now(), LocalDateTime.of(LocalDate.of(2022, 7, 1), LocalTime.now()));
+        VoteDate voteDate = new VoteDate(now(), now());
+        AttendDate attendDate = new AttendDate(now());
+
+        Region region = new Region("경기도", "성남시");
+        Team team = new Team("프로빈", region);
+        Stadium stadium = new Stadium("황송", "성남시 중원구", 32.12, 128.12);
+
+        em.persist(region);
+        em.persist(team);
+        em.persist(stadium);
+
+        Match match = new Match("블랑", true, "공지", matchDate, voteDate, attendDate, team, stadium);
+        match.setStatus(ATTEND);
+        em.persist(match);
+
+    	//when
+        List<Match> matches = matchRepository.findQueryMatchEndByStatus(MatchStatus.ATTEND);
+
+        //then
+        assertThat(matches).containsExactly(match);
     }
 }
