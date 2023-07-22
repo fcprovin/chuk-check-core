@@ -66,6 +66,26 @@ public class MatchService {
         return matchRepository.findQueryById(id).orElseThrow(() -> new IllegalArgumentException("Not exist match"));
     }
 
+    @Transactional(readOnly = true)
+    public List<Match> findForVoteCreate() {
+        return matchRepository.findQueryVoteStartByStatus(MatchStatus.CREATE);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Match> findForAttendCreate() {
+        return matchRepository.findQueryVoteEndByStatus(MatchStatus.VOTE);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Match> findForMatchStart() {
+        return matchRepository.findQueryMatchEndByStatus(MatchStatus.ATTEND);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Match> findForMatchEnd() {
+        return matchRepository.findQueryMatchEndByStatus(MatchStatus.MATCH);
+    }
+
     private void stadium(MatchUpdateRequest request, Match match) {
         if (nonNull(request.getStadiumId())) match.setStadium(findStadium(request.getStadiumId()));
     }
