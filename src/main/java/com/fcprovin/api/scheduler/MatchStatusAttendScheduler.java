@@ -11,6 +11,7 @@ import com.fcprovin.api.service.PlayerService;
 import com.fcprovin.api.service.VoteService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +23,7 @@ import static com.fcprovin.api.entity.VoteStatus.TRUE;
 
 @Slf4j
 @Component
+@Profile("!local")
 @RequiredArgsConstructor
 public class MatchStatusAttendScheduler {
 
@@ -41,8 +43,8 @@ public class MatchStatusAttendScheduler {
 
     private Match attendStatus(Match match) {
         return matchService.update(match.getId(), MatchUpdateRequest.builder()
-                        .status(MatchStatus.ATTEND)
-                        .build());
+                .status(MatchStatus.ATTEND)
+                .build());
     }
 
     private void attendCreate(AttendCreateRequest request) {
