@@ -89,8 +89,8 @@ class MemberRepositoryTest {
 
         //when
         List<Member> result = memberRepository.findQueryBySearch(MemberSearch.builder()
-                .name("park")
-                .build());
+                        .snsId(sns1.getId())
+                        .build());
 
         Member findMember = result.get(0);
 

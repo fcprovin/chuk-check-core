@@ -122,6 +122,7 @@ class MemberControllerTest {
 
         //when
         ResultActions result = mockMvc.perform(get("/api/v1/member")
+                .queryParam("snsId", "1")
                 .queryParam("name", "홍길동")
                 .queryParam("email", "hong@gmail.com"));
 
@@ -131,6 +132,7 @@ class MemberControllerTest {
                         getDocumentRequest(),
                         getDocumentResponse(),
                         requestParameters(
+                                parameterWithName("snsId").description("SNS ID"),
                                 parameterWithName("name").description("회원 이름"),
                                 parameterWithName("email").description("회원 이메일")
                         ),

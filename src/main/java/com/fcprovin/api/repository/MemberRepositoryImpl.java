@@ -11,6 +11,7 @@ import java.util.Optional;
 
 import static com.fcprovin.api.entity.QMember.member;
 import static com.fcprovin.api.entity.QSns.sns;
+import static java.util.Objects.nonNull;
 import static java.util.Optional.ofNullable;
 import static org.springframework.util.StringUtils.hasText;
 
@@ -24,7 +25,7 @@ public class MemberRepositoryImpl implements MemberQueryRepository {
         return queryFactory
                 .selectFrom(member)
                 .join(member.sns, sns).fetchJoin()
-                .where(nameEqual(search.getName()), emailEqual(search.getEmail()))
+                .where(nameEqual(search.getName()), emailEqual(search.getEmail()), snsIdEqual(search.getSnsId()))
                 .fetch();
     }
 
@@ -52,5 +53,9 @@ public class MemberRepositoryImpl implements MemberQueryRepository {
 
     private BooleanExpression emailEqual(String email) {
         return hasText(email) ? member.email.eq(email) : null;
+    }
+
+    private BooleanExpression snsIdEqual(Long snsId) {
+        return nonNull(snsId) ? sns.id.eq(snsId) : null;
     }
 }
