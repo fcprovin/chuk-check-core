@@ -7,6 +7,7 @@ import lombok.Data;
 @Builder
 public class MemberSearch {
 
+    private Long snsId;
     private String name;
     private String email;
 }
