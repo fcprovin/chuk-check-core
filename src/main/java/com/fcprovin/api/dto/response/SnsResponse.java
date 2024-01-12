@@ -15,7 +15,7 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 @JsonInclude(NON_NULL)
 public class SnsResponse {
 
-    private final Long id;
+    private final Long snsId;
     private final String uuid;
     private final SnsType type;
     private final LocalDateTime createdDate;
@@ -23,7 +23,7 @@ public class SnsResponse {
 
     public static SnsResponse of(Sns sns) {
         return SnsResponse.builder()
-                .id(sns.getId())
+                .snsId(sns.getId())
                 .uuid(sns.getUuid())
                 .type(sns.getType())
                 .createdDate(sns.getCreatedDate())

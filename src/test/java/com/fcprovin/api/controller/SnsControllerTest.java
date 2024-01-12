@@ -55,7 +55,7 @@ class SnsControllerTest {
         given(snsController
                 .create(any(SnsCreateRequest.class)))
                 .willReturn(new BaseResponse<>(SnsResponse.builder()
-                        .id(1L)
+                        .snsId(1L)
                         .uuid("4d2d0eff-b7a7-4be5-adb3-b02427598362")
                         .type(GOOGLE)
                         .createdDate(now())
@@ -98,7 +98,7 @@ class SnsControllerTest {
         given(snsController
                 .readAll(any(SnsSearch.class)))
                 .willReturn(new BaseResponse<>(List.of(SnsResponse.builder()
-                        .id(1L)
+                        .snsId(1L)
                         .uuid("4d2d0eff-b7a7-4be5-adb3-b02427598362")
                         .type(GOOGLE)
                         .createdDate(now())
@@ -138,7 +138,7 @@ class SnsControllerTest {
         given(snsController
                 .read(any(Long.class)))
                 .willReturn(new BaseResponse<>(SnsResponse.builder()
-                        .id(1L)
+                        .snsId(1L)
                         .uuid("4d2d0eff-b7a7-4be5-adb3-b02427598362")
                         .type(GOOGLE)
                         .createdDate(now())
