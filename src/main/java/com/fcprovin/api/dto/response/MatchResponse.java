@@ -14,7 +14,7 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 @JsonInclude(NON_NULL)
 public class MatchResponse {
 
-    private final Long id;
+    private final Long matchId;
     private final String otherTeamName;
     private final Boolean home;
     private final String notice;
@@ -30,7 +30,7 @@ public class MatchResponse {
 
     public static MatchResponse of(Match match) {
         return MatchResponse.builder()
-                .id(match.getId())
+                .matchId(match.getId())
                 .otherTeamName(match.getOtherTeamName())
                 .home(match.isHome())
                 .notice(match.getNotice())

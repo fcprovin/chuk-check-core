@@ -52,7 +52,7 @@ class RegionControllerTest {
         given(regionController
                 .create(any(RegionCreateRequest.class)))
                 .willReturn(new BaseResponse<>(RegionResponse.builder()
-                        .id(1L)
+                        .regionId(1L)
                         .country("경기도")
                         .city("성남시")
                         .createdDate(now())
@@ -79,7 +79,7 @@ class RegionControllerTest {
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.id").type(NUMBER).description("지역 ID"),
+                                fieldWithPath("result.regionId").type(NUMBER).description("지역 ID"),
                                 fieldWithPath("result.country").type(STRING).description("지역 시/도"),
                                 fieldWithPath("result.city").type(STRING).description("지역 도시"),
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),
@@ -95,7 +95,7 @@ class RegionControllerTest {
         given(regionController
                 .readAll())
                 .willReturn(new BaseResponse<>(List.of(RegionResponse.builder()
-                        .id(1L)
+                        .regionId(1L)
                         .country("경기도")
                         .city("성남시")
                         .createdDate(now())
@@ -113,7 +113,7 @@ class RegionControllerTest {
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.[].id").type(NUMBER).description("지역 ID"),
+                                fieldWithPath("result.[].regionId").type(NUMBER).description("지역 ID"),
                                 fieldWithPath("result.[].country").type(STRING).description("지역 시/도"),
                                 fieldWithPath("result.[].city").type(STRING).description("지역 도시"),
                                 fieldWithPath("result.[].createdDate").type(STRING).description("생성일자"),

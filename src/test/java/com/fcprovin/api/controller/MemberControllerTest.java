@@ -56,7 +56,7 @@ class MemberControllerTest {
         given(memberController
                 .create(any(MemberCreateRequest.class)))
                 .willReturn(new BaseResponse<>(MemberResponse.builder()
-                        .id(1L)
+                        .memberId(1L)
                         .name("홍길동")
                         .email("hong@gmail.com")
                         .birthDate(LocalDate.of(1997, 3, 7))
@@ -88,7 +88,7 @@ class MemberControllerTest {
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.id").type(NUMBER).description("회원 ID"),
+                                fieldWithPath("result.memberId").type(NUMBER).description("회원 ID"),
                                 fieldWithPath("result.name").type(STRING).description("회원 이름"),
                                 fieldWithPath("result.email").type(STRING).description("회원 이메일"),
                                 fieldWithPath("result.birthDate").type(STRING).description("회원 생년월일"),
@@ -105,14 +105,14 @@ class MemberControllerTest {
         given(memberController
                 .readAll(any(MemberSearch.class)))
                 .willReturn(new BaseResponse<>(List.of(MemberResponse.builder()
-                        .id(1L)
+                        .memberId(1L)
                         .name("홍길동")
                         .email("hong@gmail.com")
                         .birthDate(LocalDate.of(1997, 3, 7))
                         .createdDate(now())
                         .updatedDate(now())
                         .sns(SnsResponse.builder()
-                                .id(1L)
+                                .snsId(1L)
                                 .uuid("4d2d0eff-b7a7-4be5-adb3-b02427598362")
                                 .type(GOOGLE)
                                 .createdDate(now())
@@ -139,14 +139,14 @@ class MemberControllerTest {
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.[].id").type(NUMBER).description("ID"),
+                                fieldWithPath("result.[].memberId").type(NUMBER).description("ID"),
                                 fieldWithPath("result.[].name").type(STRING).description("회원 이름"),
                                 fieldWithPath("result.[].email").type(STRING).description("회원 이메일"),
                                 fieldWithPath("result.[].birthDate").type(STRING).description("회원 생년월일"),
                                 fieldWithPath("result.[].createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.[].updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.[].sns").type(OBJECT).description("SNS"),
-                                fieldWithPath("result.[].sns.id").type(NUMBER).description("SNS ID"),
+                                fieldWithPath("result.[].sns.snsId").type(NUMBER).description("SNS ID"),
                                 fieldWithPath("result.[].sns.uuid").type(STRING).description("SNS 고유 아이디"),
                                 fieldWithPath("result.[].sns.type").type(STRING).description("SNS 플랫폼 - 'snsType' 공통 Code 참조"),
                                 fieldWithPath("result.[].sns.createdDate").type(STRING).description("생성일자"),
@@ -162,14 +162,14 @@ class MemberControllerTest {
         given(memberController
                 .read(any(Long.class)))
                 .willReturn(new BaseResponse<>(MemberResponse.builder()
-                        .id(1L)
+                        .memberId(1L)
                         .name("홍길동")
                         .email("hong@gmail.com")
                         .birthDate(LocalDate.of(1997, 3, 7))
                         .createdDate(now())
                         .updatedDate(now())
                         .sns(SnsResponse.builder()
-                                .id(1L)
+                                .snsId(1L)
                                 .uuid("4d2d0eff-b7a7-4be5-adb3-b02427598362")
                                 .type(GOOGLE)
                                 .createdDate(now())
@@ -191,14 +191,14 @@ class MemberControllerTest {
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.id").type(NUMBER).description("ID"),
+                                fieldWithPath("result.memberId").type(NUMBER).description("ID"),
                                 fieldWithPath("result.name").type(STRING).description("회원 이름"),
                                 fieldWithPath("result.email").type(STRING).description("회원 이메일"),
                                 fieldWithPath("result.birthDate").type(STRING).description("회원 생년월일"),
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.sns").type(OBJECT).description("SNS"),
-                                fieldWithPath("result.sns.id").type(NUMBER).description("SNS ID"),
+                                fieldWithPath("result.sns.snsId").type(NUMBER).description("SNS ID"),
                                 fieldWithPath("result.sns.uuid").type(STRING).description("SNS 고유 아이디"),
                                 fieldWithPath("result.sns.type").type(STRING).description("SNS 플랫폼 - 'snsType' 공통 Code 참조"),
                                 fieldWithPath("result.sns.createdDate").type(STRING).description("생성일자"),

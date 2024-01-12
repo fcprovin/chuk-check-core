@@ -65,7 +65,7 @@ class AttendControllerTest {
         given(attendController
                 .create(any(AttendCreateRequest.class)))
                 .willReturn(new BaseResponse<>(AttendResponse.builder()
-                        .id(1L)
+                        .attendId(1L)
                         .status(ATTEND)
                         .createdDate(now())
                         .updatedDate(now())
@@ -93,7 +93,7 @@ class AttendControllerTest {
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.id").type(NUMBER).description("출석 ID"),
+                                fieldWithPath("result.attendId").type(NUMBER).description("출석 ID"),
                                 fieldWithPath("result.status").type(STRING).description("출석 상태 - 'attendStatus' 공통 Code 참조"),
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.updatedDate").type(STRING).description("수정일자")
@@ -108,7 +108,7 @@ class AttendControllerTest {
         given(attendController
                 .update(eq(1L), any(AttendUpdateRequest.class)))
                 .willReturn(new BaseResponse<>(AttendResponse.builder()
-                        .id(1L)
+                        .attendId(1L)
                         .status(LATE)
                         .createdDate(now())
                         .updatedDate(now())
@@ -130,7 +130,7 @@ class AttendControllerTest {
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.id").type(NUMBER).description("출석 ID"),
+                                fieldWithPath("result.attendId").type(NUMBER).description("출석 ID"),
                                 fieldWithPath("result.status").type(STRING).description("출석 상태 - 'attendStatus' 공통 Code 참조"),
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.updatedDate").type(STRING).description("수정일자")
@@ -145,12 +145,12 @@ class AttendControllerTest {
         given(attendController
                 .readAll(any(AttendSearch.class)))
                 .willReturn(new BaseResponse<>(List.of(AttendResponse.builder()
-                        .id(1L)
+                        .attendId(1L)
                         .status(ATTEND)
                         .createdDate(now())
                         .updatedDate(now())
                         .player(PlayerResponse.builder()
-                            .id(1L)
+                            .playerId(1L)
                             .uniformNumber(6)
                             .position(MF)
                             .status(APPROVE)
@@ -158,7 +158,7 @@ class AttendControllerTest {
                             .createdDate(now())
                             .updatedDate(now())
                             .member(MemberResponse.builder()
-                                    .id(1L)
+                                    .memberId(1L)
                                     .name("홍길동")
                                     .email("hong@gmail.com")
                                     .birthDate(LocalDate.of(1997, 3, 7))
@@ -167,7 +167,7 @@ class AttendControllerTest {
                                     .build())
                             .build())
                         .match(MatchResponse.builder()
-                            .id(1L)
+                            .matchId(1L)
                             .otherTeamName("징기스칸")
                             .home(FALSE)
                             .notice("02월 25일 10시 12시 황송")
@@ -194,12 +194,12 @@ class AttendControllerTest {
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.[].id").type(NUMBER).description("출석 ID"),
+                                fieldWithPath("result.[].attendId").type(NUMBER).description("출석 ID"),
                                 fieldWithPath("result.[].status").type(STRING).description("출석 상태 - 'attendStatus' 공통 Code 참조"),
                                 fieldWithPath("result.[].createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.[].updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.[].player").type(OBJECT).description("플레이어"),
-                                fieldWithPath("result.[].player.id").type(NUMBER).description("플레이어 ID"),
+                                fieldWithPath("result.[].player.playerId").type(NUMBER).description("플레이어 ID"),
                                 fieldWithPath("result.[].player.uniformNumber").type(NUMBER).description("플레이어 등번호"),
                                 fieldWithPath("result.[].player.position").type(STRING).description("플레이어 포지션 - 'position' 공통 Code 참조"),
                                 fieldWithPath("result.[].player.status").type(STRING).description("플레이어 상태 - 'baseStatus' 공통 Code 참조"),
@@ -207,14 +207,14 @@ class AttendControllerTest {
                                 fieldWithPath("result.[].player.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.[].player.updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.[].player.member").type(OBJECT).description("회원"),
-                                fieldWithPath("result.[].player.member.id").type(NUMBER).description("회원 ID"),
+                                fieldWithPath("result.[].player.member.memberId").type(NUMBER).description("회원 ID"),
                                 fieldWithPath("result.[].player.member.name").type(STRING).description("회원 이름"),
                                 fieldWithPath("result.[].player.member.email").type(STRING).description("회원 이메일"),
                                 fieldWithPath("result.[].player.member.birthDate").type(STRING).description("회원 생년월일"),
                                 fieldWithPath("result.[].player.member.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.[].player.member.updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.[].match").type(OBJECT).description("매치"),
-                                fieldWithPath("result.[].match.id").type(NUMBER).description("매치 ID"),
+                                fieldWithPath("result.[].match.matchId").type(NUMBER).description("매치 ID"),
                                 fieldWithPath("result.[].match.otherTeamName").type(STRING).description("매치 상대팀 명"),
                                 fieldWithPath("result.[].match.home").type(BOOLEAN).description("매치 홈구장 여부"),
                                 fieldWithPath("result.[].match.notice").type(STRING).description("매치 공지"),
@@ -240,12 +240,12 @@ class AttendControllerTest {
         given(attendController
                 .read(eq(1L)))
                 .willReturn(new BaseResponse<>(AttendResponse.builder()
-                        .id(1L)
+                        .attendId(1L)
                         .status(ATTEND)
                         .createdDate(now())
                         .updatedDate(now())
                         .player(PlayerResponse.builder()
-                            .id(1L)
+                            .playerId(1L)
                             .uniformNumber(6)
                             .position(MF)
                             .status(APPROVE)
@@ -253,7 +253,7 @@ class AttendControllerTest {
                             .createdDate(now())
                             .updatedDate(now())
                             .member(MemberResponse.builder()
-                                    .id(1L)
+                                    .memberId(1L)
                                     .name("홍길동")
                                     .email("hong@gmail.com")
                                     .birthDate(LocalDate.of(1997, 3, 7))
@@ -262,7 +262,7 @@ class AttendControllerTest {
                                     .build())
                             .build())
                         .match(MatchResponse.builder()
-                            .id(1L)
+                            .matchId(1L)
                             .otherTeamName("징기스칸")
                             .home(FALSE)
                             .notice("02월 25일 10시 12시 황송")
@@ -289,12 +289,12 @@ class AttendControllerTest {
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.id").type(NUMBER).description("출석 ID"),
+                                fieldWithPath("result.attendId").type(NUMBER).description("출석 ID"),
                                 fieldWithPath("result.status").type(STRING).description("출석 상태 - 'attendStatus' 공통 Code 참조"),
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.player").type(OBJECT).description("플레이어"),
-                                fieldWithPath("result.player.id").type(NUMBER).description("플레이어 ID"),
+                                fieldWithPath("result.player.playerId").type(NUMBER).description("플레이어 ID"),
                                 fieldWithPath("result.player.uniformNumber").type(NUMBER).description("플레이어 등번호"),
                                 fieldWithPath("result.player.position").type(STRING).description("플레이어 포지션 - 'position' 공통 Code 참조"),
                                 fieldWithPath("result.player.status").type(STRING).description("플레이어 상태 - 'baseStatus' 공통 Code 참조"),
@@ -302,14 +302,14 @@ class AttendControllerTest {
                                 fieldWithPath("result.player.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.player.updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.player.member").type(OBJECT).description("회원"),
-                                fieldWithPath("result.player.member.id").type(NUMBER).description("회원 ID"),
+                                fieldWithPath("result.player.member.memberId").type(NUMBER).description("회원 ID"),
                                 fieldWithPath("result.player.member.name").type(STRING).description("회원 이름"),
                                 fieldWithPath("result.player.member.email").type(STRING).description("회원 이메일"),
                                 fieldWithPath("result.player.member.birthDate").type(STRING).description("회원 생년월일"),
                                 fieldWithPath("result.player.member.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.player.member.updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.match").type(OBJECT).description("매치"),
-                                fieldWithPath("result.match.id").type(NUMBER).description("매치 ID"),
+                                fieldWithPath("result.match.matchId").type(NUMBER).description("매치 ID"),
                                 fieldWithPath("result.match.otherTeamName").type(STRING).description("매치 상대팀 명"),
                                 fieldWithPath("result.match.home").type(BOOLEAN).description("매치 홈구장 여부"),
                                 fieldWithPath("result.match.notice").type(STRING).description("매치 공지"),

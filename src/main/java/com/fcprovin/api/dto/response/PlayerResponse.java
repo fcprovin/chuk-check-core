@@ -17,7 +17,7 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 @JsonInclude(NON_NULL)
 public class PlayerResponse {
 
-    private final Long id;
+    private final Long playerId;
     private final Integer uniformNumber;
     private final Position position;
     private final BaseStatus status;
@@ -30,7 +30,7 @@ public class PlayerResponse {
 
     public static PlayerResponse of(Player player) {
         return PlayerResponse.builder()
-                .id(player.getId())
+                .playerId(player.getId())
                 .uniformNumber(player.getUniformNumber())
                 .position(player.getPosition())
                 .status(player.getStatus())

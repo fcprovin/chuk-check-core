@@ -15,7 +15,7 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 @JsonInclude(NON_NULL)
 public class MemberResponse {
 
-    private final Long id;
+    private final Long memberId;
     private final String name;
     private final String email;
     private final LocalDate birthDate;
@@ -26,7 +26,7 @@ public class MemberResponse {
 
     public static MemberResponse of(Member member) {
         return MemberResponse.builder()
-                .id(member.getId())
+                .memberId(member.getId())
                 .name(member.getName())
                 .email(member.getEmail())
                 .birthDate(member.getBirthDate())

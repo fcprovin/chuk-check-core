@@ -15,7 +15,7 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 @JsonInclude(NON_NULL)
 public class VoteResponse {
 
-    private final Long id;
+    private final Long voteId;
     private final VoteStatus status;
     private final LocalDateTime createdDate;
     private final LocalDateTime updatedDate;
@@ -25,7 +25,7 @@ public class VoteResponse {
 
     public static VoteResponse of(Vote vote) {
         return VoteResponse.builder()
-                .id(vote.getId())
+                .voteId(vote.getId())
                 .status(vote.getStatus())
                 .createdDate(vote.getCreatedDate())
                 .updatedDate(vote.getUpdatedDate())

@@ -55,7 +55,7 @@ class SnsControllerTest {
         given(snsController
                 .create(any(SnsCreateRequest.class)))
                 .willReturn(new BaseResponse<>(SnsResponse.builder()
-                        .id(1L)
+                        .snsId(1L)
                         .uuid("4d2d0eff-b7a7-4be5-adb3-b02427598362")
                         .type(GOOGLE)
                         .createdDate(now())
@@ -82,7 +82,7 @@ class SnsControllerTest {
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.id").type(NUMBER).description("ID"),
+                                fieldWithPath("result.snsId").type(NUMBER).description("ID"),
                                 fieldWithPath("result.uuid").type(STRING).description("SNS 고유 아이디"),
                                 fieldWithPath("result.type").type(STRING).description("SNS 플랫폼 - 'snsType' 공통 Code 참조"),
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),
@@ -98,7 +98,7 @@ class SnsControllerTest {
         given(snsController
                 .readAll(any(SnsSearch.class)))
                 .willReturn(new BaseResponse<>(List.of(SnsResponse.builder()
-                        .id(1L)
+                        .snsId(1L)
                         .uuid("4d2d0eff-b7a7-4be5-adb3-b02427598362")
                         .type(GOOGLE)
                         .createdDate(now())
@@ -122,7 +122,7 @@ class SnsControllerTest {
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.[].id").type(NUMBER).description("ID"),
+                                fieldWithPath("result.[].snsId").type(NUMBER).description("ID"),
                                 fieldWithPath("result.[].uuid").type(STRING).description("SNS 고유 아이디"),
                                 fieldWithPath("result.[].type").type(STRING).description("SNS 플랫폼 - 'snsType' 공통 Code 참조"),
                                 fieldWithPath("result.[].createdDate").type(STRING).description("생성일자"),
@@ -138,7 +138,7 @@ class SnsControllerTest {
         given(snsController
                 .read(any(Long.class)))
                 .willReturn(new BaseResponse<>(SnsResponse.builder()
-                        .id(1L)
+                        .snsId(1L)
                         .uuid("4d2d0eff-b7a7-4be5-adb3-b02427598362")
                         .type(GOOGLE)
                         .createdDate(now())
@@ -159,7 +159,7 @@ class SnsControllerTest {
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.id").type(NUMBER).description("ID"),
+                                fieldWithPath("result.snsId").type(NUMBER).description("ID"),
                                 fieldWithPath("result.uuid").type(STRING).description("SNS 고유 아이디"),
                                 fieldWithPath("result.type").type(STRING).description("SNS 플랫폼 - 'snsType' 공통 Code 참조"),
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),

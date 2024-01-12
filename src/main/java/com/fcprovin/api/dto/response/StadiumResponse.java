@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Builder
 public class StadiumResponse {
 
-    private final Long id;
+    private final Long stadiumId;
     private final String name;
     private final String address;
     private final double latitude;
@@ -20,7 +20,7 @@ public class StadiumResponse {
 
     public static StadiumResponse of(Stadium stadium) {
         return StadiumResponse.builder()
-                .id(stadium.getId())
+                .stadiumId(stadium.getId())
                 .name(stadium.getName())
                 .address(stadium.getAddress())
                 .latitude(stadium.getLatitude())
