@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Builder
 public class RegionResponse {
 
-    private final Long id;
+    private final Long regionId;
     private final String country;
     private final String city;
     private final LocalDateTime createdDate;
@@ -18,7 +18,7 @@ public class RegionResponse {
 
     public static RegionResponse of(Region region) {
         return RegionResponse.builder()
-                .id(region.getId())
+                .regionId(region.getId())
                 .country(region.getCountry())
                 .city(region.getCity())
                 .createdDate(region.getCreatedDate())

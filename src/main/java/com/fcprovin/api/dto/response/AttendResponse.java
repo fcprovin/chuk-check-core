@@ -15,7 +15,7 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 @JsonInclude(NON_NULL)
 public class AttendResponse {
 
-    private final Long id;
+    private final Long attendId;
     private final AttendStatus status;
     private final LocalDateTime createdDate;
     private final LocalDateTime updatedDate;
@@ -25,7 +25,7 @@ public class AttendResponse {
 
     public static AttendResponse of(Attend attend) {
         return AttendResponse.builder()
-                .id(attend.getId())
+                .attendId(attend.getId())
                 .status(attend.getStatus())
                 .createdDate(attend.getCreatedDate())
                 .updatedDate(attend.getUpdatedDate())

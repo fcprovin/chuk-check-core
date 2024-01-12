@@ -16,7 +16,7 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
 public class TeamResponse {
 
-    private final Long id;
+    private final Long teamId;
     private final String name;
     private final BaseStatus status;
     private final LocalDateTime createdDate;
@@ -26,7 +26,7 @@ public class TeamResponse {
 
     public static TeamResponse of(Team team) {
         return TeamResponse.builder()
-                .id(team.getId())
+                .teamId(team.getId())
                 .name(team.getName())
                 .status(team.getStatus())
                 .createdDate(team.getCreatedDate())

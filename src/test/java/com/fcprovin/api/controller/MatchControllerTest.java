@@ -65,7 +65,7 @@ class MatchControllerTest {
         given(matchController
                 .create(any(MatchCreateRequest.class)))
                 .willReturn(new BaseResponse<>(MatchResponse.builder()
-                        .id(1L)
+                        .matchId(1L)
                         .otherTeamName("블랑")
                         .home(TRUE)
                         .notice("02월 25일 12시 14시 황송")
@@ -113,7 +113,7 @@ class MatchControllerTest {
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.id").type(NUMBER).description("매치 ID"),
+                                fieldWithPath("result.matchId").type(NUMBER).description("매치 ID"),
                                 fieldWithPath("result.otherTeamName").type(STRING).description("매치 상대팀 명"),
                                 fieldWithPath("result.home").type(BOOLEAN).description("매치 홈구장 여부"),
                                 fieldWithPath("result.notice").type(STRING).description("매치 공지"),
@@ -139,7 +139,7 @@ class MatchControllerTest {
         given(matchController
                 .update(eq(1L), any(MatchUpdateRequest.class)))
                 .willReturn(new BaseResponse<>(MatchResponse.builder()
-                        .id(1L)
+                        .matchId(1L)
                         .otherTeamName("징기스칸")
                         .home(FALSE)
                         .notice("02월 25일 10시 12시 황송")
@@ -187,7 +187,7 @@ class MatchControllerTest {
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.id").type(NUMBER).description("매치 ID"),
+                                fieldWithPath("result.matchId").type(NUMBER).description("매치 ID"),
                                 fieldWithPath("result.otherTeamName").type(STRING).description("매치 상대팀 명"),
                                 fieldWithPath("result.home").type(BOOLEAN).description("매치 홈구장 여부"),
                                 fieldWithPath("result.notice").type(STRING).description("매치 공지"),
@@ -213,7 +213,7 @@ class MatchControllerTest {
         given(matchController
                 .readAll(any(MatchSearch.class)))
                 .willReturn(new BaseResponse<>(List.of(MatchResponse.builder()
-                        .id(1L)
+                        .matchId(1L)
                         .otherTeamName("징기스칸")
                         .home(FALSE)
                         .notice("02월 25일 10시 12시 황송")
@@ -224,14 +224,14 @@ class MatchControllerTest {
                         .createdDate(now())
                         .updatedDate(now())
                         .team(TeamResponse.builder()
-                                .id(1L)
+                                .teamId(1L)
                                 .name("프로빈")
                                 .status(WAIT)
                                 .createdDate(now())
                                 .updatedDate(now())
                                 .build())
                         .stadium(StadiumResponse.builder()
-                                .id(1L)
+                                .stadiumId(1L)
                                 .name("탄천B")
                                 .address("경기 성남시 중원구 여수동 7-17")
                                 .longitude(127.119444)
@@ -264,7 +264,7 @@ class MatchControllerTest {
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.[].id").type(NUMBER).description("매치 ID"),
+                                fieldWithPath("result.[].matchId").type(NUMBER).description("매치 ID"),
                                 fieldWithPath("result.[].otherTeamName").type(STRING).description("매치 상대팀 명"),
                                 fieldWithPath("result.[].home").type(BOOLEAN).description("매치 홈구장 여부"),
                                 fieldWithPath("result.[].notice").type(STRING).description("매치 공지"),
@@ -280,13 +280,13 @@ class MatchControllerTest {
                                 fieldWithPath("result.[].createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.[].updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.[].team").type(OBJECT).description("팀"),
-                                fieldWithPath("result.[].team.id").type(NUMBER).description("팀 ID"),
+                                fieldWithPath("result.[].team.teamId").type(NUMBER).description("팀 ID"),
                                 fieldWithPath("result.[].team.name").type(STRING).description("팀 이름"),
                                 fieldWithPath("result.[].team.status").type(STRING).description("팀 상태 - 'baseStatus' 공통 Code 참조"),
                                 fieldWithPath("result.[].team.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.[].team.updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.[].stadium").type(OBJECT).description("구장"),
-                                fieldWithPath("result.[].stadium.id").type(NUMBER).description("구장 ID"),
+                                fieldWithPath("result.[].stadium.stadiumId").type(NUMBER).description("구장 ID"),
                                 fieldWithPath("result.[].stadium.name").type(STRING).description("구장 이름"),
                                 fieldWithPath("result.[].stadium.address").type(STRING).description("구장 주소"),
                                 fieldWithPath("result.[].stadium.latitude").type(NUMBER).description("구장 위도"),
@@ -304,7 +304,7 @@ class MatchControllerTest {
         given(matchController
                 .read(eq(1L)))
                 .willReturn(new BaseResponse<>(MatchResponse.builder()
-                        .id(1L)
+                        .matchId(1L)
                         .otherTeamName("징기스칸")
                         .home(FALSE)
                         .notice("02월 25일 10시 12시 황송")
@@ -315,14 +315,14 @@ class MatchControllerTest {
                         .createdDate(now())
                         .updatedDate(now())
                         .team(TeamResponse.builder()
-                                .id(1L)
+                                .teamId(1L)
                                 .name("프로빈")
                                 .status(WAIT)
                                 .createdDate(now())
                                 .updatedDate(now())
                                 .build())
                         .stadium(StadiumResponse.builder()
-                                .id(1L)
+                                .stadiumId(1L)
                                 .name("탄천B")
                                 .address("경기 성남시 중원구 여수동 7-17")
                                 .longitude(127.119444)
@@ -346,7 +346,7 @@ class MatchControllerTest {
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.id").type(NUMBER).description("매치 ID"),
+                                fieldWithPath("result.matchId").type(NUMBER).description("매치 ID"),
                                 fieldWithPath("result.otherTeamName").type(STRING).description("매치 상대팀 명"),
                                 fieldWithPath("result.home").type(BOOLEAN).description("매치 홈구장 여부"),
                                 fieldWithPath("result.notice").type(STRING).description("매치 공지"),
@@ -362,13 +362,13 @@ class MatchControllerTest {
                                 fieldWithPath("result.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.team").type(OBJECT).description("팀"),
-                                fieldWithPath("result.team.id").type(NUMBER).description("팀 ID"),
+                                fieldWithPath("result.team.teamId").type(NUMBER).description("팀 ID"),
                                 fieldWithPath("result.team.name").type(STRING).description("팀 이름"),
                                 fieldWithPath("result.team.status").type(STRING).description("팀 상태 - 'baseStatus' 공통 Code 참조"),
                                 fieldWithPath("result.team.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.team.updatedDate").type(STRING).description("수정일자"),
                                 fieldWithPath("result.stadium").type(OBJECT).description("구장"),
-                                fieldWithPath("result.stadium.id").type(NUMBER).description("구장 ID"),
+                                fieldWithPath("result.stadium.stadiumId").type(NUMBER).description("구장 ID"),
                                 fieldWithPath("result.stadium.name").type(STRING).description("구장 이름"),
                                 fieldWithPath("result.stadium.address").type(STRING).description("구장 주소"),
                                 fieldWithPath("result.stadium.latitude").type(NUMBER).description("구장 위도"),

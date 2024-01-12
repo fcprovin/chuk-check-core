@@ -55,7 +55,7 @@ class StadiumControllerTest {
         given(stadiumController
                 .create(any(StadiumCreateRequest.class)))
                 .willReturn(new BaseResponse<>(StadiumResponse.builder()
-                        .id(1L)
+                        .stadiumId(1L)
                         .name("탄천B")
                         .address("경기 성남시 중원구 여수동 7-17")
                         .longitude(127.119444)
@@ -88,7 +88,7 @@ class StadiumControllerTest {
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.id").type(NUMBER).description("구장 ID"),
+                                fieldWithPath("result.stadiumId").type(NUMBER).description("구장 ID"),
                                 fieldWithPath("result.name").type(STRING).description("구장 이름"),
                                 fieldWithPath("result.address").type(STRING).description("구장 주소"),
                                 fieldWithPath("result.latitude").type(NUMBER).description("구장 위도"),
@@ -106,7 +106,7 @@ class StadiumControllerTest {
         given(stadiumController
                 .readAll())
                 .willReturn(new BaseResponse<>(List.of(StadiumResponse.builder()
-                        .id(1L)
+                        .stadiumId(1L)
                         .name("탄천B")
                         .address("경기 성남시 중원구 여수동 7-17")
                         .longitude(127.119444)
@@ -126,7 +126,7 @@ class StadiumControllerTest {
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.[].id").type(NUMBER).description("구장 ID"),
+                                fieldWithPath("result.[].stadiumId").type(NUMBER).description("구장 ID"),
                                 fieldWithPath("result.[].name").type(STRING).description("구장 이름"),
                                 fieldWithPath("result.[].address").type(STRING).description("구장 주소"),
                                 fieldWithPath("result.[].latitude").type(NUMBER).description("구장 위도"),
@@ -144,7 +144,7 @@ class StadiumControllerTest {
         given(stadiumController
                 .read(eq(1L)))
                 .willReturn(new BaseResponse<>(StadiumResponse.builder()
-                        .id(1L)
+                        .stadiumId(1L)
                         .name("탄천B")
                         .address("경기 성남시 중원구 여수동 7-17")
                         .longitude(127.119444)
@@ -167,7 +167,7 @@ class StadiumControllerTest {
                         responseFields(
                                 fieldWithPath("code").type(NUMBER).description("결과코드"),
                                 fieldWithPath("message").type(STRING).description("결과메세지"),
-                                fieldWithPath("result.id").type(NUMBER).description("구장 ID"),
+                                fieldWithPath("result.stadiumId").type(NUMBER).description("구장 ID"),
                                 fieldWithPath("result.name").type(STRING).description("구장 이름"),
                                 fieldWithPath("result.address").type(STRING).description("구장 주소"),
                                 fieldWithPath("result.latitude").type(NUMBER).description("구장 위도"),
