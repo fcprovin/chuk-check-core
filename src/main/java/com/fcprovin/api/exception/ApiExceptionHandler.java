@@ -15,14 +15,14 @@ public class ApiExceptionHandler {
     @ResponseStatus(UNAUTHORIZED)
     @ExceptionHandler(AuthenticationException.class)
     public BaseResponse<?> authentication(AuthenticationException e) {
-        log.error("Authentication - AuthenticationException : {}", e.getMessage());
+        log.error("Authentication - AuthenticationException", e);
         return new BaseResponse<>(UNAUTHORIZED, e.getMessage());
     }
 
     @ResponseStatus(FORBIDDEN)
     @ExceptionHandler(AccessDeniedException.class)
     public BaseResponse<?> accessDenied(AccessDeniedException e) {
-        log.error("AccessDenied - AccessDeniedException : {}", e.getMessage());
+        log.error("AccessDenied - AccessDeniedException", e);
         return new BaseResponse<>(FORBIDDEN, e.getMessage());
     }
 
