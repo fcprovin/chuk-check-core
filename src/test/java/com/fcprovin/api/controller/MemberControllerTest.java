@@ -2,9 +2,7 @@ package com.fcprovin.api.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fcprovin.api.dto.request.create.MemberCreateRequest;
-import com.fcprovin.api.dto.response.BaseResponse;
-import com.fcprovin.api.dto.response.MemberResponse;
-import com.fcprovin.api.dto.response.SnsResponse;
+import com.fcprovin.api.dto.response.*;
 import com.fcprovin.api.dto.search.MemberSearch;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +19,7 @@ import java.util.List;
 
 import static com.fcprovin.api.docs.ApiDocumentUtils.getDocumentRequest;
 import static com.fcprovin.api.docs.ApiDocumentUtils.getDocumentResponse;
+import static com.fcprovin.api.entity.BaseStatus.WAIT;
 import static com.fcprovin.api.entity.SnsType.GOOGLE;
 import static java.time.LocalDateTime.now;
 import static org.mockito.ArgumentMatchers.any;
@@ -203,6 +202,56 @@ class MemberControllerTest {
                                 fieldWithPath("result.sns.type").type(STRING).description("SNS 플랫폼 - 'snsType' 공통 Code 참조"),
                                 fieldWithPath("result.sns.createdDate").type(STRING).description("생성일자"),
                                 fieldWithPath("result.sns.updatedDate").type(STRING).description("수정일자")
+                        )
+                ));
+    }
+
+    @Test
+    @WithMockUser
+    void readTeams() throws Exception {
+        //given
+        given(memberController
+                .teams(any(Long.class)))
+                 .willReturn(new BaseResponse<>(List.of(TeamResponse.builder()
+                        .teamId(1L)
+                        .name("프로빈")
+                        .status(WAIT)
+                        .createdDate(now())
+                        .updatedDate(now())
+                        .region(RegionResponse.builder()
+                                .regionId(1L)
+                                .country("경기도")
+                                .city("성남시")
+                                .createdDate(now())
+                                .updatedDate(now())
+                                .build())
+                        .build())));
+
+        //when
+        ResultActions result = mockMvc.perform(get("/api/v1/member/{id}/teams", 1L));
+
+        //then
+        result.andExpect(status().isOk())
+                .andDo(document("member-read-team",
+                        getDocumentRequest(),
+                        getDocumentResponse(),
+                        pathParameters(
+                                parameterWithName("id").description("회원 ID")
+                        ),
+                        responseFields(
+                                fieldWithPath("code").type(NUMBER).description("결과코드"),
+                                fieldWithPath("message").type(STRING).description("결과메세지"),
+                                fieldWithPath("result.[].teamId").type(NUMBER).description("팀 ID"),
+                                fieldWithPath("result.[].name").type(STRING).description("팀 이름"),
+                                fieldWithPath("result.[].status").type(STRING).description("팀 상태 - 'baseStatus' 공통 Code 참조"),
+                                fieldWithPath("result.[].createdDate").type(STRING).description("생성일자"),
+                                fieldWithPath("result.[].updatedDate").type(STRING).description("수정일자"),
+                                fieldWithPath("result.[].region").type(OBJECT).description("지역"),
+                                fieldWithPath("result.[].region.regionId").type(NUMBER).description("지역 ID"),
+                                fieldWithPath("result.[].region.country").type(STRING).description("지역 시/도"),
+                                fieldWithPath("result.[].region.city").type(STRING).description("지역 도시"),
+                                fieldWithPath("result.[].region.createdDate").type(STRING).description("생성일자"),
+                                fieldWithPath("result.[].region.updatedDate").type(STRING).description("수정일자")
                         )
                 ));
     }

@@ -15,4 +15,8 @@ public class PlayerSearch {
     private Position position;
     private BaseStatus status;
     private PlayerAuthority authority;
+
+    public static PlayerSearch ofMemberId(Long memberId) {
+        return PlayerSearch.builder().memberId(memberId).build();
+    }
 }

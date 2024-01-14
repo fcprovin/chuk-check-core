@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 import static java.util.Objects.nonNull;
+import static java.util.stream.Collectors.toList;
 
 @Service
 @Transactional
@@ -59,6 +60,13 @@ public class PlayerService {
     @Transactional(readOnly = true)
     public Player readDetail(Long id) {
         return playerRepository.findQueryById(id).orElseThrow(() -> new IllegalArgumentException("Not exist player"));
+    }
+
+    @Transactional(readOnly = true)
+    public List<Team> readTeamByMemberId(Long id) {
+        return readSearch(PlayerSearch.ofMemberId(id)).stream()
+                .map(Player::getTeam)
+                .collect(toList());
     }
 
     private void uniformNumber(PlayerUpdateRequest request, Player player) {
