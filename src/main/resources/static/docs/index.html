@@ -473,6 +473,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#MEMBER-CREATE">회원 생성</a></li>
 <li><a href="#MEMBER-READ-ALL">회원 전체 조회</a></li>
 <li><a href="#MEMBER-READ">회원 조회</a></li>
+<li><a href="#MEMBER-READ-TEAM">회원 팀 조회</a></li>
 </ul>
 </li>
 <li><a href="#REGION-API">REGION API</a>
@@ -938,8 +939,8 @@ Content-Type: application/json
   "result" : {
     "accessToken" : "ACCESS TOKEN",
     "refreshToken" : "REFRESH TOKEN",
-    "accessTokenExpireDate" : "2024-01-12T20:35:19.063129",
-    "refreshTokenExpireDate" : "2024-01-13T07:35:19.063243"
+    "accessTokenExpireDate" : "2024-01-14T18:18:41.000791",
+    "refreshTokenExpireDate" : "2024-01-15T05:18:41.0009"
   }
 }</code></pre>
 </div>
@@ -1018,8 +1019,8 @@ Content-Type: application/json
   "result" : {
     "accessToken" : "ACCESS TOKEN",
     "refreshToken" : "REFRESH TOKEN",
-    "accessTokenExpireDate" : "2024-01-12T20:35:19.137879",
-    "refreshTokenExpireDate" : "2024-01-13T07:35:19.137931"
+    "accessTokenExpireDate" : "2024-01-14T18:18:41.062343",
+    "refreshTokenExpireDate" : "2024-01-15T05:18:41.062367"
   }
 }</code></pre>
 </div>
@@ -1140,8 +1141,8 @@ Content-Type: application/json
     "snsId" : 1,
     "uuid" : "4d2d0eff-b7a7-4be5-adb3-b02427598362",
     "type" : "GOOGLE",
-    "createdDate" : "2024-01-12T19:35:24.005318",
-    "updatedDate" : "2024-01-12T19:35:24.005344"
+    "createdDate" : "2024-01-14T17:18:46.479587",
+    "updatedDate" : "2024-01-14T17:18:46.479626"
   }
 }</code></pre>
 </div>
@@ -1225,8 +1226,8 @@ Content-Type: application/json
     "snsId" : 1,
     "uuid" : "4d2d0eff-b7a7-4be5-adb3-b02427598362",
     "type" : "GOOGLE",
-    "createdDate" : "2024-01-12T19:35:24.256768",
-    "updatedDate" : "2024-01-12T19:35:24.256991"
+    "createdDate" : "2024-01-14T17:18:46.630254",
+    "updatedDate" : "2024-01-14T17:18:46.630274"
   } ]
 }</code></pre>
 </div>
@@ -1332,8 +1333,8 @@ Content-Type: application/json
     "snsId" : 1,
     "uuid" : "4d2d0eff-b7a7-4be5-adb3-b02427598362",
     "type" : "GOOGLE",
-    "createdDate" : "2024-01-12T19:35:24.180757",
-    "updatedDate" : "2024-01-12T19:35:24.180943"
+    "createdDate" : "2024-01-14T17:18:46.600359",
+    "updatedDate" : "2024-01-14T17:18:46.600378"
   }
 }</code></pre>
 </div>
@@ -1474,8 +1475,8 @@ Content-Type: application/json
     "name" : "홍길동",
     "email" : "hong@gmail.com",
     "birthDate" : "1997-03-07",
-    "createdDate" : "2024-01-12T19:35:21.721761",
-    "updatedDate" : "2024-01-12T19:35:21.721812"
+    "createdDate" : "2024-01-14T17:18:43.707903",
+    "updatedDate" : "2024-01-14T17:18:43.707923"
   }
 }</code></pre>
 </div>
@@ -1594,14 +1595,14 @@ Content-Type: application/json
     "name" : "홍길동",
     "email" : "hong@gmail.com",
     "birthDate" : "1997-03-07",
-    "createdDate" : "2024-01-12T19:35:21.842326",
-    "updatedDate" : "2024-01-12T19:35:21.842345",
+    "createdDate" : "2024-01-14T17:18:43.876649",
+    "updatedDate" : "2024-01-14T17:18:43.876681",
     "sns" : {
       "snsId" : 1,
       "uuid" : "4d2d0eff-b7a7-4be5-adb3-b02427598362",
       "type" : "GOOGLE",
-      "createdDate" : "2024-01-12T19:35:21.84235",
-      "updatedDate" : "2024-01-12T19:35:21.842352"
+      "createdDate" : "2024-01-14T17:18:43.876687",
+      "updatedDate" : "2024-01-14T17:18:43.876689"
     }
   } ]
 }</code></pre>
@@ -1744,14 +1745,14 @@ Content-Type: application/json
     "name" : "홍길동",
     "email" : "hong@gmail.com",
     "birthDate" : "1997-03-07",
-    "createdDate" : "2024-01-12T19:35:21.788721",
-    "updatedDate" : "2024-01-12T19:35:21.788739",
+    "createdDate" : "2024-01-14T17:18:43.825032",
+    "updatedDate" : "2024-01-14T17:18:43.825049",
     "sns" : {
       "snsId" : 1,
       "uuid" : "4d2d0eff-b7a7-4be5-adb3-b02427598362",
       "type" : "GOOGLE",
-      "createdDate" : "2024-01-12T19:35:21.78941",
-      "updatedDate" : "2024-01-12T19:35:21.789428"
+      "createdDate" : "2024-01-14T17:18:43.82713",
+      "updatedDate" : "2024-01-14T17:18:43.827149"
     }
   }
 }</code></pre>
@@ -1846,6 +1847,150 @@ Content-Type: application/json
 </table>
 </div>
 </div>
+<div class="sect2">
+<h3 id="MEMBER-READ-TEAM"><a class="link" href="#MEMBER-READ-TEAM">회원 팀 조회</a></h3>
+<div class="sect3">
+<h4 id="MEMBER-READ-TEAM_http_request"><a class="link" href="#MEMBER-READ-TEAM_http_request">HTTP request</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/member/1/teams HTTP/1.1
+Host: api.fcprovin.com</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="MEMBER-READ-TEAM_path_parameters"><a class="link" href="#MEMBER-READ-TEAM_path_parameters">Path parameters</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. /api/v1/member/{id}/teams</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">회원 ID</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="MEMBER-READ-TEAM_http_response"><a class="link" href="#MEMBER-READ-TEAM_http_response">HTTP response</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "code" : 200,
+  "message" : "SUCCESS",
+  "result" : [ {
+    "teamId" : 1,
+    "name" : "프로빈",
+    "status" : "WAIT",
+    "createdDate" : "2024-01-14T17:18:43.774105",
+    "updatedDate" : "2024-01-14T17:18:43.774125",
+    "region" : {
+      "regionId" : 1,
+      "country" : "경기도",
+      "city" : "성남시",
+      "createdDate" : "2024-01-14T17:18:43.774665",
+      "updatedDate" : "2024-01-14T17:18:43.774672"
+    }
+  } ]
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="MEMBER-READ-TEAM_response_fields"><a class="link" href="#MEMBER-READ-TEAM_response_fields">Response fields</a></h4>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">필드명</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">타입</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">설명</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>code</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">결과코드</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>message</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">결과메세지</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.[].teamId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">팀 ID</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.[].name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">팀 이름</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.[].status</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">팀 상태 - 'baseStatus' 공통 Code 참조</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.[].createdDate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">생성일자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.[].updatedDate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">수정일자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.[].region</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">지역</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.[].region.regionId</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">지역 ID</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.[].region.country</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">지역 시/도</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.[].region.city</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">지역 도시</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.[].region.createdDate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">생성일자</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>result.[].region.updatedDate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">수정일자</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1913,8 +2058,8 @@ Content-Type: application/json
     "regionId" : 1,
     "country" : "경기도",
     "city" : "성남시",
-    "createdDate" : "2024-01-12T19:35:23.302638",
-    "updatedDate" : "2024-01-12T19:35:23.302665"
+    "createdDate" : "2024-01-14T17:18:45.624954",
+    "updatedDate" : "2024-01-14T17:18:45.625368"
   }
 }</code></pre>
 </div>
@@ -1998,8 +2143,8 @@ Content-Type: application/json
     "regionId" : 1,
     "country" : "경기도",
     "city" : "성남시",
-    "createdDate" : "2024-01-12T19:35:23.350678",
-    "updatedDate" : "2024-01-12T19:35:23.350697"
+    "createdDate" : "2024-01-14T17:18:45.702149",
+    "updatedDate" : "2024-01-14T17:18:45.702166"
   } ]
 }</code></pre>
 </div>
@@ -2125,8 +2270,8 @@ Content-Type: application/json
     "teamId" : 1,
     "name" : "프로빈",
     "status" : "WAIT",
-    "createdDate" : "2024-01-12T19:35:25.774481",
-    "updatedDate" : "2024-01-12T19:35:25.774504"
+    "createdDate" : "2024-01-14T17:18:48.154184",
+    "updatedDate" : "2024-01-14T17:18:48.154207"
   }
 }</code></pre>
 </div>
@@ -2240,8 +2385,8 @@ Content-Type: application/json
     "teamId" : 1,
     "name" : "프로빈",
     "status" : "APPROVE",
-    "createdDate" : "2024-01-12T19:35:25.812983",
-    "updatedDate" : "2024-01-12T19:35:25.813002"
+    "createdDate" : "2024-01-14T17:18:48.211965",
+    "updatedDate" : "2024-01-14T17:18:48.211983"
   }
 }</code></pre>
 </div>
@@ -2354,14 +2499,14 @@ Content-Type: application/json
     "teamId" : 1,
     "name" : "프로빈",
     "status" : "WAIT",
-    "createdDate" : "2024-01-12T19:35:25.870834",
-    "updatedDate" : "2024-01-12T19:35:25.870853",
+    "createdDate" : "2024-01-14T17:18:48.28428",
+    "updatedDate" : "2024-01-14T17:18:48.2843",
     "region" : {
       "regionId" : 1,
       "country" : "경기도",
       "city" : "성남시",
-      "createdDate" : "2024-01-12T19:35:25.870857",
-      "updatedDate" : "2024-01-12T19:35:25.87086"
+      "createdDate" : "2024-01-14T17:18:48.284304",
+      "updatedDate" : "2024-01-14T17:18:48.284307"
     }
   } ]
 }</code></pre>
@@ -2498,14 +2643,14 @@ Content-Type: application/json
     "teamId" : 1,
     "name" : "프로빈",
     "status" : "WAIT",
-    "createdDate" : "2024-01-12T19:35:25.844132",
-    "updatedDate" : "2024-01-12T19:35:25.844153",
+    "createdDate" : "2024-01-14T17:18:48.244711",
+    "updatedDate" : "2024-01-14T17:18:48.244732",
     "region" : {
       "regionId" : 1,
       "country" : "경기도",
       "city" : "성남시",
-      "createdDate" : "2024-01-12T19:35:25.844165",
-      "updatedDate" : "2024-01-12T19:35:25.844168"
+      "createdDate" : "2024-01-14T17:18:48.244744",
+      "updatedDate" : "2024-01-14T17:18:48.244747"
     }
   }
 }</code></pre>
@@ -2669,8 +2814,8 @@ Content-Type: application/json
     "playerId" : 1,
     "status" : "WAIT",
     "authority" : "GENERAL",
-    "createdDate" : "2024-01-12T19:35:22.505639",
-    "updatedDate" : "2024-01-12T19:35:22.505673"
+    "createdDate" : "2024-01-14T17:18:44.577877",
+    "updatedDate" : "2024-01-14T17:18:44.577946"
   }
 }</code></pre>
 </div>
@@ -2807,8 +2952,8 @@ Content-Type: application/json
     "position" : "MF",
     "status" : "APPROVE",
     "authority" : "MANAGER",
-    "createdDate" : "2024-01-12T19:35:22.545181",
-    "updatedDate" : "2024-01-12T19:35:22.545202"
+    "createdDate" : "2024-01-14T17:18:44.632009",
+    "updatedDate" : "2024-01-14T17:18:44.632075"
   }
 }</code></pre>
 </div>
@@ -2941,22 +3086,22 @@ Content-Type: application/json
     "position" : "MF",
     "status" : "APPROVE",
     "authority" : "MANAGER",
-    "createdDate" : "2024-01-12T19:35:22.620976",
-    "updatedDate" : "2024-01-12T19:35:22.620999",
+    "createdDate" : "2024-01-14T17:18:44.694872",
+    "updatedDate" : "2024-01-14T17:18:44.694892",
     "member" : {
       "memberId" : 1,
       "name" : "홍길동",
       "email" : "hong@gmail.com",
       "birthDate" : "1997-03-07",
-      "createdDate" : "2024-01-12T19:35:22.621011",
-      "updatedDate" : "2024-01-12T19:35:22.621013"
+      "createdDate" : "2024-01-14T17:18:44.694905",
+      "updatedDate" : "2024-01-14T17:18:44.694907"
     },
     "team" : {
       "teamId" : 1,
       "name" : "프로빈",
       "status" : "WAIT",
-      "createdDate" : "2024-01-12T19:35:22.621004",
-      "updatedDate" : "2024-01-12T19:35:22.621006"
+      "createdDate" : "2024-01-14T17:18:44.694898",
+      "updatedDate" : "2024-01-14T17:18:44.694901"
     }
   } ]
 }</code></pre>
@@ -3140,22 +3285,22 @@ Content-Type: application/json
     "position" : "MF",
     "status" : "APPROVE",
     "authority" : "MANAGER",
-    "createdDate" : "2024-01-12T19:35:22.586534",
-    "updatedDate" : "2024-01-12T19:35:22.586554",
+    "createdDate" : "2024-01-14T17:18:44.66552",
+    "updatedDate" : "2024-01-14T17:18:44.665538",
     "member" : {
       "memberId" : 1,
       "name" : "홍길동",
       "email" : "hong@gmail.com",
       "birthDate" : "1997-03-07",
-      "createdDate" : "2024-01-12T19:35:22.586586",
-      "updatedDate" : "2024-01-12T19:35:22.586589"
+      "createdDate" : "2024-01-14T17:18:44.665565",
+      "updatedDate" : "2024-01-14T17:18:44.665568"
     },
     "team" : {
       "teamId" : 1,
       "name" : "프로빈",
       "status" : "WAIT",
-      "createdDate" : "2024-01-12T19:35:22.586569",
-      "updatedDate" : "2024-01-12T19:35:22.586573"
+      "createdDate" : "2024-01-14T17:18:44.66555",
+      "updatedDate" : "2024-01-14T17:18:44.665553"
     }
   }
 }</code></pre>
@@ -3373,8 +3518,8 @@ Content-Type: application/json
     "address" : "경기 성남시 중원구 여수동 7-17",
     "latitude" : 37.4257533,
     "longitude" : 127.119444,
-    "createdDate" : "2024-01-12T19:35:25.068576",
-    "updatedDate" : "2024-01-12T19:35:25.068618"
+    "createdDate" : "2024-01-14T17:18:47.331574",
+    "updatedDate" : "2024-01-14T17:18:47.331597"
   }
 }</code></pre>
 </div>
@@ -3470,8 +3615,8 @@ Content-Type: application/json
     "address" : "경기 성남시 중원구 여수동 7-17",
     "latitude" : 37.4257533,
     "longitude" : 127.119444,
-    "createdDate" : "2024-01-12T19:35:25.14856",
-    "updatedDate" : "2024-01-12T19:35:25.148578"
+    "createdDate" : "2024-01-14T17:18:47.429553",
+    "updatedDate" : "2024-01-14T17:18:47.429571"
   } ]
 }</code></pre>
 </div>
@@ -3589,8 +3734,8 @@ Content-Type: application/json
     "address" : "경기 성남시 중원구 여수동 7-17",
     "latitude" : 37.4257533,
     "longitude" : 127.119444,
-    "createdDate" : "2024-01-12T19:35:25.121001",
-    "updatedDate" : "2024-01-12T19:35:25.121019"
+    "createdDate" : "2024-01-14T17:18:47.398843",
+    "updatedDate" : "2024-01-14T17:18:47.398884"
   }
 }</code></pre>
 </div>
@@ -3795,8 +3940,8 @@ Content-Type: application/json
     "attendDate" : {
       "deadlineDate" : "2023-02-25T11:30:00"
     },
-    "createdDate" : "2024-01-12T19:35:20.837688",
-    "updatedDate" : "2024-01-12T19:35:20.837704"
+    "createdDate" : "2024-01-14T17:18:42.695216",
+    "updatedDate" : "2024-01-14T17:18:42.69525"
   }
 }</code></pre>
 </div>
@@ -4036,8 +4181,8 @@ Content-Type: application/json
     "attendDate" : {
       "deadlineDate" : "2023-02-25T09:30:00"
     },
-    "createdDate" : "2024-01-12T19:35:20.909432",
-    "updatedDate" : "2024-01-12T19:35:20.909447"
+    "createdDate" : "2024-01-14T17:18:42.785743",
+    "updatedDate" : "2024-01-14T17:18:42.785762"
   }
 }</code></pre>
 </div>
@@ -4221,14 +4366,14 @@ Content-Type: application/json
     "attendDate" : {
       "deadlineDate" : "2023-02-25T09:30:00"
     },
-    "createdDate" : "2024-01-12T19:35:20.997152",
-    "updatedDate" : "2024-01-12T19:35:20.99719",
+    "createdDate" : "2024-01-14T17:18:42.909341",
+    "updatedDate" : "2024-01-14T17:18:42.909376",
     "team" : {
       "teamId" : 1,
       "name" : "프로빈",
       "status" : "WAIT",
-      "createdDate" : "2024-01-12T19:35:20.997196",
-      "updatedDate" : "2024-01-12T19:35:20.997198"
+      "createdDate" : "2024-01-14T17:18:42.909382",
+      "updatedDate" : "2024-01-14T17:18:42.909385"
     },
     "stadium" : {
       "stadiumId" : 1,
@@ -4236,8 +4381,8 @@ Content-Type: application/json
       "address" : "경기 성남시 중원구 여수동 7-17",
       "latitude" : 37.4257533,
       "longitude" : 127.119444,
-      "createdDate" : "2024-01-12T19:35:20.997202",
-      "updatedDate" : "2024-01-12T19:35:20.997204"
+      "createdDate" : "2024-01-14T17:18:42.909389",
+      "updatedDate" : "2024-01-14T17:18:42.909392"
     }
   } ]
 }</code></pre>
@@ -4477,14 +4622,14 @@ Content-Type: application/json
     "attendDate" : {
       "deadlineDate" : "2023-02-25T09:30:00"
     },
-    "createdDate" : "2024-01-12T19:35:20.956537",
-    "updatedDate" : "2024-01-12T19:35:20.956554",
+    "createdDate" : "2024-01-14T17:18:42.853867",
+    "updatedDate" : "2024-01-14T17:18:42.853885",
     "team" : {
       "teamId" : 1,
       "name" : "프로빈",
       "status" : "WAIT",
-      "createdDate" : "2024-01-12T19:35:20.957592",
-      "updatedDate" : "2024-01-12T19:35:20.957611"
+      "createdDate" : "2024-01-14T17:18:42.854783",
+      "updatedDate" : "2024-01-14T17:18:42.854794"
     },
     "stadium" : {
       "stadiumId" : 1,
@@ -4492,8 +4637,8 @@ Content-Type: application/json
       "address" : "경기 성남시 중원구 여수동 7-17",
       "latitude" : 37.4257533,
       "longitude" : 127.119444,
-      "createdDate" : "2024-01-12T19:35:20.957993",
-      "updatedDate" : "2024-01-12T19:35:20.958002"
+      "createdDate" : "2024-01-14T17:18:42.855231",
+      "updatedDate" : "2024-01-14T17:18:42.855239"
     }
   }
 }</code></pre>
@@ -4746,8 +4891,8 @@ Content-Type: application/json
   "result" : {
     "voteId" : 1,
     "status" : "TRUE",
-    "createdDate" : "2024-01-12T19:35:26.529823",
-    "updatedDate" : "2024-01-12T19:35:26.529844"
+    "createdDate" : "2024-01-14T17:18:49.01841",
+    "updatedDate" : "2024-01-14T17:18:49.018438"
   }
 }</code></pre>
 </div>
@@ -4855,8 +5000,8 @@ Content-Type: application/json
   "result" : {
     "voteId" : 1,
     "status" : "FALSE",
-    "createdDate" : "2024-01-12T19:35:26.565774",
-    "updatedDate" : "2024-01-12T19:35:26.565794"
+    "createdDate" : "2024-01-14T17:18:49.06535",
+    "updatedDate" : "2024-01-14T17:18:49.065369"
   }
 }</code></pre>
 </div>
@@ -4955,23 +5100,23 @@ Content-Type: application/json
   "result" : [ {
     "voteId" : 1,
     "status" : "FALSE",
-    "createdDate" : "2024-01-12T19:35:26.628098",
-    "updatedDate" : "2024-01-12T19:35:26.628116",
+    "createdDate" : "2024-01-14T17:18:49.156851",
+    "updatedDate" : "2024-01-14T17:18:49.156903",
     "player" : {
       "playerId" : 1,
       "uniformNumber" : 6,
       "position" : "MF",
       "status" : "APPROVE",
       "authority" : "MANAGER",
-      "createdDate" : "2024-01-12T19:35:26.628121",
-      "updatedDate" : "2024-01-12T19:35:26.628123",
+      "createdDate" : "2024-01-14T17:18:49.156909",
+      "updatedDate" : "2024-01-14T17:18:49.156912",
       "member" : {
         "memberId" : 1,
         "name" : "홍길동",
         "email" : "hong@gmail.com",
         "birthDate" : "1997-03-07",
-        "createdDate" : "2024-01-12T19:35:26.628127",
-        "updatedDate" : "2024-01-12T19:35:26.628131"
+        "createdDate" : "2024-01-14T17:18:49.156918",
+        "updatedDate" : "2024-01-14T17:18:49.15692"
       }
     },
     "match" : {
@@ -4991,8 +5136,8 @@ Content-Type: application/json
       "attendDate" : {
         "deadlineDate" : "2023-02-25T09:30:00"
       },
-      "createdDate" : "2024-01-12T19:35:26.62814",
-      "updatedDate" : "2024-01-12T19:35:26.628144"
+      "createdDate" : "2024-01-14T17:18:49.15693",
+      "updatedDate" : "2024-01-14T17:18:49.156933"
     }
   } ]
 }</code></pre>
@@ -5248,23 +5393,23 @@ Content-Type: application/json
   "result" : {
     "voteId" : 1,
     "status" : "FALSE",
-    "createdDate" : "2024-01-12T19:35:26.593049",
-    "updatedDate" : "2024-01-12T19:35:26.593068",
+    "createdDate" : "2024-01-14T17:18:49.100055",
+    "updatedDate" : "2024-01-14T17:18:49.100073",
     "player" : {
       "playerId" : 1,
       "uniformNumber" : 6,
       "position" : "MF",
       "status" : "APPROVE",
       "authority" : "MANAGER",
-      "createdDate" : "2024-01-12T19:35:26.593086",
-      "updatedDate" : "2024-01-12T19:35:26.593089",
+      "createdDate" : "2024-01-14T17:18:49.100088",
+      "updatedDate" : "2024-01-14T17:18:49.100091",
       "member" : {
         "memberId" : 1,
         "name" : "홍길동",
         "email" : "hong@gmail.com",
         "birthDate" : "1997-03-07",
-        "createdDate" : "2024-01-12T19:35:26.593103",
-        "updatedDate" : "2024-01-12T19:35:26.593105"
+        "createdDate" : "2024-01-14T17:18:49.100104",
+        "updatedDate" : "2024-01-14T17:18:49.100107"
       }
     },
     "match" : {
@@ -5284,8 +5429,8 @@ Content-Type: application/json
       "attendDate" : {
         "deadlineDate" : "2023-02-25T09:30:00"
       },
-      "createdDate" : "2024-01-12T19:35:26.59313",
-      "updatedDate" : "2024-01-12T19:35:26.593133"
+      "createdDate" : "2024-01-14T17:18:49.10013",
+      "updatedDate" : "2024-01-14T17:18:49.100133"
     }
   }
 }</code></pre>
@@ -5568,8 +5713,8 @@ Content-Type: application/json
   "result" : {
     "attendId" : 1,
     "status" : "ATTEND",
-    "createdDate" : "2024-01-12T19:35:16.902441",
-    "updatedDate" : "2024-01-12T19:35:16.902496"
+    "createdDate" : "2024-01-14T17:18:38.994872",
+    "updatedDate" : "2024-01-14T17:18:38.99493"
   }
 }</code></pre>
 </div>
@@ -5677,8 +5822,8 @@ Content-Type: application/json
   "result" : {
     "attendId" : 1,
     "status" : "LATE",
-    "createdDate" : "2024-01-12T19:35:17.330822",
-    "updatedDate" : "2024-01-12T19:35:17.330964"
+    "createdDate" : "2024-01-14T17:18:39.419193",
+    "updatedDate" : "2024-01-14T17:18:39.419338"
   }
 }</code></pre>
 </div>
@@ -5777,23 +5922,23 @@ Content-Type: application/json
   "result" : [ {
     "attendId" : 1,
     "status" : "ATTEND",
-    "createdDate" : "2024-01-12T19:35:17.560337",
-    "updatedDate" : "2024-01-12T19:35:17.560631",
+    "createdDate" : "2024-01-14T17:18:39.615921",
+    "updatedDate" : "2024-01-14T17:18:39.615944",
     "player" : {
       "playerId" : 1,
       "uniformNumber" : 6,
       "position" : "MF",
       "status" : "APPROVE",
       "authority" : "MANAGER",
-      "createdDate" : "2024-01-12T19:35:17.560709",
-      "updatedDate" : "2024-01-12T19:35:17.560717",
+      "createdDate" : "2024-01-14T17:18:39.615958",
+      "updatedDate" : "2024-01-14T17:18:39.615961",
       "member" : {
         "memberId" : 1,
         "name" : "홍길동",
         "email" : "hong@gmail.com",
         "birthDate" : "1997-03-07",
-        "createdDate" : "2024-01-12T19:35:17.560723",
-        "updatedDate" : "2024-01-12T19:35:17.560726"
+        "createdDate" : "2024-01-14T17:18:39.615966",
+        "updatedDate" : "2024-01-14T17:18:39.615969"
       }
     },
     "match" : {
@@ -5813,8 +5958,8 @@ Content-Type: application/json
       "attendDate" : {
         "deadlineDate" : "2023-02-25T09:30:00"
       },
-      "createdDate" : "2024-01-12T19:35:17.56074",
-      "updatedDate" : "2024-01-12T19:35:17.560743"
+      "createdDate" : "2024-01-14T17:18:39.615982",
+      "updatedDate" : "2024-01-14T17:18:39.615985"
     }
   } ]
 }</code></pre>
@@ -6070,23 +6215,23 @@ Content-Type: application/json
   "result" : {
     "attendId" : 1,
     "status" : "ATTEND",
-    "createdDate" : "2024-01-12T19:35:17.415384",
-    "updatedDate" : "2024-01-12T19:35:17.415425",
+    "createdDate" : "2024-01-14T17:18:39.498635",
+    "updatedDate" : "2024-01-14T17:18:39.498692",
     "player" : {
       "playerId" : 1,
       "uniformNumber" : 6,
       "position" : "MF",
       "status" : "APPROVE",
       "authority" : "MANAGER",
-      "createdDate" : "2024-01-12T19:35:17.417478",
-      "updatedDate" : "2024-01-12T19:35:17.417487",
+      "createdDate" : "2024-01-14T17:18:39.499337",
+      "updatedDate" : "2024-01-14T17:18:39.499347",
       "member" : {
         "memberId" : 1,
         "name" : "홍길동",
         "email" : "hong@gmail.com",
         "birthDate" : "1997-03-07",
-        "createdDate" : "2024-01-12T19:35:17.417859",
-        "updatedDate" : "2024-01-12T19:35:17.417865"
+        "createdDate" : "2024-01-14T17:18:39.499705",
+        "updatedDate" : "2024-01-14T17:18:39.499715"
       }
     },
     "match" : {
@@ -6106,8 +6251,8 @@ Content-Type: application/json
       "attendDate" : {
         "deadlineDate" : "2023-02-25T09:30:00"
       },
-      "createdDate" : "2024-01-12T19:35:17.418537",
-      "updatedDate" : "2024-01-12T19:35:17.418543"
+      "createdDate" : "2024-01-14T17:18:39.500296",
+      "updatedDate" : "2024-01-14T17:18:39.500314"
     }
   }
 }</code></pre>
@@ -6323,7 +6468,7 @@ Content-Type: application/json
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2023-05-04 15:13:22 +0900
+Last updated 2024-01-14 17:18:27 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">

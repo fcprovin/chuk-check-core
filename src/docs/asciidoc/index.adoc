@@ -103,6 +103,10 @@ operation::member-readAll[snippets='http-request,request-parameters,http-respons
 === 회원 조회
 operation::member-read[snippets='http-request,path-parameters,http-response,response-fields']
 
+[[MEMBER-READ-TEAM]]
+=== 회원 팀 조회
+operation::member-read-team[snippets='http-request,path-parameters,http-response,response-fields']
+
 [[REGION-API]]
 == REGION API
 
