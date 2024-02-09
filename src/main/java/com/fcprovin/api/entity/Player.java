@@ -1,17 +1,16 @@
 package com.fcprovin.api.entity;
 
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
 
 import static com.fcprovin.api.entity.BaseStatus.APPROVE;
 import static com.fcprovin.api.entity.BaseStatus.WAIT;
 import static com.fcprovin.api.entity.PlayerAuthority.GENERAL;
 import static com.fcprovin.api.entity.PlayerAuthority.LEADER;
-import static javax.persistence.EnumType.STRING;
-import static javax.persistence.FetchType.LAZY;
+import static jakarta.persistence.EnumType.STRING;
+import static jakarta.persistence.FetchType.LAZY;
 import static lombok.AccessLevel.PROTECTED;
 
 @Getter
