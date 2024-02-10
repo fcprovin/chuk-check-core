@@ -5,10 +5,10 @@ import com.fcprovin.api.dto.response.BaseResponse;
 import com.fcprovin.api.dto.response.SnsResponse;
 import com.fcprovin.api.dto.search.SnsSearch;
 import com.fcprovin.api.service.SnsService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 import static com.fcprovin.api.dto.response.SnsResponse.of;
