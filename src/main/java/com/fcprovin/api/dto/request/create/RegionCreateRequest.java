@@ -1,11 +1,10 @@
 package com.fcprovin.api.dto.request.create;
 
 import com.fcprovin.api.entity.Region;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import javax.validation.constraints.NotEmpty;
 
 import static lombok.AccessLevel.PROTECTED;
 

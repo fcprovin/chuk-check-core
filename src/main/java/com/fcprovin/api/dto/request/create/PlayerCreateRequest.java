@@ -4,11 +4,10 @@ import com.fcprovin.api.entity.Member;
 import com.fcprovin.api.entity.Player;
 import com.fcprovin.api.entity.PlayerAuthority;
 import com.fcprovin.api.entity.Team;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import javax.validation.constraints.NotEmpty;
 
 import static lombok.AccessLevel.PROTECTED;
 

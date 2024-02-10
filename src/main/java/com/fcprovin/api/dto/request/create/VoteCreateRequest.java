@@ -4,11 +4,10 @@ import com.fcprovin.api.entity.Match;
 import com.fcprovin.api.entity.Player;
 import com.fcprovin.api.entity.Vote;
 import com.fcprovin.api.entity.VoteStatus;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import javax.validation.constraints.NotEmpty;
 
 import static lombok.AccessLevel.PROTECTED;
 

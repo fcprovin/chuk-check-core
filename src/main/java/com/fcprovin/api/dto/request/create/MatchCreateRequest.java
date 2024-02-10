@@ -1,12 +1,12 @@
 package com.fcprovin.api.dto.request.create;
 
 import com.fcprovin.api.entity.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 
 import static lombok.AccessLevel.PROTECTED;
