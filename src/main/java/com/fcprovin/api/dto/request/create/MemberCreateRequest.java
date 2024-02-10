@@ -2,13 +2,13 @@ package com.fcprovin.api.dto.request.create;
 
 import com.fcprovin.api.entity.Member;
 import com.fcprovin.api.entity.Sns;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 import static lombok.AccessLevel.PROTECTED;
