@@ -2,12 +2,12 @@ package com.fcprovin.api.repository;
 
 import com.fcprovin.api.dto.search.PlayerSearch;
 import com.fcprovin.api.entity.*;
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
 import java.time.LocalDate;
 import java.util.List;
 
