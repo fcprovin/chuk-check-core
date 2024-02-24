@@ -7,4 +7,4 @@ jwt:
     access: 1
     refresh: 12
   security:
-    key: test
+    key: NOp+vt6xPFIfG3ZWlp8N7a6B8nB/94fh7rByuugmVFE=
