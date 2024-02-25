@@ -4,12 +4,12 @@ import com.fcprovin.api.config.jwt.JwtProvider;
 import com.fcprovin.api.dto.jwt.JwtCreate;
 import com.fcprovin.api.dto.jwt.JwtToken;
 import com.fcprovin.api.dto.request.create.TokenCreateRequest;
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 
 import static com.fcprovin.api.dto.jwt.JwtRole.ROLE_USER;
