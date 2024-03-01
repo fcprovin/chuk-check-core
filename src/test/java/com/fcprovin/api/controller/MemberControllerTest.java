@@ -130,7 +130,7 @@ class MemberControllerTest {
                 .andDo(document("member-readAll",
                         getDocumentRequest(),
                         getDocumentResponse(),
-                        requestParameters(
+                        queryParameters(
                                 parameterWithName("snsId").description("SNS ID"),
                                 parameterWithName("name").description("회원 이름"),
                                 parameterWithName("email").description("회원 이메일")

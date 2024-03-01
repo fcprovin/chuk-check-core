@@ -195,7 +195,7 @@ class PlayerControllerTest {
                 .andDo(document("player-readAll",
                         getDocumentRequest(),
                         getDocumentResponse(),
-                        requestParameters(
+                        queryParameters(
                                 parameterWithName("memberId").description("회원 ID"),
                                 parameterWithName("teamId").description("팀 ID"),
                                 parameterWithName("position").description("플레이어 포지션 - 'position' 공통 Code 참조"),

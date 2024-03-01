@@ -166,7 +166,7 @@ class TeamControllerTest {
                 .andDo(document("team-readAll",
                         getDocumentRequest(),
                         getDocumentResponse(),
-                        requestParameters(
+                        queryParameters(
                                 parameterWithName("regionId").description("지역 ID"),
                                 parameterWithName("name").description("팀 이름"),
                                 parameterWithName("status").description("팀 상태 - 'baseStatus' 공통 Code 참조")
