@@ -115,7 +115,7 @@ class SnsControllerTest {
                 .andDo(document("sns-readAll",
                         getDocumentRequest(),
                         getDocumentResponse(),
-                        requestParameters(
+                        queryParameters(
                                 parameterWithName("uuid").description("SNS 고유 아이디").optional(),
                                 parameterWithName("type").description("SNS 플랫폼 - 'snsType' 공통 Code 참조").optional()
                         ),

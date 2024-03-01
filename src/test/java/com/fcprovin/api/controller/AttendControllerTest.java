@@ -188,7 +188,7 @@ class AttendControllerTest {
                 .andDo(document("attend-readAll",
                         getDocumentRequest(),
                         getDocumentResponse(),
-                        requestParameters(
+                        queryParameters(
                                 parameterWithName("status").description("출석 상태 - 'attendStatus' 공통 Code 참조")
                         ),
                         responseFields(

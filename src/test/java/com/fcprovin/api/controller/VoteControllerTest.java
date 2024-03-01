@@ -187,7 +187,7 @@ class VoteControllerTest {
                 .andDo(document("vote-readAll",
                         getDocumentRequest(),
                         getDocumentResponse(),
-                        requestParameters(
+                        queryParameters(
                                 parameterWithName("status").description("투표 상태 - 'voteStatus' 공통 Code 참조")
                         ),
                         responseFields(

@@ -254,7 +254,7 @@ class MatchControllerTest {
                 .andDo(document("match-readAll",
                         getDocumentRequest(),
                         getDocumentResponse(),
-                        requestParameters(
+                        queryParameters(
                                 parameterWithName("teamId").description("팀 ID"),
                                 parameterWithName("stadiumId").description("구장 ID"),
                                 parameterWithName("status").description("매치 상태 - 'matchStatus' 공통 Code 참조"),
