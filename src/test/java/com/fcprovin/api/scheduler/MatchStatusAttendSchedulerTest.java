@@ -7,12 +7,12 @@ import com.fcprovin.api.service.AttendService;
 import com.fcprovin.api.service.MatchService;
 import com.fcprovin.api.service.PlayerService;
 import com.fcprovin.api.service.VoteService;
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
