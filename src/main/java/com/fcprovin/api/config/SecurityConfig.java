@@ -35,8 +35,17 @@ public class SecurityConfig {
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .sessionManagement(s -> s.sessionCreationPolicy(STATELESS))
                 .authorizeHttpRequests(r -> r
-                        .requestMatchers(GET, "/", "/docs/**", "/exception/**", "/api/**/sns").permitAll()
-                        .requestMatchers(POST, "/api/**/auth/access-token", "/api/**/sns", "/api/**/member").permitAll()
+                        .requestMatchers(GET,
+                                "/",
+                                "/favicon.ico",
+                                "/docs/index.html",
+                                "/exception/authentication",
+                                "/exception/access-denied",
+                                "/api/v1/sns").permitAll()
+                        .requestMatchers(POST,
+                                "/api/v1/auth/access-token",
+                                "/api/v1/sns",
+                                "/api/v1/member").permitAll()
                         .anyRequest().hasAnyRole("USER", "ADMIN")
                 )
                 .exceptionHandling(e -> e

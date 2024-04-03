@@ -82,7 +82,7 @@ operation::sns-create[snippets='http-request,request-fields,http-response,respon
 
 [[SNS-READ-ALL]]
 === SNS 전체 조회
-operation::sns-readAll[snippets='http-request,http-response,response-fields']
+operation::sns-readAll[snippets='http-request,query-parameters,http-response,response-fields']
 
 [[SNS-READ]]
 === SNS 조회
@@ -97,7 +97,7 @@ operation::member-create[snippets='http-request,request-fields,http-response,res
 
 [[MEMBER-READ-ALL]]
 === 회원 전체 조회
-operation::member-readAll[snippets='http-request,request-parameters,http-response,response-fields']
+operation::member-readAll[snippets='http-request,query-parameters,http-response,response-fields']
 
 [[MEMBER-READ]]
 === 회원 조회
@@ -131,7 +131,7 @@ operation::team-update[snippets='http-request,request-fields,http-response,respo
 
 [[TEAM-READ-ALL]]
 === 팀 전체 조회
-operation::team-readAll[snippets='http-request,request-parameters,http-response,response-fields']
+operation::team-readAll[snippets='http-request,query-parameters,http-response,response-fields']
 
 [[TEAM-READ]]
 === 팀 조회
@@ -150,7 +150,7 @@ operation::player-update[snippets='http-request,request-fields,http-response,res
 
 [[PLAYER-READ-ALL]]
 === 플레이어 전체 조회
-operation::player-readAll[snippets='http-request,request-parameters,http-response,response-fields']
+operation::player-readAll[snippets='http-request,query-parameters,http-response,response-fields']
 
 [[PLAYER-READ]]
 === 플레이어 조회
@@ -184,7 +184,7 @@ operation::match-update[snippets='http-request,request-fields,http-response,resp
 
 [[MATCH-READ-ALL]]
 === 매치 전체 조회
-operation::match-readAll[snippets='http-request,request-parameters,http-response,response-fields']
+operation::match-readAll[snippets='http-request,query-parameters,http-response,response-fields']
 
 [[MATCH-READ]]
 === 매치 조회
@@ -203,7 +203,7 @@ operation::vote-update[snippets='http-request,request-fields,http-response,respo
 
 [[VOTE-READ-ALL]]
 === 투표 전체 조회
-operation::vote-readAll[snippets='http-request,request-parameters,http-response,response-fields']
+operation::vote-readAll[snippets='http-request,query-parameters,http-response,response-fields']
 
 [[VOTE-READ]]
 === 투표 조회
@@ -222,7 +222,7 @@ operation::attend-update[snippets='http-request,request-fields,http-response,res
 
 [[ATTEND-READ-ALL]]
 === 출석 전체 조회
-operation::attend-readAll[snippets='http-request,request-parameters,http-response,response-fields']
+operation::attend-readAll[snippets='http-request,query-parameters,http-response,response-fields']
 
 [[ATTEND-READ]]
 === 출석 조회
